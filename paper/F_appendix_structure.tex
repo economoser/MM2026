@@ -1,0 +1,240 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{F. {\sectionseven} Appendix\label{app:structure}}
+\renewcommand*{\thepage}{\Alph{section}\arabic{page}}
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Alternative Kitagawa-Oaxaca-Blinder Decompositions\label{subsec:kob_alt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Recall that in Table \ref{tab:oaxaca_blinder} of Supplemental Appendix \ref{app:oaxaca_blinder}, we presented alternative Kitagawa-Oaxaca-Blinder decompositions of the gender log pay gap. Here, we present analogous decompositions for the gender gaps in amenities (Table \ref{tab:kob_amenities}) and utility (Table \ref{tab:kob_utility}).
+
+%
+\begin{table}[htbp!]
+    \caption{Alternative Kitagawa-Oaxaca-Blinder decompositions of the gender gap in amenities}
+    \label{tab:kob_amenities}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableF1.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the overall gender log amenities gap into a between-employer log amenities gap and a within-employer log amenities gap. Decomposition 1 corresponds to equation \eqref{eq:oaxaca_blinder_A} and uses women's estimates of log amenities for computing the between-employer component. Decomposition 2 corresponds to equation \eqref{eq:oaxaca_blinder_B} and uses men's estimates of log amenities for computing the between-employer component. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+%
+\begin{table}[htbp!]
+    \caption{Alternative Kitagawa-Oaxaca-Blinder decompositions of the gender gap in utility}
+    \label{tab:kob_utility}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableF2.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the overall gender log utility gap into a between-employer log utility gap and a within-employer log utility gap. Decomposition 1 corresponds to equation \eqref{eq:oaxaca_blinder_A} and uses women's estimates of log utility for computing the between-employer component. Decomposition 2 corresponds to equation \eqref{eq:oaxaca_blinder_B} and uses men's estimates of log utility for computing the between-employer component. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Different Margins of Gender Discrimination\label{subsec:amenities_wedges}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In classical theories of taste-based discrimination \citep[e.g.,][]{becker1971}, employers receive disutility from employing certain population groups, which affects the employer's recruiting decisions vis-{\`{a}}-vis these groups. In our framework, the gender wedge $\tau$ plays precisely this role. In addition, our framework features frictional pay dispersion across employers and allows employers to choose amenities separately for each gender.%
+%
+\footnote{We have in mind the costly provision of amenities such as parental leaves, which have large gender differences in take-up rates.} %
+%
+This highlights amenities as a novel margin of employer ``discrimination'' (i.e., unequal treatment) across genders. Under the hypothesis that employers use amenities to differentiate between workers, one would expect gender wedges and women's amenity values $a_{F}$ to be negatively related. Indeed, we confirm such a negative relationship, shown in Figure \ref{fig:amenities_and_wedges}.
+
+%
+\begin{figure}[htbp!]
+    %
+    \includegraphics[width=0.50\columnwidth]{figures/figureF1.eps}
+    %
+    \caption{\label{fig:amenities_and_wedges}Negative relation between women's amenities and gender wedges}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows a binned scatter plot of women's log amenities ($\ln a_{F}$) against gender wedges ($\tau$), with the linear best fit line in dashed red being weighted by female employment. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Role of the Public Sector\label{subsec:public_sector}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To investigate the role of the public sector in our analysis, we have classified each employer in our sample into public vs.\ private. We then complement Figure \ref{fig:components_ranks} from the main text by computing the shares of employment in the public sector across firm ranks separately by gender. The results are shown in Figure \ref{fig:public_share_ladder} below.
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureF2a.eps}}\label{fig:public_share_ladder_m}}%
+    \subfloat[Women]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureF2b.eps}}\label{fig:public_share_ladder_f}}%
+    %
+    \caption{Share of employment in public sector across firm ranks, by gender}
+    \label{fig:public_share_ladder}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure plots the share of employment in the public sector across firm ranks, separately for men in Panel \subref{fig:public_share_ladder_m} and for women in Panel \subref{fig:public_share_ladder_f}.%
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+From this, see that the public sector plays an important role in accounting for high-ranked employers, and more so for women. Note that the top 4\% of employment for women and the top 2\% of employment for men are all concentrated in the public sector. Below those thresholds, public- and private-sector firms are mixed. In other words, 96\% of the firm ladder for women and 98\% of the firm ladder for men feature a combination of public and private-sector employers. This result echoes the findings from Section \ref{subsec:industry_diff} and, in particular, Figure \ref{fig:ind_ranks_x_w} of the main text.
+
+These findings suggest that the public sector clearly plays an important role, complementing existing academic studies on the role of public-sector employment in relation to gender in the labor market. As such, we investigate to what extent our results are shaped by the public vs.\ private sector distinction by recomputing the same Kitagawa-Oaxca-Blinder decompositions separately for the whole economy, the private sector only, and the public sector only. Table \ref{tab:oaxaca_blinder_all} in the main text showed that amenities played an important role in understanding gender gaps in firm pay in the overall economy. Table \ref{tab:oaxaca_blinder_private} below estimates the same Kitagawa-Oaxaca-Blinder decompositions on the subset of workers and firms in Brazil's private sector. We find a baseline gender pay gap that is approximately the same as for the whole economy, an amenity-valuation gap of the same sign and only slightly smaller magnitude than for the whole economy, and a total-compensation gap similar to that for the whole economy. The split into between versus within components is qualitatively unchanged.
+
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions---private sector only}
+    \label{tab:oaxaca_blinder_private}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableF3.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gaps in log pay ($\ln w$), log amenity valuations ($\ln \tilde{a} = \ln(x/w)$), and log total compensation ($\ln x$) for the private sector only. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+Table \ref{tab:oaxaca_blinder_public} repeats the same decomposition for the subset of workers and firms in Brazil's public sector. We find a baseline gender pay gap that is a bit smaller than for the whole economy, an amenity-valuation gap that is of the same sign but a bit smaller in magnitude than in the whole economy, and a total-compensation gap that is a bit larger than in the whole economy. The split into between versus within components is qualitatively unchanged, with the exception of the amenity-valuation gap, which is more concentrated between rather than within employers in Brazil's public sector. These results are intuitive since we naturally expect pay gaps within the same public-sector organizations to be more muted by design. The public sector is also commonly viewed as a high-amenity sector, especially for women, rationalizing the larger within-employer gap in amenity valuations.
+
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions---public sector only}
+    \label{tab:oaxaca_blinder_public}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableF4.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gaps in log pay ($\ln w$), log amenity valuations ($\ln \tilde{a} = \ln(x/w)$), and log total compensation ($\ln x$) for the public sector only. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Implications for Productivity\label{subsec:pay_amenities_ladders}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Panel \subref{fig:prod_and_wedges_A} of Figure \ref{fig:prod_and_wedges} shows the mean productivity $p$ at different rungs of men's and women's firm ladders. Productivity is more steeply increasing in employer ranks for men than for women. The differences are meaningful. For example, men's median-ranked employer is 35 log points more productive than bottom-ranked employers, while the same statistic is only 21 log points for women. Thus, for men more so than for women, improvements in labor market efficiency yield productivity gains. %
+%
+Panel \subref{fig:prod_and_wedges_B} plots women's productivity net of the gender wedge ($(1 - \tau)p$) against men's productivity ($p$). Among the least productive firms, gender wedges are close to zero but they steadily increase toward higher productivity levels. Again, the magnitudes are noteworthy. Near the top of the productivity distribution, the average gender wedge accounts for up to 50 log points of productivity.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Productivity across ranks, by gender]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureF3a.eps}}\label{fig:prod_and_wedges_A}}%
+    \subfloat[Incidence of gender wedges]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureF3b.eps}}\label{fig:prod_and_wedges_B}}%
+    %
+    \caption{\label{fig:prod_and_wedges}Productivity, ranks, and gender wedges}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        Panel \subref{fig:prod_and_wedges_A} of this figure shows gender-specific employment-weighted log productivity ($\ln p$) across employer ranks ($r_{g}$) separately by gender $g \in \{ M, F \}$. Panel \subref{fig:prod_and_wedges_B} shows a binned scatter plot of women's productivity net of gender wedges ($\ln[(1 - \tau)p]$) against men's log productivity ($\ln p$), with the linear best fit line in dashed purple being weighted by total (i.e., male plus female) employment. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+While not targeted, our model generates a lower elasticity of pay with respect to productivity for women ($\input{text/txt_elast_f.tex}$) than for men ($\input{text/txt_elast_m.tex}$). In our model, rent sharing is determined endogenously due to the combination of three gender-specific factors that we separately identify: compensating differentials \citep{Rosen1986}, taste-based discrimination \citep{becker1971}, and labor market frictions \citep{Manning2003}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Switching Employment and Compensation Policies Across Genders\label{subsec:switching}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Next, we relocate all workers of one gender into the other gender's employers, while keeping compensation policies constant, and vice versa. In an accounting sense, we then ask whether either men or women would prefer the other gender's employment distribution or compensation policies.
+
+We first shift men's employment distribution to that of women: $l_{M} \mapsto l_{F}$, the results of which are presented in Panels \subref{fig:shifting_employment_men_w}--\subref{fig:shifting_employment_men_x} of Figure \ref{fig:shifting_employment}. In the baseline, men's CDF of employment is represented by the 45-degree line in each panel. After moving men into women's firms, the solid blue line indicates the simulated CDF of employment. Such a move reduces men's welfare by \input{text/txt_cf1_change_log_x_m_minus_f.tex} log points overall, consisting of a \input{text/txt_cf1_change_log_w_m_minus_f.tex} log points loss in pay and a \input{text/txt_cf1_change_log_pi_m.tex} log points gain in amenities. Interestingly, workers in the top 15\% of the utility distribution actually prefer women's employment distribution. %
+%
+If, instead, we keep men's employment constant but change firm pay and amenities to those for women, men's total compensation decreases by \input{text/txt_cf2b_change_log_x_m_minus_f.tex} log points, consisting of a decrease in amenities by \input{text/txt_cf2b_change_log_pi_m_minus_f.tex} log points and a decrease in pay by \input{text/txt_cf2b_change_log_w_m_minus_f.tex} log points. This experiment demonstrates that there are large differences in the treatment of men and women within employers.
+
+Next, we shift women's employment distribution to that of men: $l_{F} \mapsto l_{M}$, the results of which are presented in Panels \subref{fig:shifting_employment_women_w}--\subref{fig:shifting_employment_women_x} of Figure \ref{fig:shifting_employment}. As a result of this shift, women's welfare decreases by \input{text/txt_cf1_change_log_x_f_minus_m.tex} log points, consisting of a \input{text/txt_cf1_change_log_w_f.tex} log points increase in pay but a \input{text/txt_cf1_change_log_pi_f_minus_m.tex} log points decrease in amenities. %
+%
+If, instead, we keep women's employment constant but change firm pay and amenities to those of men, women's amenities increase by \input{text/txt_cf2_change_log_pi_f} log points and their pay increases by \input{text/txt_cf2_change_log_w_f} log points. As a result, women's total compensation increases by \input{text/txt_cf2_change_log_x_f} log points, accounting for almost all of the gender utility gap, which again highlights the importance of unequal treatment within employers.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men: Pay]{\includegraphics[width=.33\columnwidth]{figures/figureF4a.eps}\label{fig:shifting_employment_men_w}}%
+    %
+    \subfloat[Men: Amenities]{\includegraphics[width=.33\columnwidth]{figures/figureF4b.eps}\label{fig:shifting_employment_men_a}}%
+    %
+    \subfloat[Men: Total compensation]{\includegraphics[width=.33\columnwidth]{figures/figureF4c.eps}\label{fig:shifting_employment_men_x}}%
+    %
+    \\
+    %
+    \subfloat[Women: Pay]{\includegraphics[width=.33\columnwidth]{figures/figureF4d.eps}\label{fig:shifting_employment_women_w}}%
+    %
+    \subfloat[Women: Amenities]{\includegraphics[width=.33\columnwidth]{figures/figureF4e.eps}\label{fig:shifting_employment_women_a}}%
+    %
+    \subfloat[Women: Total compensation]{\includegraphics[width=.33\columnwidth]{figures/figureF4f.eps}\label{fig:shifting_employment_women_x}}%
+    %
+    \caption{{\label{fig:shifting_employment}Outcomes associated with moving men into women's employers and vice versa}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows men's CDF over pay ($w_{M}$) in Panel \subref{fig:shifting_employment_men_w}, amenities ($a_{M}$) in Panel \subref{fig:shifting_employment_men_a}, and total compensation ($x_{M}$) in Panel \subref{fig:shifting_employment_men_x} in the baseline as the diagonal solid black line and after moving men into women's employers as the solid blue line. Analogously, it shows women's CDF over pay ($w_{F}$) in Panel \subref{fig:shifting_employment_women_w}, amenities ($a_{F}$) in Panel \subref{fig:shifting_employment_women_a}, and total compensation ($x_{F}$) in Panel \subref{fig:shifting_employment_women_x} in the baseline as the diagonal solid black line and after moving women into men's employers as the dashed red line. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%

@@ -1,0 +1,265 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\sectionfive}\label{sec:Identification}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To operationalize our model, we provide a constructive proof of identification of all model parameters based on linked employer-employee data. %
+%
+From a bird's eye view, we leverage the intuition that firms' unobserved surplus, consisting of productivity and amenity values net of wage and amenity costs, can be inferred from the employer size distribution. To anticipate our findings, our model rationalizes the observation of a highly skewed employment distribution plus substantial pay dispersion conditional on firm surplus through sizable compensating differentials due to employer amenities.
+
+Relative to existing results on the nonparametric identification of job ladder models---notably \citet{BontempsRobinvandenBerg1999, BontempsRobinvandenBerg2000}---we achieve identification in an environment with the additional model ingredients of worker heterogeneity in gender and ability \citep[as in][]{CardCardosoKline2016}, endogenous vacancy posting \citep[as in][]{Mortensen2003}, and endogenous amenities \citep[as in][]{HwangMortensenReed1998}.
+
+Our identification argument assumes three exogenous parameters as given and proceeds recursively in five steps.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exogenous Parameters\label{subsec:estimation_exogenous}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+There are three exogenously set parameters in our framework. %
+%
+First, the discount rate $\rho = \input{text/txt_model_rho.tex}$ corresponds to an annual compound real interest rate of $\input{text/txt_model_discount_rate.tex}$ percent. The choice of this parameter value is innocuous, as it affects only our computation of the flow value of nonemployment. Second, we impose a common normalization of the matching efficiency $\chi_{g} = \input{text/txt_model_chi.tex}$ for both genders $g$. This is without loss of generality, as our results below really concern the vacancy cost shifter $c_{g}^{v,0}$ relative to the matching efficiency $\chi_{g}$, which is all that matters for our purposes.%
+% 
+\footnote{To separately identify the match efficiency $\chi_{g}$ would require observing the total number of vacancies in the economy.} %
+%
+Third, the elasticity of the matching function $\alpha = \input{text/txt_model_alpha.tex}$ is an agreed-upon value in the literature---see, for example, \citet{PetrongoloPissarides2001} and \citet{EngbomMoser2022a}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Step 1: Gender-Specific Firm Pay\label{subsec:equilibrium_wage_equation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the first step, we demonstrate that our equilibrium model provides a microfoundation for the decomposition of log wages into worker FEs and gender-specific employer FEs in \citeauthor{CardCardosoKline2016}'s \citeyearpar{CardCardosoKline2016} variant of the original framework due to AKM, on which our analysis in Section \ref{subsec:emp_het} builds.
+
+%
+\newcommand{\PropEquilibriumWageEquation}[2]{%
+    The equilibrium wage of a worker of gender $g$ and ability $z$ at a firm with composite productivity $\tilde{p}_{g}$, preference weight $\beta_{g}$ and preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$ is
+    %
+    \begin{align}
+        \ln w_{gz}\left(\tilde{p}_{g}, \beta_{g}, \tilde{c}_{g}^{a,0} \right) %
+        &= \underbrace{\alpha_{z}}_{\text{``worker wage FE''}} + \underbrace{ \psi_{g}^{w} \left( \tilde{p}_{g}, \beta_{g}, \tilde{c}_{g}^{a,0} \right) }_{\text{``gender-firm wage FE''}}, \label{#1}
+    \end{align}
+    %
+    where
+    %
+    \begin{align}
+        \alpha_{z} %
+        &= \ln z, \\
+        %
+        \psi_{g}^{w} \left( \tilde{p}_{g}, \beta_{g}, \tilde{c}_{g}^{a,0} \right) %
+        &= \ln \left( \tilde{p}_{g} - \beta_{g} a_{g}^{*}\left(\tilde{c}_{g}^{a,0}\right) %
+        - \int_{\tilde{p}' \ge \phi_{g}}^{\tilde{p}_{g}} \left[ \frac{1 + \kappa_{g}^{E} \left[ 1 - F_{g}\left(x_{g}^{*}\left(\tilde{p}_{g}\right)\right) \right]}{1 + \kappa_{g}^{E} \left[ 1 - F_{g}\left(x_{g}^{*}\left(\tilde{p}'\right)\right) \right]} \right]^{2} \diff \tilde{p}' \right). \label{#2}
+    \end{align}
+    %
+}
+%
+\begin{proposition}[Equilibrium Wage Equation]
+    \label{prop:akm_equation}
+    \PropEquilibriumWageEquation{eq:prop_AKM_endog}{eq:psi}
+\end{proposition}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_prop_akm_equation}.
+\end{proof}
+%
+Proposition \ref{prop:akm_equation} shows that equilibrium wages in the model are log-additive between a worker component and a gender-specific firm component, as in \citeauthor{CardCardosoKline2016}'s \citeyearpar{CardCardosoKline2016} variant of the framework originally due to AKM. The worker wage FE $\alpha_{z}$ is a strictly monotonic transformation of worker ability $z$. The gender-firm wage FE $\psi_{g}^{w}(\tilde{p}_{g}, \beta_{g}, \tilde{c}_{g}^{a,0})$ depends only on gender-firm-specific parameters---namely, a firm's composite productivity $\tilde{p}_{g}$, its preference weight $\beta_{g}$ and its preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$.
+
+In \citet{CardCardosoKline2016}, the interpretation of gender-firm FEs was one of gender-specific rent sharing. In contrast, our interpretation allows for both gender-specific rent sharing and compensating differentials. Gender-specific rent sharing is captured by the function $\psi_{g}^{w}(\cdot)$, which depends on gender-specific monopsony power. Compensating differentials shape equilibrium wage offers through two channels. First, directly, by substituting for a given firm's wage payments---see the term $\tilde{p}_{g} - \beta_{g} a_{g}^{*}$ in equation \eqref{eq:psi}. Second, indirectly, by shaping the degree of competition between firms---see the integral term involving $x_{g}^{*}(\tilde{p}_{g})$ in equation \eqref{eq:psi}. Therefore, our equilibrium model lends itself to reinterpreting the wage equation with gender-specific employer pay components, as in \citet{CardCardosoKline2016}.
+
+Proposition \ref{prop:firm_pay_norm} in Supplemental Appendix \ref{subsec:norm_firm_pay} shows how to impose a model-consistent normalization of firm pay across genders, used in our empirical analysis in Section \ref{subsec:emp_het}, by extending the arguments in \citet{CardCardosoKline2016} to our environment with gender-specific amenities and compensating differentials.%
+
+In Supplemental Appendix \ref{app:equm_amenity_eq}, we demonstrate that equilibrium amenities also have a log-additive structure, $\ln \beta_{g} a_{gz}(\tilde{c}_{g}^{a,0}) = \alpha_{z} + \psi^{a}(\beta_{g}, \tilde{c}_{g}^{a,0})$, where $\alpha_{z} = \ln z$ is a worker amenity FE and $\psi^{a}(\beta_{g}, \tilde{c}_{g}^{a,0}) = \ln \beta_{g} + \ln (\tilde{c}_{g}^{a,0})/(1 - \eta^{a})$ is a gender-firm amenity FE. While \citet{CardCardosoKline2016} studied a model of wages akin to equation \eqref{eq:prop_AKM_endog}, a formal treatment of amenities and compensating differentials was missing from their analysis. Our framework fills this gap by explicitly modeling firms' equilibrium wage and amenity choices.
+
+In summary, our model allows us to separate worker from firm components of pay and amenities. As a result, we can abstract from heterogeneity in worker ability when discussing the sources of firm heterogeneity. This rationalizes analogous reduced-form assumptions implicitly made in environments that pool workers for the estimation of firm pay and amenities---see, for instance, \cite{Sorkin2017, Sorkin2018}. For the remainder of the analysis, we focus on gender-firm components of pay and amenities. This allows us to pool workers in the data, drop ability $z$ from all subscripts in the model, and henceforth treat the gender-firm pay component $w_{g} \equiv \psi_{g}^{w}(\cdot)$ in equation \eqref{eq:prop_AKM_endog} as known.%
+%
+\footnote{Specifically, this allows us to control for gender-specific selection based on ability \citep{MulliganRubinstein2008}.} %
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Step 2: Employer Ranks\label{subsec:identification_ranks}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the second step, we estimate employer rankings by gender based on a model-consistent revealed-preference argument. For the remainder of this section, we drop the gender subscript $g$ when it is dispensable and refer to firms by their (gender-specific) rank $r$. For example, we write $w(r)$ for the firm component of wages received by workers of gender $g$ at a firm of rank $r$.
+%
+\newcommand{\PropRanks}{%
+    All workers of the same gender share a common employer ranking $r \in [0,1]$, which is identified given employer sizes $l(r)$.%
+}
+%
+\begin{proposition}[Employer Ranks]
+    \label{prop:ranks}
+    \PropRanks
+\end{proposition}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_employer_ranks}.
+\end{proof}
+%
+
+Proposition \ref{prop:ranks} allows us to estimate gender-specific revealed-preference employer ranks.%
+%
+\footnote{\label{revision_2:editor_comment_8}In Supplemental Appendix \ref{app:appendix_misspecification}, we demonstrate, using a combination of theory and Monte-Carlo simulations, the robustness of our estimation results to model misspecification and subgroup heterogeneity.} %
+%
+Our rank notion coincides with that of our model in Section \ref{sec:Model}, in which workers are less likely to endogenously separate from and more likely to accept offers at higher-utility employers, so that higher-ranked employers are larger.%
+%
+\footnote{That firms reveal their value (here, match surplus) through labor demand (here, vacancies) is a feature our model shares with a new generation of models of labor market power \citep{LamadonMogstadSetzler2022, BergerHerkenhoffMongey2022, Felix2022, Sharma2023}.} %
+%
+Of course, there are many other ways to estimate employer ranks in a model-consistent way. One alternative is to exploit the pattern of worker flows between firms, for instance, using poaching ranks \citep{BaggerLentz2019} or a variant of PageRanks \citep{PageBrinMotwaniWinograd1999}. Supplemental Appendix \ref{app:other_ranking_systems} proves that our model is consistent with these alternative firm rank measures. %
+%
+\label{revision_2:editor_comment_1}Supplemental Appendix \ref{app:comparison_ranks} studies in detail the empirical correlation structure between alternative employer rank measures (Table \ref{tab:ranks}), how alternative employer rank measures compare to our baseline rank measure equal to firm size across sectors (Figure \ref{fig:compare_ranks_size}), and how our estimation and decomposition results change if we take the model-consistent variant of PageRanks as an alternative measure of employer ranks (Tables \ref{tab:estimation_pageranks} and \ref{tab:oaxaca_blinder_pageranks}).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Step 3: Labor Market Objects\label{subsec:identification_lab_params}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the third step, we estimate labor market objects by combining employer ranks from above with information on worker flows between employers as well as between employment and nonemployment. To this end, we exploit the existence of a job ladder across firm utility ranks in our model.
+%
+\newcommand{\PropLaborMarketObjects}{%
+    Gender-firm-specific recruiting intensities $f(r)$ and vacancies $v(r)$ as well as gender-specific separation hazards $\delta$, job offer hazards from nonemployment $\lambda^{U}$, involuntary job offer hazards $\lambda^{G}$, voluntary on-the-job offer hazards $\lambda^{E}$, and aggregate vacancies $V$ are identified given employer ranks and data on worker flows between employment states.%
+}
+%
+\begin{proposition}[Labor Market Objects]
+    \label{prop:lab_params}
+    \PropLaborMarketObjects
+\end{proposition}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_lab_params}.
+\end{proof}
+
+Proposition \ref{prop:lab_params} states that ordinal employer ranks---rather than cardinal utility levels---are sufficient to identify key labor market objects in our model. Given that we have already estimated model-consistent revealed-preference ranks for each gender across firms, the flow pattern of workers between firms, as well as between employment and nonemployment, pins down the stated objects.
+
+To gain some intuition, consider the identification of the involuntary job offer hazard, $\lambda^{G}$. With data on firm pay alone, this hazard is impossible to identify in our framework. The reason is that wage cuts between employers may be due to any one or a combination of two reasons. First, a worker may voluntarily switch to a higher-utility firm that offers higher utility, but a disproportionately higher share of it is delivered in the form of amenities, leading to lower wages due to compensating differentials. Second, a worker may switch to a firm that offers lower utility, pay, and amenities due to an involuntary job offer. In contrast, given gender-specific firm ranks already estimated by virtue of Proposition \ref{prop:ranks} in the previous step, we can infer the involuntary job offer hazard by simply counting the incidence of transitions up versus down the firm ranks at different rungs of the job ladder.
+
+As a result of Proposition \ref{prop:lab_params}, going forward we can treat gender-firm-specific recruiting intensities, $f(r)$, and vacancies, $v(r)$, as well as gender-specific separation hazards, $\delta$, job offer hazards from nonemployment, $\lambda^{U}$, involuntary job offer hazards, $\lambda^{G}$, voluntary on-the-job offer hazards, $\lambda^{E}$, and aggregate vacancies, $V$ as known.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Step 4: Firm-Level Parameters\label{subsec:identification_continuous}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the fourth step, we identify gender-specific parameters for each firm. In doing so, we treat as known some economy-wide parameters, the identification of which we discuss next, in Section \ref{subsec:identification_economy_wide}.%
+%
+\footnote{These are the vacancy cost intercept $c^{v,0}$, the elasticity of vacancy costs $\eta^{v}$, and the elasticity of amenity costs $\eta^{a}$.} %
+%
+
+We now state an important identification result.
+
+%
+\newcommand{\PropFirmLevelParameters}{%
+    The following gender-firm-specific parameters as functions of $r$ are point identified given employer ranks and labor market objects: productivity $p(r)$, the gender wedge $\tau(r)$, the amenity valuation $\beta(r) a^{*}(r)$, and amenity costs $c^{a}(a^{*}(r))$.%
+}
+%
+\begin{proposition}[Firm-Level Parameters]
+    \label{prop:identification}
+    \PropFirmLevelParameters
+\end{proposition}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_firm_level_params}.
+\end{proof}
+
+Our identification argument leverages the insight that unobserved firm flow profits per worker can be inferred from equilibrium recruiting intensities or, equivalently, from firm sizes. Intuitively, if a firm makes higher profits per matched worker, it will optimally post more vacancies and attain a larger size. In turn, by leveraging the equilibrium structure of our model, the distribution of profits per matched worker across firm ranks allows us to infer utility levels offered to workers up to a constant.%
+%
+\footnote{\label{revision_2:r2_minor_comment_footnote}In particular, utility levels offered across firms can be shifted up or down by a constant without affecting the observed behavior of firms or workers in our model. We choose a normalization of utility levels to achieve a minimum amenity valuation that is positive but arbitrarily close to zero at some firm, which minimizes the share of total utility due to amenity valuations.\label{revision_2:r2_comment_minor}} %
+%
+In combination with the observed wage components, these yield firm-specific amenity values, which---given our assumed amenity cost function---is equivalent to identifying amenity cost parameters. Finally, we identify firm productivities and gender wedges by combining observed wages and identified amenity costs with firms' profits per matched worker.%
+%
+\footnote{In the data, separation rates are decreasing in firm size: this can be viewed as a ``job-stability amenity'' that our estimation can attribute to larger firms offering higher utility. Thus, after solving a version of the model that allows for nonincreasing separation rates across firm ranks in Supplemental Appendix \ref{app:hetero_delta_model}, Supplemental Appendix \ref{app:hetero_delta_identification} details how our identification argument changes when separation rates are heterogeneous across firms. We thank an anonymous referee for this suggestion.} %
+%
+For this, recall that the exact functional form by which $\tau_{g}$ enters firms' payoff function (e.g., multiplicatively or additively) is immaterial for identification and estimation.
+
+It is worth noting that our result is more general than the exact statement in Proposition \ref{prop:identification}, in the sense that our assumptions on the functional form of the amenity cost in equation \eqref{eq:amenity_cost_fn} and of the vacancy cost in equation \eqref{eq:vacancy_cost_fn} can be significantly relaxed. All that is required is that the amenity and vacancy cost functions are increasing and convex, as is commonly assumed in many applications.%
+%
+\footnote{Examples of such amenity cost functions are \citet{HwangMortensenReed1998} and \citet{LangMajumdar2004}. The model in \citet{Sorkin2018} is isomorphic to one with convex increasing amenity costs. Examples of such vacancy cost functions are \citet{Mortensen2003}, \citet{BilalEngbomMongeyViolante2022}, and \citet{EngbomMoser2022a}.} %
+%
+Furthermore, our choice of the amenity cost function has no bearing on the estimated distribution of firm-level amenities---in particular, our choice of the elasticity of the amenity cost function $\eta^{a}$ is irrelevant for the estimated distribution of amenities $\beta(r) a(r)$.%
+%
+\footnote{For instance, we would recover the identical distribution of amenities $\beta(r) a(r)$ under the assumption of exogenous amenities. However, the estimated value of the elasticity of the amenity cost function $\eta^{a}$ will matter for the inferred distribution of firm productivity $p(r)$ and thus composite productivity $\tilde{p}(r)$.} %
+%
+In comparison to related work by \citet{Sorkin2017, Sorkin2018}, we leverage the equilibrium nature of our model---specifically, firms' endogenous vacancy posting subject to a convex increasing cost function---to achieve identification of \emph{levels} of utility across firms, which in the context of \citet{Sorkin2017, Sorkin2018} are arbitrarily normalized due to the scale parameter of random utility shocks being not identified in his partial-equilibrium framework.%
+%
+\footnote{In \citet{Sorkin2017, Sorkin2018}, the \emph{levels} of utility across discrete choices of firms could be pinned down if the elasticity of labor supply with respect to the wage were known. Absent a credibly identified change in firm pay, holding fixed firm amenity values and all other features of the environment, our model provides an alternative approach to pinning down the scale of firm utilities using an equilibrium model and functional forms commonly used in the macro-labor literature, the cost parameters of which we identify and estimate based on linked employer-employee data and aggregate statistics.} %
+%
+Our approach to identifying firm-level amenities relies on a choice of an integration constant $K$---see equation \eqref{eq:x_prime} in Supplemental Appendix \ref{app:proof_firm_level_params}. We argue that choosing a low enough value of the constant $K$ to guarantee that the minimum level of amenity valuations across firms is close to zero is innocuous. Specifically, choosing a larger value of the constant $K$ would lead us to infer an even greater share of amenities in total compensation and for the gender gap in log total compensation to be even smaller.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Step 5: Economy-Wide Parameters\label{subsec:identification_economy_wide}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the final step, we pin down three remaining economy-wide parameters given aggregate statistics.
+
+%
+\newcommand{\PropEconomyWideParameters}{%
+    (i) The vacancy cost shifter $c^{v,0}$ is identified based on the aggregate labor share; (ii) the elasticity of the vacancy cost function $\eta^{v}$ is identified based on the firm pay-profit gradient; (iii) the elasticity of the amenity cost function $\eta^{a}$ is identified based on the aggregate amenity cost share in the data.%
+}
+%
+\begin{proposition}[Economy-Wide Parameters]
+    \label{prop:economy_wide_params}
+    \PropEconomyWideParameters
+\end{proposition}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_economy_wide_params}.
+\end{proof}
+
+The intuition for part (i) relies on the fact that vacancy costs introduce concavity with respect to the vacancy choice into the firm's objective, which uniquely pins down a firm's size and profits. Firm optimality with respect to its vacancy choice implies that the same vacancy posting behavior can be rationalized by any combination of profits and the vacancy cost shifter that keeps the ratio between the two constant. However, as we scale up profits, we mechanically lower the labor share because the data pin down the level of wages. Therefore, we can estimate $c^{v,0}$ by finding the scale of profits that matches the empirical labor share.
+
+The intuition for part (ii) is that as the elasticity of the vacancy posting cost becomes higher, the number of vacancies becomes more similar across two firms with given levels of profits per worker. In the limit as $\eta^{v} \rightarrow \infty$, all firms post a constant number of vacancies. Therefore, to rationalize the observed dispersion in vacancy posting, the model needs to generate more dispersion in profits per matched worker, yielding greater profit dispersion. For fixed levels of pay observed in the data, this implies that the pay-profit gradient varies directly with the elasticity of the vacancy cost function $\eta^{v}$.
+
+Part (iii) follows from our assumptions on the amenity cost function in equation \eqref{eq:amenity_cost_fn}. The cost of creating the optimal amount of amenities is $c^{a}(a^{*}) = \beta a^{*}/\eta^{a}$, which is inversely proportional to $\eta^{a}$. Therefore, we can identify $\eta^{a}$ by using it to match the aggregate amenity cost share.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Interpretation of Results\label{subsec:interpretation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To summarize, we have identified gender-firm-specific parameters $(p(r), \tau(r), c^{a,0})$, %
+gender-specific labor market objects $(\delta, \lambda^{U}, \lambda^{E}, \lambda^{G})$, %
+and economy-wide parameters $(c^{v,0}, \eta^{v}, \eta^{a})$. Combining the model structure with the data, this yielded firm-level estimates of $w(r), a(r), v(r)$ across firm ranks $r$.
+
+At this point, it may be helpful to take a step back and ask what we can (not) learn from these identification results. Recall the utility of a worker of gender $g$ and ability $z$ is $x = w + \beta a$, which consists of the sum of the monetary wage $w$ and the nonwage amenity valuation $\beta a$. Thus, for each gender, our estimates of amenity valuations $\beta a$ and total compensation $x$ are \emph{in units of wages}, $w$. In other words, we have identified the relative importance of wages versus amenity valuations in relation to their combined value.
+
+Nevertheless, since wages and amenities are in the same units, our identification results allow us to quantify the relative importance of utility $x$ and amenity valuations $\beta a$ in wages $w$ across firms $r$ as
+%
+\begin{align}
+    \underbrace{\frac{w_{gz}(r)}{x_{gz}(r)}}_{\text{wage share in total compensation}} + \underbrace{\frac{\beta_{g} a_{gz}(r)}{x_{gz}(r)}}_{\text{amenity share in total compensation}} &= 1. \label{eq:w_share} % $w_{gz}(r) / x_{gz}(r)  +  a_{gz}(r) / x_{gz}(r)  =  1$
+\end{align}
+%
+They also allow us to quantify the shares of variation in utility $x_{gz}(r)$ across firms $r$ due to variation in wages, amenities, and their covariance:
+%
+\begin{align}
+    \underbrace{\frac{Var \left( x_{gz}(r) \right)}{Var(w_{gz}(r))}}_{\text{variance share of wages due to $x_{gz}(r)$}} + \underbrace{\frac{Var \left( \beta_{g} a_{gz}(r) \right)}{Var(w_{gz}(r))}}_{\text{variance share of wages due to $\beta_{g} a_{gz}(r)$}} \label{eq:var_decomp_w} \\
+    - \underbrace{\frac{2Cov \left( x_{gz}(r) , \beta_{g} a_{gz}(r) \right)}{Var(w_{gz}(r))}}_{\text{variance share of wages due to covariance}} &= 1. \notag
+\end{align}
+%
+
+That all the statistics in equations \eqref{eq:w_share} and \eqref{eq:var_decomp_w} are identified in our equilibrium framework is an important contribution over existing work on compensating differentials. For example, the partial-equilibrium model by \citet{Sorkin2018} \emph{``can identify the variation in amenities that comes from the `pure' Rosen motive''} (p.\ 1373) but, without further assumptions, \emph{``cannot identify the variation in amenities that contribute to utility dispersion, that is, those that come from the Mortensen motive''} (p.\ 1374). By making additional assumptions on the cost structure of firms' hiring decisions and other features of the environment, our equilibrium model sheds new light on compensating differentials across firms by recovering the joint distribution of amenities and wages, which allows us to quantify both the \emph{``Rosen motive''} and the \emph{``Mortensen motive,''} in the language of \citet{Sorkin2018}.
+
+In addition to decomposing total compensation into wages and amenity valuations, our model also allows us to identify the underlying sources of (gender differences in) wages and amenities by associating with each wage-amenity bundle $(w, \beta_{g} a)$ a firm type $(p, (\beta_{g})_{g}, \tau, (\tilde{c}_{g}^{a,0})_{g})$. In classical job ladder models {\`{a}} la \citet{BurdettMortensen1998}, productivity $p$ is the only source of firm heterogeneity and wages are the only form of compensation, so more productive firms offer higher wages and employ more workers in equilibrium. The identification results within our richer framework allow us to empirically test these relationships in a world with endogenous amenity provision and hiring.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Implementation\label{subsec:implementation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To implement our identification results, we proceed sequentially by gender. %
+%
+We first trim the top and bottom one percent of the gender-specific pay FE distributions to eliminate outliers. %
+%
+Then, we start by studying men, for whom gender wedges are normalized to zero. We estimate men's firm pay $w_{M}(r_{M})$ using Proposition \ref{prop:akm_equation} and men's firm ranks $r_{M}$ using Proposition \ref{prop:ranks}. Given the distribution of firm ranks $r_{M}$, Proposition \ref{prop:lab_params} allows us to estimate all men's labor market objects. We regularize the estimated hiring intensities with a kernel smoother to limit the extent of measurement error and then use Proposition \ref{prop:identification} to identify the distribution of productivity $p(r_{M})$ and amenity cost shifters $c_{M}^{a,0}(r_{M})$ for men.
+%
+\footnote{To translate our results from continuous firm types in theory to discrete firm types in the data, see Supplemental Appendix \ref{app:identification_discrete}.} %
+%
+We then iterate over this process until we find the economy-wide parameters that allow us to match a set of aggregate moments detailed in Proposition \ref{prop:economy_wide_params}.
+
+Second, we study women, for whom gender wedges represent the implicit tax relative to the productivity level estimated for men. In other words, gender wedges are the only remaining reason for unequal treatment of men and women at the same employer, all else (i.e., estimates of worker ability, firm productivity, preference weights, and the firm's gender-specific amenity costs) equal. The identification proceeds analogously to that for men, except that we take the values of firm productivity $p(r)$ as given, and economy-wide parameters are already estimated based on men. As part of this procedure, we recover firms' gender wedges for women such that women's productivity net of the gender wedge at a firm with rank $r_{F}$ is $(1 - \tau(r_{F})) p(r_{F})$.
+
+A final remark is in order. While our model features a large number of parameters, our identification results demonstrate that these parameters are point-identified and thus pinned down empirically. In this sense, despite its richness, our model has no remaining degrees of freedom.%
+%
+\footnote{Supplemental Appendix \ref{app:appendix_montecarlo} demonstrates in a sequence of Monte Carlo simulations that our identification procedure perfectly recovers the model parameters under a range of parameterizations.} %
+%

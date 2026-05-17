@@ -1,0 +1,738 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{E. {\sectionsix} Appendix\label{app:estimation}}
+\renewcommand*{\thepage}{\Alph{section}\arabic{page}}
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Constructing Aggregate Statistics\label{subsec:external}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We use three aggregate statistics for identification in our model: the aggregate labor share, the elasticity of firm pay with respect to firm value added per worker, and the aggregate amenity cost share.
+
+
+\paragraph{Aggregate Labor Share.}
+
+Part (i) of our identification result in Proposition \ref{prop:economy_wide_params} of Section \ref{sec:Identification} links the vacancy cost shifter $c^{v,0}$ to the aggregate labor share in the data. To bridge the model with the data, we define the labor share as the share of value added accruing to workers in pay,
+%
+\begin{align}
+    \mathcal{L}  &\equiv \frac{ \sum_{g}\sum_{j}w_{gj}l_{gj} }{ \sum_{g}\sum_{j} \left[ p_{j}l_{gj} - c^{a}_{g}(a_{gj})l_{gj} - c_{g}^{v}(v_{gj}) \right] } = 48\%, \label{eq:labor_share_app}
+\end{align}
+%
+where the numerator contains the wage bill, $\sum_{g}\sum_{j}w_{gj}l_{gj}$, while the denominator contains value added, $\sum_{g}\sum_{j} [ p_{j}l_{gj} - c^{a}_{g}(a_{gj})l_{gj} - c_{g}^{v}(v_{gj}) ]$. The labor share value of $0.48$ is the 2007 value of the share of labor compensation of employees (i.e., excluding the self-employed, who are outside of our model) for Brazil, based on \citet{FeenstraInklaarTimmer2015} as retrieved via FRED.
+
+
+\paragraph{Elasticity of Firm Pay with Respect to Firm Value Added per Worker.}
+
+Part (ii) of our identification result in Proposition \ref{prop:economy_wide_params} of Section \ref{sec:Identification} links the elasticity of the vacancy cost function $\eta^{v}$ to the elasticity of firm pay with respect to firm profits in the data. While firm profits are readily measured in firm financial data, we instead rely on existing estimates of the elasticity of firm pay with respect to value added per worker,
+%
+\begin{align}
+    \tilde{\beta} &= \frac{Cov( \ln w(r), \ln \left( \frac{\Pi(r) + w(r)l(r)}{l(r)} \right) )}{Var( \ln \left( \frac{\Pi(r) + w(r)l(r)}{l(r)} \right) )}, \label{eq:regression_beta_value_added}
+\end{align}
+%
+To put a number on the elasticity $\tilde{\beta}$ in equation \eqref{eq:regression_beta_value_added}, we take the coefficient from a regression of firm fixed effects in wages on log value added per worker at the firm level in Brazil from \citet{AlvarezBenguriaEngbomMoser2018}. The estimated coefficient is $0.179$ in a balanced panel of Brazilian manufacturing firms from 2004--2008 \citep[see Table E1 of][]{AlvarezBenguriaEngbomMoser2018}, which matches the beginning of our sample period.
+
+
+\paragraph{Aggregate Amenity Cost Share.}
+
+Part (iii) of our identification result in Proposition \ref{prop:economy_wide_params} of Section \ref{sec:Identification} links the elasticity of the amenity cost function $\eta^{a}$ to the aggregate amenity cost share in the data. A challenge we face is that for the share of amenity costs in value added ,no precise estimate exists in the literature, much less so for the Brazilian context. Therefore, any assumed value necessarily comes with significant uncertainty. With this caveat in mind, related estimates on the value of local amenities \citep{BieriKuminoffPope2023} suggest that the approximate cost share of amenities in value added is
+%
+\begin{align}
+    \mathcal{A} &\equiv \frac{ \sum_{g}\sum_{j}c_{g}^{a}(a_{gj})l_{gj} }{ \sum_{g}\sum_{j} \left[ p_{j}l_{gj} - c_{g}^{a}(a_{gj})l_{gj} - c_{g}^{v}(v_{gj}) \right] } = 8\%. \label{eq:amenities_share_app}
+\end{align}
+%
+Due to the significant uncertainty surrounding this estimate, we use it as a baseline and conduct robustness checks around it.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Details on Covariates Related to Productivity Estimates\label{app:estimation_productivity_data}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To obtain productivity estimates for a subset of the firms in the RAIS linked employer-employee data, we merge in firm financial data from Bureau van Dijk's Orbis Historical database. The Orbis Historical data is the largest cross-country firm-level database containing information on public and private firms' balance sheets and income statements---see \citet{Kalemli-OzcanSorensenVillegas-SanchezVolosovychYesiltas2024} for a detailed description. We merge the Orbis Historical data into RAIS using Brazilian firms' tax identifiers (\emph{Cadastro Nacional de Pessoas Jurídicas}, or \emph{CNPJ}). We then use as our empirical productivity proxy revenue per worker in the Orbis Historical data, which we relate to our model notion of firm productivity $p$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Details on Covariates Related to Gender Wedge Estimates\label{app:estimation_wedge_covariates}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We include as covariates in $Z_{j}$ in equation \eqref{eq:second_stage_wedges} the following {\NWedgeCovariates} variables that we construct using the RAIS data, in addition to {\NDummies} sets of FEs.
+
+
+\paragraph{Female Manager.}
+
+We create an indicator for whether the employer has a woman in the highest-paid position.
+
+
+\paragraph{Nonroutine Manual Task Intensity.}
+
+We compute the mean $z$-score for nonroutine manual task intensity measured by linking 5-digit occupation codes from the Brazilian \emph{Classifica{\c{c}}{\~{a}}o Brasileira de Ocupa{\c{c}}{\~{o}}es (CBO)} 1994 occupation classification to United States 1990 Census occupation codes based on the occupational crosswalk of \citet{deSouza2024} extending previous work of \citet{AutorDorn2009} and \citet{AcemogluAutor2011}.
+
+
+\paragraph{Nonroutine Interpersonal Task Intensity.}
+
+We compute mean $z$-score for nonroutine interpersonal task intensity measured by linking 5-digit occupation codes from the Brazilian \emph{Classifica{\c{c}}{\~{a}}o Brasileira de Ocupa{\c{c}}{\~{o}}es (CBO)} 1994 occupation classification to United States 1990 Census occupation codes based on the occupational crosswalk of \citet{deSouza2024} extending previous work of \citet{AutorDorn2009} and \citet{AcemogluAutor2011}.
+
+
+\paragraph{Mean Working Hours.}
+
+We compute the mean log number of contractual work hours.
+
+
+\paragraph{No Major Financial Stakeholders.}
+
+We use an indicator for whether an employer has no major financial stakeholder, as proxied by their participation in the small-business tax regime \emph{Simples Nacional}.%
+%
+\footnote{Eligibility for the Simples Nacional tax regime requires that the enterprise is a micro- or small business with annual revenues below BRL 1,200,00 (around USD 200,000), that it has no other companies as stakeholders, that it is not internationally owned, that it has no shareholder or partner with significant financial stakes in other companies, and that the enterprise itself has no stake in other companies.} %
+%
+
+
+\paragraph{Employer Size.}
+
+We compute total employer size is measured as the log number of full-time equivalent employees during a year.
+
+
+\paragraph{Municipality FEs.}
+
+We construct dummies for {\NMunicipalities} municipalities represented in our sample.
+
+
+\paragraph{Sector FEs.}
+
+We construct dummies for {\NSectors} five-digit sectors represented in our sample.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Details on Covariates Related to Amenity Estimates\label{app:estimation_amenity_covariates}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We include in our analysis in Section \ref{subsec:between_vs_within} and also as covariates in $Z_{gj}$ in equation \eqref{eq:second_stage_amenities} of Section \ref{subsec:estimation_distributions} the following {\NAmenityCovariates} variables that we construct using the RAIS data, in addition to {\NDummies} sets of FEs.
+
+
+\paragraph{Part-Time Work Incidence.}
+
+We compute the share of workers with contractual work hours below 40.
+
+
+\paragraph{Working Hours Flexibility.}
+
+We compute the share of workers who change contractual work hours between any two consecutive years.
+
+
+\paragraph{Parental Leave Generosity.}
+
+We create an indicator for whether workers at an employer have parental leave duration above the national median.
+
+
+\paragraph{Income Fluctuations.}
+
+We compute the share of workers who change mean earnings between any two consecutive years.
+
+
+\paragraph{Workplace Hazards.}
+
+We compute the share of workers who report absence from work due to work-related illness, multiplied by 100.
+
+
+\paragraph{Incidence of Unjust Firings.}
+
+We compute the share of workers who report ending their job due to an employer-induced firing for no officially recognized cause.
+
+
+\paragraph{Incidence of Workplace Deaths.}
+
+We compute the share of jobs who report having ended due to the worker's death at the workplace.
+
+
+\paragraph{Employer Size.}
+
+We compute the total employer size measured as the log number of full-time equivalent employees during a year.
+
+
+\paragraph{Municipality FEs.}
+
+We construct dummies for {\NMunicipalities} municipalities represented in our sample.
+
+
+\paragraph{Sector FEs.}
+
+We construct dummies for {\NSectors} five-digit sectors represented in our sample.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detailed Results from the Estimation of Labor Market Objects\label{app:other_results_lmkt_objects}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+\begin{figure}[htbp!]
+    %
+    \includegraphics[width=0.50\columnwidth]{figures/figureE1.eps}%
+    %
+    \caption{Employment-weighted density of employer ranks, by gender}
+    \label{fig:kdens_ranks}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows the distributions over employer ranks $r_{g}$ using gender-specific employment weights separately for men (blue solid line) and women (red dashed line). Employer ranks $r_{g}$ are defined to be uniformly distributed across firms. Grey vertical patterned lines represent mean values for workers of a given gender. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Firm-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE2a.eps}}\label{fig:recruiting_dens_A}}%
+    \subfloat[Employment-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE2b.eps}}\label{fig:recruiting_dens_B}}%
+    %
+    \caption{Density of recruiting intensities, by gender}
+    \label{fig:recruiting_dens}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows density estimates of logarithmic firm recruiting intensities $\ln f_{g} = \ln (v_{g}/V_{g})$ separately for men (blue solid line) and women (red dashed line). Panel \subref{fig:recruiting_dens_A} is firm-weighted, while Panel \subref{fig:recruiting_dens_B} uses gender-specific employment distributions. Grey vertical patterned lines represent mean values for workers of a given gender. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detailed Results from the Estimation of on Gender-Specific Firm Types\label{app:est_results_gender_specific_firm_parameters}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Firm-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE3a.eps}}\label{fig:prod_est_A}}%
+    \subfloat[Employment-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE3b.eps}}\label{fig:prod_est_B}}%
+    %
+    \caption{Densities of log estimated productivity, by gender}
+    \label{fig:prod_est}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows densities of log estimated productivity ($p$) separately for men (blue solid line) and women (red dashed line). Panel \subref{fig:prod_est_A} is firm-weighted, while Panel \subref{fig:prod_est_B} uses gender-specific employment distributions. Grey vertical patterned lines represent mean values for workers of a given gender. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Firm-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE4a.eps}}\label{fig:wedge_est_A}}%
+    \subfloat[Employment-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE4b.eps}}\label{fig:wedge_est_B}}%
+    %
+    \caption{Densities of estimated gender wedges, by gender}
+    \label{fig:wedge_est}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows densities of women's gender wedges ($\tau$) separately for men (blue solid line) and women (red dashed line). Panel \subref{fig:wedge_est_A} is firm-weighted, while Panel \subref{fig:wedge_est_B} uses gender-specific employment distributions. Grey vertical patterned lines represent mean values for workers of a given gender. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Firm-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE5a.eps}}\label{fig:amenity_cost_est_A}}%
+    \subfloat[Employment-weighted]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE5b.eps}}\label{fig:amenity_cost_est_B}}%
+    %
+    \caption{\label{fig:amenity_cost_est}Densities of log amenity cost shifters, by gender}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows densities of log amenity cost shifters ($c_{g}^{a,0}$) separately for men (blue solid line) and women (red dashed line). Panel \subref{fig:amenity_cost_est_A} is firm-weighted, while Panel \subref{fig:amenity_cost_est_B} uses gender-specific employment distributions. Grey vertical patterned lines represent mean values for workers of a given gender. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+%
+\begin{table}[htbp!]
+    \caption{Correlation table for estimated employer parameters}
+    \label{tab:corr_p_pi_z}
+    %
+    \resizebox{\textwidth}{!}{%
+        \subfloat[\large Men]{\input{tables/tableE1a.tex}\label{tab:corr_p_pi_z_A}}%
+        %
+        \subfloat[\large Women]{\input{tables/tableE1b.tex}\label{tab:corr_p_pi_z_B}}%
+    }
+    %
+    \begin{footnotesize}
+        \subfloat[\footnotesize{Cross-gender correlations}]{\input{tables/tableE1c.tex}\label{tab:corr_p_pi_z_C}}%
+    \end{footnotesize}
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports employment-weighted pairwise correlations across employers between gender-specific pay ($w_{g}$), gender-specific amenities ($a_{g}$), gender-specific flow utilities ($x_{g}$), productivity net of the gender wedge ($(1 - \tau_{g})p$), gender-specific employment ($l_{g}$), and gender-specific employer ranks ($r_{g}$) separately for workers of gender $g \in \{ M, F \}$. Panel \subref{tab:corr_p_pi_z_A} shows these correlations within the set of employers for men, while Panel \subref{tab:corr_p_pi_z_B} shows the same correlations for women. Panel \subref{tab:corr_p_pi_z_C} shows cross-gender correlations within the same employers. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Additional Model-Fit Statistics\label{app_subsec:model_fit}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Figure \ref{fig:model_fit_pay_size_ind} shows the model versus data predictions for firm size and pay across 2-digit CNAE industry codes. These results suggest that the model captures well the distribution of pay and firm size across industries for both genders. % This is not unexpected, given how the model was identified and estimated, but it is reassuring to see, of course.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE6a.eps}}\label{fig:model_fit_pay_size_ind_m}}%
+    \subfloat[Women]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE6b.eps}}\label{fig:model_fit_pay_size_ind_f}}%
+    %
+    \caption{Model fit in terms of mean log pay against log industry size, by gender}
+    \label{fig:model_fit_pay_size_ind}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure plots the model fit in terms of mean log pay against log industry size across 25 sectors, separately for men in Panel \subref{fig:model_fit_pay_size_ind_m} and for women in Panel \subref{fig:model_fit_pay_size_ind_f}. Marker sizes represent employment weights. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Relationship to Other Employer Rank Measures\label{app:other_ranking_systems}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this Appendix, we show that our model is consistent with other methods to measure employer ranks, such as poaching ranks \citep{BaggerLentz2019} or PageRanks \citep{PageBrinMotwaniWinograd1999, Sorkin2018}. To this end, we provide the following Proposition.
+
+%
+\newcommand{\PropRanksother}{%
+    The ranking $r \in (0,1)$ can also be identified from worker flows between employers.%
+}
+%
+\begin{proposition}[Employer Ranks using Worker Flows]
+    \label{prop:ranks2}
+    \PropRanksother
+\end{proposition}
+%
+\begin{proof}
+
+    We go through each alternative rank measure.
+
+    \paragraph{Poaching Ranks.} %
+    The \emph{poaching rank} \citep{BaggerLentz2019} of every firm $j$ is defined as
+%
+    \begin{align}
+        \text{Poaching rank}_{j} &= \frac{\text{number of E-to-E hires}_{j}}{\text{number of all hires}_{j}} \\
+        &= \frac{\text{number of E-to-E hires}_{j}}{\text{number of E-to-E hires}_{j} + \text{number of U-to-E hires}_{j}},
+    \end{align}
+    which in our model can be rewritten as
+    %
+    \begin{align}
+        \text{Poaching rank}_{j} &= \frac{\lambda^{E} G_{j} + \lambda^{G} (1-u)}{ \lambda^{E} G_{j} + \lambda^{G} + \lambda^{U} u} \label{eq:poaching_rank}
+    \end{align}
+    %
+    The poaching rank in equation \eqref{eq:poaching_rank} is a monotonic transformation of the utility rank of a firm because it is strictly increasing in the cumulative employment distribution $G_{j}$, which is precisely the employment-weighted rank of firm $j$ in the pool of all firms.%
+    %
+    \footnote{Note also that $G_{j}$ itself is a monotonic transformation of the cumulative offer distribution $F_{j}$, which is the vacancy-weighted rank of firm $j$ in the pool of all firms.} %
+    %
+    This proves that, in our model, the Poaching rank is monotonically increasing in firm rank.
+    %
+
+    \paragraph{PageRanks.} %
+    Another alternative is to exploit the full pattern of worker flows between employers in order to construct each employer's \emph{PageRank} \citep{PageBrinMotwaniWinograd1999, Sorkin2018}, which represents the utility rank of a firm among the pool of all firms.
+
+    Let $r_{j}$ be the rank of firm $j$. %
+    %
+    Let $f_{j} := v_{j}/V$ be the recruiting intensity of firm $j$.
+
+    \underline{Retentions:} %
+    Let $h_{j}$ be the mass of workers that firm $j$ retains from one period to the next, defined as
+    %
+    \begin{align}
+        h_{j} := \left(1 - \delta - \lambda^{G} - \lambda^{E} (1-F_{j})\right) l_{j} .
+    \end{align}
+    %
+    Here, we have used the fact that firms are atomistic. This fact implies, for example, that workers hit with an involuntary job offer at a rate $\lambda^{G}$ leave their current employer with probability one (as opposed to the complement of a firm's share of all vacancies in the economy, $1 - f_{j}$).
+
+
+    \underline{Separations:} %
+    Let $o_{i,j}$ be the \emph{outflow} of workers from firm $i$ to firm $j$. There are two cases: Either $r_{i} > r_{j}$, in which case
+    %
+    \begin{align}
+        o_{i,j} = \lambda^{G} l_{i} f_{j} ,
+    \end{align}
+    %
+    or else $r_{i} < r_{j}$, in which case
+    %
+    \begin{align}
+        o_{i,j} = (\lambda^{E} + \lambda^{G}) l_{i} f_{j} .
+    \end{align}
+    %
+
+    \underline{Markov Transition Matrix:} %
+    The Markov transition matrix of the model can be written as follows. Rows are indexed by $i$ and represent workers' current employer. Columns are indexed by $j$ and represent workers' future employers. Fixing the row corresponding to a given firm $i$, the entries of this row are made up of %
+    %
+    the diagonal retention probability
+    %
+    \begin{align}
+        \rho_{i} = \frac{h_{i}}{l_{i}}, \quad \forall j \in \{1, \ldots, N\}
+    \end{align}
+    %
+    and %
+    %
+    the off-diagonal separation probabilities
+    %
+    \begin{align}
+        p_{i,j} = \frac{o_{i,j}}{l_{i}} \quad \forall j \neq i, j > 0.
+    \end{align}
+    %
+    Finally, we add the nonemployment state to the Markov transition matrix as firm $0$, where the probability of transiting from any firm $i$ to nonemployment is $p_{i,0} = p_{0} = \delta$; the probability of finding a job in any firm $j$ when nonemployed is $p_{0,j} = f_j (\lambda^{G} + \lambda^{U})$; and the probability of remaining in nonemployment (i.e., nonemployment's retention probability) is $\rho_{0} = p_{0,0} = (1 - \lambda^{G} - \lambda_U)$. To summarize, the Markov transition matrix looks as follows:
+    %
+    \begin{align}
+         P = %
+        \left[
+        \begin{matrix} %
+	\rho_{0} & p_{0,1} & p_{0,2} & ... & p_{1,N} \\
+        p_{0} & \rho_{1} & p_{1,2} & ... & p_{1,N} \\
+        p_{0} & p_{2,1} & \rho_{2} & ... & p_{2,N} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        p_{0} & p_{N,1} & p_{N,2} & ... & \rho_{N} %
+        \end{matrix} \right] %
+        \label{eq:P_matrix}
+    \end{align}
+    %
+    If we write the system $P' \times l = l$, where $l$ is the $N+1 \times 1$ vector of firm sizes that includes nonemployment as an additional ``firm'', it is easy to see that the above system is the discrete-version equivalent of the continuous Kolmogorov forward equation for the evolution of firm size in the model:
+    %
+    \begin{align}
+    \dot{l}_{j} &= \left[ -\delta - \lambda^{E} \left[1 - F_{j}\right] - \lambda^{G} \right] l_{j} + \left[ \frac{u + (1 - u) s^{E} G_{r} + s^{G}}{u + (1 - u) s^{E} + s^{G}} \right] v_{j} q.
+    \end{align}
+    %
+    where we can use the discrete time, discrete firms equivalents:
+    %
+    \begin{align}
+        (1-u) &= \sum_{j \in \{1/N, \ldots, 1\}} l_j, \\
+        G_{j} &= \frac{1}{1-u} \sum_{i \in \{1/N, \ldots, r\}} l_i, \\
+        q &= m(\theta)/V = \lambda^{U} \left[ \frac{u + (1-u) s^{E} + s^{G}}{V} \right] \\
+        F_{j} &= \sum_{k \in \{1, \ldots, N\}} (f_k \mathbf{1}[r(j) > r(k)])  \\
+        f_{j} &= \frac{v_{j}}{V}.
+    \end{align}
+    %
+    Therefore, in a steady state,
+    %
+    \begin{small}
+        \begin{align}
+            0 &= \left[ -\delta - \lambda^{E} \left(1 - F_{r} \right) - \lambda^{G} \right] l_{j} + \left[ u + (1 - u) s^{E} G_{r} + s^{G} \right] \lambda^{U} \frac{v}{V}. \\
+            \left[ \delta + \lambda^{G} + \lambda^{E} \left(1 - F_{r} \right) \right] l_{j} &= \frac{v}{V} \left[ \lambda^{U} u + \lambda^{E} (1 - u) G_{j} + \lambda^{G} \right]
+        \end{align}
+    \end{small}
+    Using the definition of $F_{j}$ and $G_{j}$ for discrete firms, we can write:
+    \begin{small}
+        \begin{align}
+             \left[ \delta + \lambda^{G} + \lambda^{E} \left(1 - \sum_{k \in \{1, \ldots, N\}} (f_k \mathbf{1}[r(j)>r(k)]) \right) \right] l_{j} &= f_{j} \left[ \lambda^{U}  u + \lambda^{G} + \lambda^{E} \sum_{k \in \{1, \ldots, N\}} (l \mathbf{1}[r(j) > r(k)]) \right]. \label{eq:discrete_pagerank_steady}
+        \end{align}
+    \end{small}
+    %
+    Focusing on a single row, the system $P' \times l = l$ can be written as
+    %
+    \begin{align}
+        f_{j} \left[ \lambda^{U} l_{0}  + \lambda^{G} + \lambda^{E} \sum_{k \in \{ 1, \ldots, N \} }(l_{k} \mathbf{1}[r(j)>r(k)]) \right] & \\
+        + (1 - \delta - \lambda^{G} - \lambda^{E} (1 -  \sum_{k \in \{ 1, \ldots, N \} }[f_{k} \mathbf{1} [r(j)>r(k)] ] ) ) l_{j} & = l_{j}. \label{eq:discrete_pagerank_row}
+    \end{align}
+    %
+    By substituting $l_{0} = u$ by definition, it is immediately apparent that equations \eqref{eq:discrete_pagerank_steady} and \eqref{eq:discrete_pagerank_row} are identical, proving that this matrix implementation of PageRank solves simultaneously for model sizes $l_j$ that are implied by worker flows, and that are consistent with the model ranking. Solving for $l_j$ yields
+    \begin{align}
+        l_{j} &= f_{j} \left[ \frac{ \lambda^{U}  u + \lambda^{G} + \lambda^{E} \sum_{k \in \{1, \ldots, N\}} (l_k \mathbf{1}[r(j) > r(k)]) }{ \delta + \lambda^{G} + \lambda^{E} \left(1 - \sum_{k \in \{1, \ldots, N\}} (f_k \mathbf{1}[r(j)>r(k)]) \right)} \right]
+    \end{align}
+    %
+    which makes explicit that the steady-state size $l_{j}$ of every firm $j$ depends on the relative rank in the ladder, where firms higher up the job ladder hire from a larger set of firms. Further rearranging and substituting for $G_{j}$ leads us to the discrete equivalent of the steady state firm size in equation \eqref{eq:size_stationary}:
+    %
+    \begin{align}
+        l_{j} &= f_{j} \left[\frac{1}{{ \delta + \lambda^{G} + \lambda^{E} (1 - F_{j}) }} \right]^2 (u + s^{G}) \lambda^{U} (\delta + \lambda^{G} + \lambda^{E}) \label{eq:steadystate_discrete_l}
+    \end{align}
+    %
+    In short, if we construct the matrix of firm-to-firm flows in the data and solve the following equation,
+    %
+    \begin{align}
+        \label{eq:matrix_steady_state}
+        P' l = l,
+    \end{align}
+    %
+    where the vector $l$ contains the steady-state firm sizes of equation \eqref{eq:steadystate_discrete_l}, which include hiring intensity $f_{j}$. Therefore, dividing firm size $l$ by hiring intensity gives us the rank-implied firm size $\hat{r}_{j}$. This approach is similar in spirit to \citet{Sorkin2018}, who also uses worker flows between firms to identify firm ranks. However, there is an important distinction between our construction of PageRanks and that of \citet{Sorkin2018}. Specifically, our definition of PageRank is closer to the original one due to \citet{PageBrinMotwaniWinograd1999}, in the sense that our modified adjacency matrix is a Markov transition matrix (i.e., the elements in each row sum to $1$), whereas this is not the case in the discrete-choice setting of \citet{Sorkin2018}. %
+    %
+    Therefore, we have proved that we can use the pattern of worker flows to identify ranks in our model.
+\end{proof}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Comparison across Different Employer Rank Measures\label{app:comparison_ranks}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+For robustness, we computed a variant of PageRanks \citep{PageBrinMotwaniWinograd1999, Sorkin2018} and poaching ranks \citep{BaggerLentz2019} as described in Supplemental Appendix \ref{app:other_ranking_systems}.%
+%
+\footnote{Importantly, the variant of PageRanks that we use is consistent with our labor market model and closely parallels the original PageRanks proposed by \citet{PageBrinMotwaniWinograd1999}. It is worth noting that our variant of PageRanks differs from that introduced by \citet{Sorkin2018} in that our measure reflects the fixed-point weights assigned to each employer based on the empirical transition matrix---i.e., the adjacency matrix normalized such that all rows sum to unity. This is in contrast to the approach in \citet{Sorkin2018} that constructs an alternative set of PageRanks defined based on the adjacency matrix normalized such that all columns (i.e., not rows) sum to unity. While the latter is the appropriate normalization in the discrete-choice setting of \citet{Sorkin2018}, we show in Supplemental Appendix \ref{app:other_ranking_systems} of our paper that the original definition of PageRanks due to \citet{PageBrinMotwaniWinograd1999} is the one consistent with our labor market model. In addition, we compute poaching ranks following the exact definition in \citep{BaggerLentz2019}.} %
+%
+The two measures---PageRanks and poaching ranks---are related insofar as poaching ranks can be viewed as the result of a single application of the PageRanks' transition matrix to an initial guess of ones for all employers and zero for nonemployment. Viewed this way, PageRanks are obtained as the infinite (or converged) iteration of the same transition matrix that generated poaching ranks in the first iteration. See also the discussion in \citet{Lentz2024}. To be To be transparent, we will compare both PageRanks and poaching ranks to our baseline rank measure, which is employer size.ts of comparing our baseline rank measure of size to both PageRanks and poaching ranks are presented in Table \ref{tab:ranks} below. We find that our model-consistent PageRank estimates and firm sizes align quite closely in the data, with correlations always above $0.87$. Poaching Ranks are still positively correlated to both size and PageRank, albeit more weakly.
+%
+\begin{table}[htbp!]
+    \caption{Rank correlations between alternative employer rank measures, by gender}
+    \label{tab:ranks}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE2.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports Spearman rank correlations between three alternative employer rank measures, separately by gender. The three rank measures are employer size as used in the paper's baseline analysis, PageRanks \citep{PageBrinMotwaniWinograd1999, Sorkin2018}, and poaching ranks \citep{BaggerLentz2019}. See Supplemental Appendix \ref{app:other_ranking_systems} for details of how these are constructed. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        {\sourcedata}%
+    \end{tablenotes}
+\end{table}
+%
+
+To see what factors load differently onto each employer rank measure, we compare our alternative employer rank measures across sectors. Specifically, we compute the mean PageRank (poaching index) ranks onto mean employer size by two-digit sector in the RAIS data. We then assess to what extent the two different rank measures align overall, and how the degree of alignment varies across sectors. Figure \ref{fig:compare_ranks_size} shows the results of this exercise. Panel \subref{fig:compare_ranks_size_A} projects Pagerank ranks onto employer size ranks by sector for men, while Panel \subref{fig:compare_ranks_size_B} does the same for women. Overall, there is a strong correlation between the two measures, as evidenced by the steep slope and relatively little dispersion around the linear best-fit line. PageRanks and employer size also agree on the relative ranking of employers in several key sectors---e.g., the public sector for women is ranked near the very top according to both PageRanks and employer size. Panels \subref{fig:compare_ranks_size_C} and \subref{fig:compare_ranks_size_D} repeat the same analysis for the relationship between poaching ranks and employer size ranks across sectors for men and women, respectively. The slope is notably flatter and dispersion is notably greater, compared to the comparison between PageRanks and employer size in the panels \subref{fig:compare_ranks_size_A}--\subref{fig:compare_ranks_size_B}, consistent with the rank correlations reported in Table \ref{tab:ranks} above. Nevertheless, there is a strong correlation between the two measures. Still, there are some important exceptions---e.g., the public sector for women is ranked near the top according to employer size but only above average according to poaching ranks. This may reflect differences in the quantity of worker outflows as well as the quality of worker in- and outflows of various sectors. It is reassuring that PageRanks, which take into account the entire empirical transition matrix of worker flows between employers, line up remarkably closely with our baseline analysis based on employer size.
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[PageRank versus size, men]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE7a.eps}}\label{fig:compare_ranks_size_A}}%
+    \subfloat[PageRank versus size, women]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE7b.eps}}\label{fig:compare_ranks_size_B}} \\
+    %
+    \subfloat[Poaching rank versus size, men]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE7c.eps}}\label{fig:compare_ranks_size_C}}%
+    \subfloat[Poaching rank versus size, women]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figureE7d.eps}}\label{fig:compare_ranks_size_D}}%
+    %
+    \caption{Comparing alternative employer rank measures across sectors, by gender\label{fig:compare_ranks_size}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows the means of alternative employer ranks---either PageRanks \citep{PageBrinMotwaniWinograd1999, Sorkin2018} or poaching ranks \citep{BaggerLentz2019}---against employer size ranks, which is the baseline rank measure in the paper. See Supplemental Appendix \ref{app:other_ranking_systems} for details of how these are constructed. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+%
+
+We re-estimate our entire model based on a cardinal interpretation of PageRanks instead of employer size. To this end, we leverage the interpretation of PageRanks as the steady-state employer size implied by worker flows between firms \citep{PageBrinMotwaniWinograd1999}. This may be a preferable measure of employer rank if the cross-sectional distribution of employer sizes is contaminated by empirical factors such as history dependence---e.g., some employers used to be desirable to work and thus large, but they are no longer desirable to work at now after the realization of some shocks, though they remain large during a transition to their new steady-state size.
+%
+Table \ref{tab:estimation_pageranks} compares the estimation results based on PageRanks to our baseline estimation results based on employer size as a measure of employer ranks. We find that the main properties of our estimates are remarkably stable. In particular, amenities estimated using PageRanks are strongly correlated to our baseline amenity estimates. Productivity is also strongly correlated, though it is estimated to be more dispersed when using PageRanks than under our baseline estimation. Similarly, gender wedges are estimated to be more dispersed when using PageRanks to rank firms.
+%
+\begin{table}[htbp!]
+    \caption{Estimation results under PageRanks as alternative measure of employer ranks}
+    \label{tab:estimation_pageranks}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE3.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table compares estimation results from our baseline model to one based on PageRanks as an alternative measure of employer ranks. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+Building on these new model estimates, Table \ref{tab:oaxaca_blinder_pageranks} recomputes the Kitaga-Oaxaca-Blinder decomposition of gender gaps in pay, amenities, and total compensation based on PageRanks as an alternative employer rank.%
+%
+\footnote{\label{revision_2:editor_comment_2}It is worth noting that poaching ranks \citep{BaggerLentz2019} have no cardinal interpretation in our model. The reason is intuitive: firm size and PageRanks both reflect different notions of the \emph{number} of workers that a firm manages to attract and retain in steady state, while poaching ranks reflect the \emph{share} of workers that a firm poaches from competitors \emph{relative to all hires at that firm}. As such, poaching ranks normalize by total hiring, which removes cardinal information from this employer rank, making it impossible to recover firms' labor demand that can be mapped into composite productivity in our equilibrium framework. Thus, the same model inversion that we use for firm size in the baseline analysis (Table \ref{tab:oaxaca_blinder_all}) and for PageRanks in a robustness exercise (Table \ref{tab:oaxaca_blinder_pageranks}) is technically not possible for poaching ranks.} %
+%
+
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions---alternative employer ranks based on PageRanks\label{tab:oaxaca_blinder_pageranks}}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE4.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gaps in log pay ($\ln w$), log amenity valuations ($\ln \tilde{a} = \ln(x/w)$), and log total compensation ($\ln x$) when re-estimating our model based on PageRanks as an alternative employer rank measure. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+The results based on PageRanks as a measure of employer ranks are in line with our baseline results shown in Table \ref{tab:oaxaca_blinder_all} of the main text. As a starting point, we have a slightly higher gender pay gap, due to the fact that our selection criteria depend on the rank measure. Comparing the amenity and total-compensation estimates, we find that all of our results are qualitatively unchanged across the two estimation methods. In particular, we continue to find an amenity-valuation gap in favor of women. Quantitatively, we find that men's within-employer amenity advantage is more pronounced than in our baseline, thereby leading to a lower magnitude of the negative gender gap in amenity valuations. Still, this results in a total-compensation gap that is significantly lower than the gender pay gap and mostly within (rather than between) employers. This suggests that our baseline analysis based on employer size as a measure of employer rank is robust to alternative, worker-flows-based measures of employer ranks.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Estimation Results Under Heterogeneous Separation Rates\label{app:hetero_delta_results}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To estimate our model with separation rates that are heterogeneous across firms, we use the modified procedure detailed in Supplemental Appendix \ref{app:hetero_delta_identification}. Our results are summarized in Table \ref{tab:estimation_hetdelta}. We find that the estimated productivity distribution is more dispersed when separation rates are allowed to be heterogeneous across firms. Estimated amenities are also more dispersed; however, their estimated mean is lower, suggesting that a share of utility that is explained by amenities in the baseline model can be explained by heterogeneity in separation rates. We also find that heterogeneous separation rates differ more for men than for women between firms, which affects men's results more than women's. Thus, the gap in amenities between men and women widens compared to our baseline estimation. Finally, all estimates are strongly correlated to our baseline estimates, suggesting that though heterogeneity in separation rates qualitatively affects our results, quantitatively, the difference is relatively small.
+
+%
+\begin{table}[htbp!]
+    \caption{Estimation results under heterogeneous separation rates}
+    \label{tab:estimation_hetdelta}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE5.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table compares estimation results from our baseline analysis with homogeneous separation rate ($\delta$) across firms to the case in which separation rates ($\delta(r)$) are allowed to be nonincreasing in firm ranks. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+To assess the extent to which differences in estimation results affect the substantive insights from our analysis, Table \ref{tab:oaxaca_blinder_delta} below shows the results of Kitagawa-Oaxaca-Blinder decompositions based on the model with heterogeneous firm-level separation rates ($\delta(r)$).
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions---heterogeneous firm-level separation rates ($\delta(r)$)\label{tab:oaxaca_blinder_delta}}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE6.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gaps in log pay ($\ln w$), log amenity valuations ($\ln \tilde{a} = \ln(x/w)$), and log total compensation ($\ln x$) when re-estimating our model with heterogeneous firm-level separation rates ($\delta(r)$) that are nonincreasing across firm ranks $r$. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+Comparing the two sets of results---i.e., those in the model with heterogeneous firm-level separation rates in Table \ref{tab:oaxaca_blinder_delta} compared to those in our baseline model in Table \ref{tab:oaxaca_blinder_all}---we find two main results. First, the amenity-valuation gap is slightly more pronounced, implying that amenities play a slightly more important role in explaining gender differences in total compensation. Second, the relative contribution of between- versus within-components of all three compensation concepts is similar across both models. Altogether, this analysis suggests that a model with heterogeneous firm-level separation rates yields results that are largely in line and, if anything, slightly more pronounced than what we find using our baseline model.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sensitivity of Estimation Results to Alternative Amenity Cost Shares\label{app:alt_amenity_cost_shares}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Here, we further investigate the robustness of our results with respect to our estimation target of the cost share of amenities in value added, taken from \citet{BieriKuminoffPope2023}. We acknowledge that this is a notoriously difficult moment to find. While an amenity cost share of value added of 8 percent is maybe a reasonable target---absent a better target from the literature---it is useful to check the sensitivity of our results to alternative targets by re-estimating our model to different amenity cost shares and evaluating the resulting model predictions.
+
+We repeated our estimation for three different targets for the cost share of amenities: 4 percent, 12 percent and 16 percent. Our results are summarized in Table \ref{tab:robustness_eta_a}, where we compare all these results to the baseline. Obviously, the assumed value of the cost share of amenities makes a difference for the estimated value of $\eta_{a}$, which is decreasing in the assumed cost share. However, we find that different values of the cost share of amenities---and therefore different values of the elasticity of amenity costs $\eta_{a}$---make relatively little difference for our estimates of productivity. We also find that the different values of the cost share of amenities make no difference at all for our estimates of amenities, which we discuss below. A higher cost share of amenities leads to a higher estimated average productivity, with the biggest difference in mean productivity from our baseline being less than 14 percent when the cost share of amenity doubles, a case we do not believe to be empirically relevant. The variance of gender wedges is slightly more affected in relative terms, but the impact remains small. All sets of estimates remain strongly correlated across estimation sets. We take this as evidence that our results are not strongly influenced by the specific choice of target for the economy-wide cost share of amenities.%
+
+%
+\begin{table}[htbp!]
+    \caption{Robustness: Estimation results under different assumed cost shares of amenities\label{tab:robustness_eta_a}}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE7.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows summary statistics for the distributions of estimated productivity $p$, amenities $a_{m}$ and $a_{f}$, gender wedge $\tau$ and economy-wide parameters $\eta_{a}$ and $\eta_{v}$, depending on the assumed value of the cost share of amenities. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+It is important to note that the distribution of amenities remains exactly unchanged across estimation sets for both genders, as the elasticity of the amenity creation cost is not used in the estimation of firm-level profits per worker, which determine estimated utilities and, in turn, estimated amenities. Intuitively, the elasticity of the amenity cost function does not affect our estimation of composite productivity $\tilde{p}$ and thus does not affect our estimation of total compensation $x$ and amenity valuations $\beta a$.%
+%
+\footnote{The elasticity of the amenity cost function matters only for the split of composite productivity $\tilde{p}$ into productivity $p$ and the net surplus due to amenity valuations net of the amenity cost $\beta a - c^{a}(a)$.} %
+%
+To confirm this intuition, after re-estimating our model under alternative targets for the amenity share, we assess the robustness of our Kitagawa-Oaxaca-Blinder decomposition of pay, amenities, and total compensation. Table \ref{tab:oaxaca_blinder_eta_a_h} shows the results from this decomposition based on half of the baseline's amenity share target (i.e., $4$ percent). The results are identical to those in our baseline.
+
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions---half baseline's amenity share target}
+    \label{tab:oaxaca_blinder_eta_a_h}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE8.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gaps in log pay ($\ln w$), log amenity valuations ($\ln \tilde{a} = \ln(x/w)$), and log total compensation ($\ln x$) when re-estimating our model with half the baseline's amenity share target (i.e., $0.04$). %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+Analogously, Table \ref{tab:oaxaca_blinder_eta_a_d} shows the results from this decomposition based on double the baseline's amenity share target (i.e., $16$ percent). Again, the results are identical to those in our baseline.
+%
+\newline\indent
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions---double baseline's amenity share target}
+    \label{tab:oaxaca_blinder_eta_a_d}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableE9.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gaps in log pay ($\ln w$), log amenity valuations ($\ln \tilde{a} = \ln(x/w)$), and log total compensation ($\ln x$) when re-estimating our model with double the baseline's amenity share target (i.e., $0.16$). %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+Altogether, this gives us confidence that---although there is significant uncertainty around the estimate of the amenity cost elasticity $\eta_{a}$ based on the assumed amenity cost share---our main conclusions are robust to its exact choice.

@@ -1,0 +1,205 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{G. {\sectioneight} Appendix\label{app:simulation}}
+\renewcommand*{\thepage}{\Alph{section}\arabic{page}}
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Numerical Solution Algorithm to Solve Baseline Equilibrium\label{app:solution_algorithm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Firstly, we feed to the model the estimated labor market parameters \{$\lambda_{M}^{U}$, $\lambda_{F}^{U}$, $s_{M}^{E}$, $s_{F}^{E}$, $s_{M}^{G}$, $s_{F}^{G}$, $\delta_{M}$, $\delta_{F}$\} and the firm-level estimates of $\{ p, a_{M}, a_{F}, \tau, c_{M}^{v,0}, c_{F}^{v,0} \}$. Then, we rank firms according to composite productivity $\tilde{p}_{g}$ for each gender. This is useful because, as stated in Lemma \ref{lem:optimal_utility}, firms with higher composite productivity $\tilde{p}_{g}$ offer higher utility $x_{g}$.
+
+We must first find the equilibrium level of aggregate vacancies $V_{g}$. We invert the equation for the offer arrival rate from unemployment in \eqref{eq:offer_arrival_rates} to obtain:
+%
+\begin{align}
+    V_{g} =  U_{g} \left( \frac{\lambda_{g}^U}{\chi_{g}} \right)^{1/\alpha} \, .
+\end{align}
+%
+We recursively apply the discrete version of the FOCs of the firm, as in equations \eqref{eq:offer_dist_rewritten} and \eqref{eq:discrete_flow}:
+%
+\begin{small}
+    \begin{align}
+        \Delta F_{g}(x(\tilde{p}_{gr})) & = \biggl{[} \frac{1}{c_{g}^{v,0}}
+        \frac{T_{g} (\tilde{p}_{gr-1} - x(\tilde{p}_{gr-1}))}{\left(\delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - F_{g}(x_{g}(\tilde{p}_{gr-1}))) \right)^{2}} \biggr{]}^{\frac{1}{\eta^{v}-1}}  \frac{1}{V_{g} N} \\
+        \Delta x_{g}(\tilde{p}_{gr}) &= \frac{2 \lambda_{g}^{E} (\tilde{p}_{gr-1} - x_{g}(\tilde{p}_{gr-1}))}{\delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - F_{g}(x_{g}(\tilde{p}_{gr-1})))}  \biggr{[} \frac{1}{c_{g}^{v,0}}
+        \frac{T_{g} (\tilde{p}_{gr-1} - x_{g}(\tilde{p}_{gr-1}))}{\left(\delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - F_{g}(x_{g}(\tilde{p}_{gr-1}))) \right)^{2}} \biggr{]}^{\frac{1}{\eta^{v}-1}} \frac{1}{V_{g} N},
+    \end{align}
+\end{small}
+%
+where $N$ is the total number of firms in our data.
+%
+Then, we calculate total vacancies obtained in equilibrium as $V_{g}^{\ast} = \sum_{r} v_{g}(\tilde{p}_{gr})/N$. We solve the algorithm setting the initial conditions $x_{g}(\tilde{p}_{g0}) = \phi_{g}$ and $F_{g}(\tilde{p}_{g0}) = 0$, and we loop over the vacancy cost shifter $c_{g}^{v,0}$ until we obtain that $V_{g}^{\ast} = V_{g}$.%
+%
+\footnote{Alternatively, we could plug in the cost shifter we have estimated in Step 5 of our identification strategy, but this approach is equivalent in the baseline solution and allows us to generalize to cases in which we set $\lambda_{g}^{U}$ to a value that is different from the one we estimated in the data.}
+%
+In the baseline simulation in which we plug in the parameter estimates from the data, our solution algorithm produces gender-specific firm-level flow utility $x_{g}(\tilde{p}_{gr})$, easily converted to wages $w_{g}(\tilde{p}_{gr}) = x_{g}(\tilde{p}_{gr}) - a_{g}(\tilde{p}_{gr})$, gender-specific firm-level recruiting intensities $v_{g}(\tilde{p}_{gr})$ and gender-specific firm-level ranks in the offer distribution $F_{g}(x_{g}(\tilde{p}_{gr}))$ that are identical to those observed in the data, up to machine precision.
+
+In all counterfactual simulations, we keep constant all firm-level parameters and the economy-wide parameters that are not explicitly mentioned as modified in the exercise, including the gender-specific cost shifters $c_{g}^{v,0}$. Also, we recalculate the workers' outside option in the counterfactuals by finding a new solution to equation \eqref{eq:value_unemp} by gender. This allows the equilibrium job-finding probability $\lambda_{g}^U$, and therefore equilibrium employment, to respond to changes in the economy in counterfactual simulations.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Numerical Solution Algorithm to Solve Policy Counterfactuals\label{app:policy_algorithms}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+When we simulate the equal pay policy and the equal-hiring policy, we can no longer rely on the model prediction that firms with higher composite productivity $(1 - \tau_g) p + a_g - c_g^{a}(a_g)$ will post higher flow utility and vacancies separately by submarket. The reason is that under the policies we consider, the effective productivity levels of both men and women matter for wages, amenities, and vacancies to be posted for either gender as firms now maximize total profits across markets. Instead, we solve the following firm profit-maximization problem for the equal pay policy:
+%
+\begin{align}
+    \max_{w,a_{M},a_{F},v_{M},v_{F}} & \biggl{\{} T_{M} v_{M} (p - w - c_{M}^{a}(a_{M})) \biggl{(} \frac{1}{\delta_{M} + \lambda_{M}^{G} + \lambda_{M}^{E} (1 - F_{M}(w + a_{M}))} \biggr{)}^2  \\
+    & + T_{F} v_{F} ((1 - \tau) p - w - c_{F}^{a}(a_{F})) \biggl{(} \frac{1}{\delta_{F} + \lambda_{F}^{G} + \lambda_{g}^{E} (1 - F_{F}(w + a_{F}))} \biggr{)}^{2} \\
+    & - c_{M}^{v}(v_{M}) - c_{F}^{v}(v_{F}) \biggr{\} },
+\end{align}
+%
+and the following for the equal-hiring policy:
+%
+\begin{align}
+    \max_{x_{M},x_{F},a_{M},a_{F},v} & \phantom{{}={}} \biggl{\{} T_{M} v (\tilde{p}_{M} - x_{M}) \biggl{(} \frac{1}{\delta_{M} + \lambda_{M}^{G} + \lambda_{M}^{E} (1 - F_{M}(x_{M}))} \biggr{)}^2  \\
+    & \qquad + T_{F} v (\tilde{p}_{F} - x_{F}) \biggl{(} \frac{1}{\delta_{F} + \lambda_{F}^{G} + \lambda_{g}^{E} (1 - F_{F}(x_{F}))} \biggr{)}^{2} \\
+    & \qquad - c_{M}^{v}(v) - c_{F}^{v}(v) \biggr{\} },
+\end{align}
+%
+where the definitions of $T_g$, $F_g$ and $V_g$ are as in the standard solution algorithm. The only unknowns in this problem are $F_{M}$ and $F_{F}$, two endogenous objects to be determined in the counterfactual policy equilibrium. In the equal-pay policy, firms can still hire both genders, only one gender, or neither. In the equal-hiring policy, dual-gender firms are forced to post the same number of vacancies across genders.
+
+Denote by ${\cal{F}}_g$ the mapping from $\{ F_{M}, F_{F}\}$ to the offer distribution for gender $g \in \{ M, F \}$ implied by firms' optimizing behavior. We solve the following system of functional equations:
+%
+\begin{align}
+    {\cal{F}}_{M}(F_{M}^{*},F_{F}^{*}) & = F_{M}^{*} \\
+    {\cal{F}}_{F}(F_{M}^{*},F_{F}^{*}) & = F_{F}^{*},
+\end{align}
+%
+where ${\cal{F}}_g(F_{M}^{*}, F_{F}^{*})$ represents the offer distributions implied by the optimal choices of firms that are a function of the offer distributions in the economy. It's worth noticing that the offer distributions of both genders implicitly depend on the offer distributions of both men and women. In the equal pay policy case, this is because when firms decide which wage to set, they have to take into account the effects this will have for attracting both genders with respect to the competition they face along the job ladder. In the equal-hiring policy case, this is because when firms decide how many vacancies to post, they balance the profits per contacted worker of both genders.
+
+Therefore, we solve for the equilibrium offer distributions $F_{M}$ and $F_{F}$ as follows:
+%
+\begin{enumerate}
+  \item Start with a guess for $F_{M}$ and $F_{F}$; compute the firm's policy functions for optimal wages, amenities, and vacancies, taking $F_{M}$ and $F_{F}$ as given.
+	\item Using equation \eqref{eq:aggregate_vacancies}, aggregate optimal vacancies of firms to calculate $V_g$.
+  \item Compute the offer distributions $F_{M}$ and $F_{F}$ that are implied by the firms' policy functions.
+  \item Find $F_{M}$ and $F_{F}$ such that the offer distributions taken as given by firms and the offer distributions implied by the firms' behavior are identical.
+\end{enumerate}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Other Counterfactual Equilibrium Simulations
+\label{app:counterfactuals_all}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We expand the analysis in Section \ref{sec:Counterfactuals} by performing three more structural counterfactuals that illustrate the relative contributions of taste-based discrimination \citep{becker1971}, labor market frictions \citep{Manning2003}, and their interplay. First, we remove employer heterogeneity in gender wedges. Second, we remove gender differences in labor market efficiency. Third, we remove all gender differences. Table \ref{tab:counterfactuals_all_appendix} summarizes our results, alongside the counterfactual we performed in Section \ref{sec:Counterfactuals} where we removed amenity differences across employers.
+%
+\begin{table}[htbp!]
+    \caption{Structural decomposition of the gender pay gap}
+    \label{tab:counterfactuals_all_appendix}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableG1.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports results from equilibrium counterfactuals. Log amenities are defined as the log amenity valuations ($\ln \tilde{a} = \ln(x/w)$). The baseline economy (column 0) is compared to counterfactuals without differences in amenities across employers (column 1), without differences in gender wedges across employers (column 2), without gender differences in labor market efficiency (column 3), and without any gender differences in the economy (column 4). %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+\paragraph{The Role of Employer Preferences Over Gender.}
+
+Next, we simulate gender inequality if there were no heterogeneity in gender wedges by setting gender wedges at all firms to the average gender wedge, $\tau \mapsto \overline{\tau}$. %
+%
+As a result, the gender pay gap disappears completely and even turns negative, largely because women relocate toward higher-productivity employers who initially have higher gender wedges and, once removed, compete more for women by increasing their recruiting intensity and pay. As a result, the between-employer pay gap closes and output increases by $\input{text/txt_model_cf_nowedges_output_increase.tex}$ percent. However, more productive employers also offer lower amenities to women, leading to an increase in the gender amenities gap by $\input{text/txt_model_cf_nowedges_amenitiesgap_increase.tex}$ log points. Overall, the gender utility gap is reduced by $\input{text/txt_model_cf_nowedges_utilitygap_decrease.tex}$ out of the original $\input{text/txt_model_cf_utilitygap_baseline.tex}$ log points. While worker welfare of men is unchanged, worker welfare of women increases by $\input{text/txt_model_cf_nowedges_womenwelfare_increase.tex}$ percent. %
+%
+Taken together, this counterfactual makes clear that amenities interact with gender wedges: low-paying low-productivity firms require both higher amenities and lower gender wedges in order to attract a substantial female workforce.
+
+
+\paragraph{The Role of Gender-Specific Labor Market Frictions Power.}
+
+Next, we study the role of gender-specific labor market frictions in shaping gender inequality by setting the parameters guiding women's labor market efficiency so that $\lambda_{F}^{U} \mapsto \lambda_{M}^{U}$, $s_{F}^{E} \mapsto s_{M}^{E}$, $s_{F}^{G} \mapsto s_{M}^{G}$, and $\delta_{F} \mapsto \delta_{M}$. %
+%
+As a result, the gender pay gap declines by only $\input{text/txt_model_cf_frictions_wagegap_decrease.tex}$ log points and the gender utility gap by $\input{text/txt_model_cf_frictions_utilitygap_decrease.tex}$ log points. The reason behind the small effect is that women receive more on-the-job offers but also separate more frequently from their employers. Thus, their overall speed of climbing the firm ladder barely changes. %
+%
+All in all, while there is large monopsony power in Brazil, differences in labor market fluidity are not a key driver of gender gaps.%
+%
+\footnote{This contrasts with \citet{Bowlus1997} and \citet{FlinnToddZhang2025} who attribute a significant fraction of the U.S.\ gender wage gap to different labor market behaviors across the sexes using an equilibrium search model \emph{without} compensating differentials.} %
+%
+
+
+\paragraph{The Effects of Moving To a Gender-Neutral Labor Market.}
+
+Finally, we simulate a labor market with no gender differences in amenities (i.e., $a_{F} \mapsto a_{M}$), no gender wedges (i.e., $\tau = 0$), and no gender differences in labor market efficiency (i.e., $\lambda_{F}^{U} \mapsto \lambda_{M}^{U}$, $s_{F}^{E} \mapsto s_{M}^{E}$, $s_{F}^{G} \mapsto s_{M}^{G}$, and $\delta_{F} \mapsto \delta_{M}$). %
+%
+Obviously, this closes the gender gaps in pay and amenities. Strikingly, this also increases aggregate output by $\input{text/txt_model_cf_genderneutral_output_increase.tex}$ percent and overall worker welfare by $\input{text/txt_model_cf_genderneutral_welfare_increase.tex}$ percent, as women experience greater flow utility by $\input{text/txt_model_cf_utilitygap_baseline.tex}$ log points associated with them moving to more productive firms with higher total compensation. Relative to the counterfactuals that shut down one ingredient at a time, we find strong nonlinearities that reflect the interaction between different dimensions of firm heterogeneity affecting pay, amenities, and employment in equilibrium. For example, changing the wage-amenity composition of total compensation at a firm initially employing few women has a greater impact when also increasing the same firm's composite productivity in a way that leads to more women being hired. In this sense, our equilibrium model features strong complementarities between the different dimensions of firm heterogeneity. %
+%
+In summary, moving to a gender-neutral labor market yields significant output and welfare gains.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Counterfactual Simulations for the Equal-Amenities Policy \label{app:equal_amenities_policy}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We simulate a mandate for all firms to provide equal amenity valuations across workers of both genders: $\beta_{M}(j) a_{M}(j) = \beta_{F}(j) a_{F}(j)$ for all $j$. The results from this counterfactual policy simulation are summarized in Table \ref{tab:equal_amenities_policy} below.
+%
+\newline\indent
+%
+\begin{table}[htbp!]
+    \caption{Effects of simulated equal amenities policy.}
+    \label{tab:equal_amenities_policy}
+    %
+    \input{tables/tableG2.tex}
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        Table reports results from a counterfactual policy experiments. Total amenities are defined as amenity valuations ($\beta_{g} a_{g}$). Baseline results (column 0) are compared against the economy with an equal-amenities policy (column 1).
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+We find that, when firms are mandated to offer the same amenities to men and women, both the gender pay gap and the gender utility gap decrease. As firms need now to compromise on the amenities they offer to men and women, those firms that were previously attractive to women due to high amenities become less so. Thus, women move to higher-paying firms, resulting in a lower between-firms gap but a larger within-firms gap, as higher-paying firms tend to be more discriminatory. We find this policy to be even more detrimental to welfare, output and employment than the equal-hiring policy. Output declines by $\input{text/txt_model_cf_equalamenities_output_decline.tex}$ percent, while welfare declines by $\input{text/txt_model_cf_equalamenities_welfare_decline.tex}$ percent, and more so for women.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Counterfactual Simulations for a Restricted Equal-Hiring Policy \label{app:equal_hiring_public-sector}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+We simulate a scenario in which an equal-hiring policy is imposed only on a subset $\mathbb{J}$ of firms: $v_{M}(j) = v_{F}(j)$ for $j \in \mathbb{J}$. The idea is to capture a policy that might be imposed, for instance, only on the public sector of the economy. To this end, we construct a dummy variable that takes the value of $1$ if a firm is classified as operating in the public sector and zero otherwise, and we simulate the equilibrium of our model when only this subset of firms is constrained by the equal-hiring policy. Our results are summarized in Table \ref{tab:equal_hiring_policy_public}.
+
+We find that, when limited to the public sector, the equal-hiring policy leads to a decline in the gender pay gap by $\input{text/txt_model_cf_equalhiring_public_gendergap_decline.tex}$ percent, exclusively driven by a decline in the between-firms gender pay gap. However, this is accompanied by a reduction of the amenities gap, which is in favor of women, by $\input{text/txt_model_cf_equalhiring_public_amenitiesgap_increase.tex}$ percent. As a result, the overall utility gap remains unchanged. The reason is that the public sector already disproportionally hires women: imposing an equal-hiring policy on the public sector increases the representation of men in these firms, while women relocate to other firms that offer higher wages but lower amenities.
+%
+\newline\indent
+%
+\begin{table}[htbp!]
+    \caption{Effects of simulated equal-hiring policy, restricted to the public sector.}
+    \label{tab:equal_hiring_policy_public}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableG3.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        Table reports results from counterfactual policy experiments. Log amenities are defined as the log amenity valuations ($\ln \tilde{a} = \ln(x/w)$). Baseline results (column 0) are compared against the economy with an equal-hiring policy (column 1) and an economy where the equal-hiring policy is enforced on the public sector only (column 1).
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%

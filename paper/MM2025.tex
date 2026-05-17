@@ -1,0 +1,321 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AER TEMPLATE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% AER-Article.tex for AEA last revised 24 July 2025
+\documentclass[AER]{AEA}
+
+% Note: you may use either harvard or natbib (but not both) to provide a wider
+% variety of citation commands than latex supports natively. See below.
+
+% Uncomment the next line to use the natbib package with bibtex
+\usepackage{natbib}
+
+% Uncomment the next line to use the harvard package with bibtex
+%\usepackage[abbr]{harvard}
+
+% This command determines the leading (vertical space between lines) in draft mode
+% with 1.5 corresponding to "double" spacing.
+\draftSpacing{1.5}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CUSTOMIZED SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% SNAPSHOPT
+\RequirePackage{snapshot}
+
+% PACKAGES, DEFINITIONS, AND SETTINGS
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage{ifpdf}
+\ifpdf
+    \usepackage{epstopdf}
+\fi
+\usepackage{rotating}
+\usepackage{scalerel}
+\usepackage{stackengine}
+\usepackage{wasysym}
+\usepackage[%
+    unicode=true,%
+    pdftitle={Morchio and Moser (2025)},%
+    bookmarks=true,%
+    bookmarksnumbered=false,%
+    bookmarksopen=false,%
+    bookmarksdepth=3,%
+    breaklinks=false,%
+    pdfborder={0 0 1},%
+    backref=false,%
+    colorlinks=true,%
+    hypertexnames=false%
+    ]%
+    {hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=darkblue,%
+    linkcolor=maroon,%
+    citecolor=black,%
+    linkcolor=black,%
+    urlcolor=maroon%
+}
+\makeatletter
+\providecommand{\tabularnewline}{\\}
+\usepackage{amsfonts}
+\usepackage{fix-cm}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage{microtype}
+\newenvironment{nobibheading}{%
+    \begingroup
+    \makeatletter
+    \let\orig@section\section
+    \let\orig@chapter\chapter
+    \def\section*##1{}%
+    \def\chapter*##1{}%
+    \let\orig@mkboth\@mkboth
+    \let\@mkboth\@gobbletwo
+    \makeatother
+    \vspace*{-\baselineskip}\vspace*{-1ex}%
+}{%
+    \endgroup
+}
+\usepackage[normalem]{ulem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[nameinlink]{cleveref}
+\usepackage{chngcntr}
+\usepackage{enumitem}
+\setcounter{MaxMatrixCols}{10}
+\setcounter{tocdepth}{3}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{observation}{Observation}
+\definecolor{darkblue}{rgb}{0.0,0,.6}
+\definecolor{maroon}{rgb}{0.68,0,0}
+\definecolor{darkgreen}{rgb}{0,0.369,0.086}
+\definecolor{columbia}{RGB}{0,114,206}
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\usepackage{alltt}
+\usepackage{color}
+\definecolor{string}{rgb}{0.7,0.0,0.0}
+\definecolor{comment}{rgb}{0.13,0.54,0.13}
+\definecolor{keyword}{rgb}{0.0,0.0,1.0}
+\stackMath
+\usepackage[caption=false,font=small,labelformat=simple,labelsep=period,subrefformat=subsimple,listofformat=subsimple,position=top]{subfig}
+\renewcommand{\thesubfigure}{\Alph{subfigure}}
+\renewcommand{\thesubtable}{\Alph{subtable}}
+\hypersetup{colorlinks, linkcolor={darkblue}, citecolor={darkblue}, urlcolor={maroon}}
+\newcommand{\diff}{\mathop{}\!{d}}
+\newcommand{\wedgename}{gender wedge}
+\newcommand{\Wedgename}{Gender wedge}
+\newcommand{\WedgeName}{Gender Wedge}
+\newcommand{\emptycommand}{}
+\makeatother
+
+% TITLES
+\newcommand{\papertitle}{The Gender Pay Gap: \\ Micro Sources and Macro Consequences}
+\newcommand{\runningtitle}{The Gender Pay Gap: Micro and Macro}
+\newcommand{\paperdate}{November 4, 2025}
+\newcommand{\affiliationmorchio}{University of Bristol}
+\newcommand{\affiliationmoser}{Columbia University, NBER, CEPR, CESifo, and IZA}
+\newcommand{\sectionone}{Introduction}
+\newcommand{\sectiontwo}{Data Description}
+\newcommand{\sectionthree}{Empirical Gender Pay Gaps and Employer Heterogeneity}
+\newcommand{\sectionfour}{Equilibrium Model of Employer Pay, Amenities, and Size}
+\newcommand{\sectionfive}{Identification}
+\newcommand{\sectionsix}{Estimation Results}
+\newcommand{\sectionseven}{Gender-Specific Compensation Structures Across Employers}
+\newcommand{\sectioneight}{Equilibrium Counterfactuals}
+\newcommand{\sectionnine}{Conclusion}
+
+% MANUALLY DEFINED OPTIONS
+\newcommand{\minipagesize}{\footnotesize{}} % size of notes under figures and tables
+\newif\ifshowstars
+\showstarsfalse % \showstarstrue or \showstarsfalse
+
+% MANUALLY SET NUMBERS
+\newcommand{\yearmin}{2007} % first year of data
+\newcommand{\yearmax}{2014} % last year of data
+\newcommand{\Nyears}{eight} % total number of years in the data
+\newcommand{\agemin}{18} % minimum worker age
+\newcommand{\agemax}{54} % maximum worker age
+\newcommand{\Nminsingletons}{10} % minimum number of nonsingleton workers per employer
+\newcommand{\Nminyears}{four} % minimum number of years that an employer must be in the data
+\newcommand{\NAmenityCovariates}{eight} % number of covariates in regression involving amenities
+\newcommand{\NAmenityCovariatesWithoutControls}{six} % number of covariates excl. controls in regression involving amenities
+\newcommand{\NWedgeCovariates}{six} % number of covariates in regression involving gender wedges
+\newcommand{\NDummies}{two} % number of sets of FEs in regressions involving amenities and gender wedges
+\newcommand{\NMunicipalities}{4,733} % number of municipalities in sample
+\newcommand{\NSectors}{661} % number of sectors in sample
+
+% SOURCES
+\newcommand{\sourcedata}{RAIS, \yearmin{}--\yearmax{}.}
+\newcommand{\sourcemodel}{Model estimates based on RAIS, \yearmin{}--\yearmax{}.}
+\newcommand{\sourcesimulation}{Model simulations.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{\papertitle{}}
+\shortTitle{\runningtitle}
+%
+\author{%
+    Iacopo Morchio %
+    %
+    and %
+    %
+    Christian Moser%
+    %
+    \thanks{%
+        %
+        Morchio: \affiliationmorchio{} (\href{mailto:iacopo.morchio@bristol.ac.uk}{iacopo.morchio@bristol.ac.uk});
+        %
+        Moser: \affiliationmoser{} (\href{mailto:c.moser@columbia.edu}{c.moser@columbia.edu}). %
+        %
+        We are grateful for the discussions by %
+        Rajashri Chakrabarti, %
+        Rasmus Lentz, %
+        Andreas Mueller, %
+        Laura Pilossoph, %
+        and %
+        Rachel Schuh. %
+        %
+        We have benefited from helpful comments by %
+        Jim Albrecht, %
+        Pat Kline, %
+        Guido Menzio, %
+        Richard Rogerson, %
+        Yona Rubinstein, %
+        Ay{\c{s}}eg{\"{u}}l {\c{S}}ahin, %
+        Todd Schoellman, %
+        Isaac Sorkin, %
+        Chris Taber, %
+        and %
+        Gianluca Violante. %
+        %
+        We also thank participants at several conferences and seminars for their valuable feedback. %
+        %
+        Ian Ho, Sisi Qiu, Giacomo Ricciardi, and Rachel Williams provided outstanding research assistance. %
+        %
+        Moser gratefully acknowledges financial support from the Ewing Marion Kauffman Foundation, the Sanford C.\ Bernstein \& Co.\ Center for Leadership and Ethics at Columbia Business School, INET, and the Hewlett Foundation. %
+        %
+        Moser also thanks the FRB of Minneapolis and the Heller-Hurwicz Economics Institute at the University of Minnesota for their generous hospitality during a significant share of the period of work on this project. %
+        %
+        This project has been approved under the Institutional Review Board (IRB) Human Subjects protocol number AAAV5632 at Columbia University. %
+        %
+        Any errors are our own.%
+    }
+}
+%
+\date{\today}
+\pubMonth{November}
+\pubYear{2025}
+\pubVolume{Vol}
+\pubIssue{Issue}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+    \input{0_abstract}%
+    %
+    (JEL \textnormal{E24, J16, J31, J32})
+\end{abstract}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN PAPER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{1_introduction.tex}
+\input{2_data.tex}
+\input{3_gaps.tex}
+\input{4_model.tex}
+\input{5_identification.tex}
+\input{6_estimation.tex}
+\input{7_structure.tex}
+\input{8_counterfactuals.tex}
+\input{9_conclusion.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\nocite{AbowdKramarzMargolis1999}
+\nocite{KlineSaggioSolvsten2020}
+\bibliographystyle{aea}
+\bibliography{MM2025.bib}
+\label{sec:bib}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+% The appendix command is issued once, prior to all appendices, if any.
+\appendix
+%
+\thispagestyle{empty}
+\pagestyle{plain}
+\begin{center}
+    {\Huge{\itshape Supplemental Appendix}\par}
+    \vspace{1.0em}
+    {\Huge{\bfseries The Gender Pay Gap: \\ Micro Sources and Macro Consequences}\par}
+    \vspace{2.0em}
+    {\LARGE{\textit{By} \textsc{Iacopo Morchio and Christian Moser}%
+        \textsuperscript{\textdagger}%
+        \begingroup
+            \renewcommand{\thefootnote}{}%
+            \footnotetext{\textsuperscript{†}%
+                Morchio: \affiliationmorchio{} (\href{mailto:iacopo.morchio@bristol.ac.uk}{iacopo.morchio@bristol.ac.uk});
+                %
+                Moser: \affiliationmoser{} (\href{mailto:c.moser@columbia.edu}{c.moser@columbia.edu}).}%
+            \addtocounter{footnote}{-1}%
+        \endgroup
+    }\par}
+\end{center}
+\clearpage
+%
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+\counterwithin{assumption}{section}
+\counterwithin{lemma}{section}
+%
+\input{A_appendix_data.tex}
+\input{B_appendix_gaps.tex}
+\input{C_appendix_model.tex}
+\input{D_appendix_identification.tex}
+\input{E_appendix_estimation.tex}
+\input{F_appendix_structure.tex}
+\input{G_appendix_counterfactuals.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

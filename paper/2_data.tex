@@ -1,0 +1,76 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\sectiontwo}\label{sec:Data}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dataset}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Our main data source is the Brazilian linked employer-employee register \emph{Rela{\c{c}}{\~{a}o} Anual de Informa{\c{c}}{\~{o}}es Sociais} (RAIS), administered by \citet{MinisteriodaEconomia2022}. The RAIS data cover all workers at tax-registered employers in Brazil, including the public sector. Starting in 2007, there is information on worker absences, including parental leaves. In 2015, the country entered a severe recession. Therefore, we restrict attention to the {\Nyears}-year period from \yearmin{} to \yearmax{}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Variables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The data contain unique identifiers for workers and establishments (henceforth ``employers'' or ``firms''). For each job spell, we observe the start and end dates, mean monthly earnings (henceforth ``wage'' or ``pay''), as well as the worker's gender, educational attainment in nine categories, worker age in years, tenure in years, contractual work hours per week, five-digit sector codes with \input{text/txt_N_ind07_5.tex} categories, municipality codes with \input{text/txt_N_muni.tex} categories, and six-digit occupation codes with \input{text/txt_N_occ02_6.tex} categories.%
+%
+\footnote{To obtain real wages in constant BRL from the data on wages in multiples of the current minimum wage, we use aggregate time series on the Brazilian minimum wage from \citet{IPEA2020} and on the Brazilian {\'{I}}ndice Nacional de Pre{\c{c}}os ao Consumidor Amplo (IPCA) price index from \citet{IPEA2019}. We construct time-consistent industry and occupation codes based on the crosswalks from \citet{EngbomMoser2022b}.} %
+%
+We exploit the full panel of the data going back to 1985 together with the tenure variable to impute actual---not just potential---formal-sector work experience in years.%
+%
+\footnote{The distinction between actual and potential experience is important given Brazil's sizable informal sector, as shown in Figure \ref{fig:exp_act_pot} in Supplemental Appendix \ref{app:exp_act_pot}, though gender differences are small and thus explain little of the empirical gender pay gap.} %
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sample Selection}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We select workers between the ages of {\agemin} and {\agemax} earning at least the federal minimum wage. For each worker-year combination, we keep the highest paid among all longest employment spells. We then iteratively drop singleton observations defined by gender-employer combinations and worker identifiers. We also impose a minimum employer size threshold of {\Nminsingletons} nonsingleton workers---i.e., workers who are observed at least one more time at a future date.%
+%
+\footnote{While the RAIS data cover only Brazil's formal sector, the employer size restriction implies that the vast majority of informal employers would in any case be excluded from our analysis \citep{Ulyssea2018, Dix-CarneiroGoldbergMeghirUlyssea2024}.} %
+%
+Finally, we require that employers appear in our sample in at least {\Nminyears} out of the {\Nyears} years. Together, these selection criteria leave us with a set of reasonably large and stable employers for which pay policies can be credibly estimated with minimal limited-mobility bias.%
+%
+\footnote{See also \citet{KlineSaggioSolvsten2020}, \citet{BorovickovaShimer2020}, and \citet{BonhommeHolzheuLamadonManresaMogstadSetzler2023}.} %
+%
+To separately identify worker and employer pay components, as well as employer ranks based on worker flows, we focus on observations in the largest strongly connected set, which requires flows into and out of all employers within the set. %
+%
+Our selection criteria do not substantially alter the raw gender pay gap.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Summary Statistics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table \ref{tab:sum_stats_main_text} presents summary statistics on our final sample.%
+%
+\footnote{Supplemental Appendix \ref{subsec:app_sum_stats} compares summary statistics based on the raw data (Supplemental Appendix Table \ref{tab:appendix_a1}), the selected sample (Supplemental Appendix Table \ref{tab:appendix_a2}), the connected set (Supplemental Appendix Table \ref{tab:appendix_a3}), and comparisons between them (Supplemental Appendix Tables \ref{tab:appendix_a4}--\ref{tab:appendix_a5}).} %
+%
+The pooled sample comprises \input{text/txt_sum_stats_n_worker_years.tex} million worker-years, including \input{text/txt_sum_stats_n_workers.tex} million unique workers and \input{text/txt_sum_stats_n_estab.tex} thousand unique employers. Around \input{text/txt_sum_stats_sh_f.tex}\% of these observations are for women who are more likely to be White, more educated, older, work at significantly larger employers, work shorter hours, and have longer tenure. %
+%
+Importantly, the raw gender pay gap in our sample is \input{text/txt_sum_stats_earn_gap.tex} log points.
+
+%
+\begin{table}[htbp!]
+    \caption{Summary statistics, \yearmin{}--\yearmax{}}\label{tab:sum_stats_main_text}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table1.tex}
+    } 
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports summary statistics for workers in the final sample, separately for the overall population, for men only, and for women only. Since information on race is missing for a significant number of observations, conditional means are reported for the share of Nonwhite workers.
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcedata
+    \end{tablenotes}
+\end{table}
+%

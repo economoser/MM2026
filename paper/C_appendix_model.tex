@@ -1,0 +1,615 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{C. {\sectionfour} Appendix\label{app:model}}
+\renewcommand*{\thepage}{\Alph{section}\arabic{page}}
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definition of a Stationary Equilibrium}\label{app:def_stat_equ}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We are now ready to define a \emph{stationary equilibrium} for this economy.
+
+\begin{definition}
+    A stationary search equilibrium is a set of worker value functions $\{S_{gz}, W_{gz}\}_{gz}$ and policy functions $\{ \phi_{gz} \}_{gz}$; firm value function $\Pi$ and policy functions $\{w_{gz}, a_{gz}, v_{gz}\}_{gz}$; utility offer distributions $\{F_{gz}(x)\}_{gz}$; measures of nonemployed workers $\{u_{gz}\}_{gz}$, aggregate job searchers $\{U_{gz}\}_{gz}$, aggregate vacancies $\{V_{gz}\}_{gz}$, and labor market tightnesses $\{\theta_{gz}\}_{gz}$; job offer arrival rates $\{\lambda_{gz}^{U}, \lambda_{gz}^{E}, \lambda_{gz}^G\}_{gz}$; and firm sizes $\{l_{gz}\}_{gz}$ such that, for all $(g, z)$:
+    %
+    \begin{itemize}
+        \item given $F_{gz}(x)$ and $\{\lambda_{gz}^{U}, \lambda_{gz}^{E}, \lambda_{gz}^{G}\}$, workers' value functions $S_{gz}$ and $W_{gz}$ satisfy equations \eqref{eq:value_emp} and \eqref{eq:value_unemp};
+        %
+        \item nonemployed workers' job acceptance policy follows a threshold rule $\phi_{gz}$ given by equation \eqref{eq:outsideoption}, and employed workers with flow utility $x$ accept voluntarily any job $x'$ such that $x' > x$;
+        %
+        \item firm sizes $l_{gz}(\cdot)$ solve equation \eqref{eq:size_stationary};
+        %
+        \item given $l_{gz}(\cdot)$, firms' value function $\Pi_{gz}(\cdot)$ satisfies equation \eqref{eq:firm_problem};
+        %
+        \item firms choose $\{w_{gz}, a_{gz}, v_{gz}\}$ to maximize their objective given by equation \eqref{eq:firm_problem};
+        %
+        \item measures of nonemployed workers are given by equation \eqref{eq:market_unemployment}, aggregate job searchers $U_{gz}$ and aggregate vacancies $V_{gz}$ are given by equation \eqref{eq:aggregate_vacancies}, and labor market tightness $\theta_{gz}$ is given by equation \eqref{eq:market_tightness};
+        %
+        \item given $\theta_{gz}$, the job offer arrival rates $\{\lambda_{gz}^{U}, \lambda_{gz}^{E}, \lambda_{gz}^{G}\}$ satisfy equation \eqref{eq:offer_arrival_rates};
+        %
+        \item given $F_{gz}(x)$, $\{\lambda_{gz}^{U}, \lambda_{gz}^{E}\}_{gz}, \lambda_{gz}^{G}$, and $V_{gz}$, firm sizes satisfy equation \eqref{eq:size_stationary}; and
+        %
+        \item the offer distribution satisfies $F_{gz}(x) = \int_{j} v_{gz}(j) \mathbf{1}[x_{gz}(j) \leq x] \, d\Gamma(j) / V_{gz}$.
+    \end{itemize}
+    %
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Lemma \ref{lem:optimal_amenities} (Optimal Amenities)\label{app:proof_lemma_optimal_amenities}}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Restatement of Lemma \ref{lem:optimal_amenities} (Optimal Amenities).}
+
+\emph{%
+    \LemmaOptimalAmenities%
+}
+
+\begin{proof}
+    Based on the insight that workers care only about the flow utility of a job, we can rewrite the problem of a firm in equation \eqref{eq:firm_problem} as one of choosing in each market a flow utility $x = w + \beta_{g} a$ and vacancies $v$ that solve the following problem:
+    %
+    \begin{align}
+        \max_{x,v} & \left\{ \left[ (1-\tau_g) pz - c_{gz}^{x}(x) \right] l_{gz}(x,v) - c_{gz}^{v}(v) \right\}, \quad \forall (g, z),
+    \end{align}
+    %
+    where $c_{gz}^{x}(x)$ is the solution to the following cost-minimization subproblem in each market $(g, z)$:
+    %
+    \begin{align}
+        c_{gz}^{x}(x) &= \min_{w, a} \left\{ w + c_{gz}^{a}(a) \right\} \quad \text{s.t.} \quad w + \beta_{g} a = x. \label{eq:cost_min}
+    \end{align}
+    %
+    Once written in this way, it is evident that an interior solution to the firm's cost-minimization problem in equation \eqref{eq:cost_min} is characterized by the following set of first-order conditions (FOCs):
+    %
+    \begin{align}
+        \frac{\partial {c}_{gz}^{a}(a^{*})}{\partial a} &= \beta_{g}, \label{eq:optimal_pi_foc1} \\
+        w^{*} &= x - \beta_{g} a^{*}. \label{eq:optimal_w_foc2}
+    \end{align}
+    %
+    Equation \eqref{eq:optimal_pi_foc1} uniquely pins down a firm's optimal amenity choice $a_{gz}^{*}$ for every market $(g, z)$.
+
+    Using the functional form of amenity costs in equation \eqref{eq:amenity_cost_fn}, we can rearrange equation \eqref{eq:optimal_pi_foc1} to get the following expression for the optimal amenity level $a_{gz}^{*}$ as a function of the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$:
+    %
+    \begin{align}
+        % \tilde{c}_{g}^{a,0} \left[\frac{a^{*}}{z} \right]^{\eta^{a} - 1} &= 1, \\
+        a_{z}^{*}\left(\tilde{c}_{g}^{a,0}\right) &= \left(\tilde{c}_{g}^{a,0} \right)^{\frac{1}{1 - \eta^{a}}} z. \label{eq:optimal_amenities}
+    \end{align}
+    %
+    Equation \eqref{eq:optimal_amenities} shows that a firm's optimal amenity provision is a function of only the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$ and $z$. Specifically, the optimal amenity policy is linear in worker ability $z$. Since $\eta^{a} > 1$, optimal amenities are also decreasing in the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$. Optimal amenities are invariant to all other parameters. Consequently, a firm with preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$ delivers an amenity valuation of $\beta_{g}(j)a_{z}^{*}(\tilde{c}_{g}^{a,0})$ to workers of type $(g, z)$. The optimal wage is then chosen to deliver the remainder of flow utility $x$ according to equation \eqref{eq:optimal_w_foc2}.%
+    %
+    \footnote{%
+        Taking into account possible corner solutions, the optimal wage-amenity combination is
+        %
+        \begin{align*}
+            a_{z}^{**}\left(x,\tilde{c}_{g}^{a,0}\right) =%
+            \begin{cases}
+                x / \beta_{g} & \text{if }x<\overline{x}\left(\tilde{c}_{g}^{a,0}\right)\\
+                a_{z}^{*}\left(\tilde{c}_{g}^{a,0}\right) & \text{if }x\ge\overline{x}\left(\tilde{c}_{g}^{a,0}\right)
+            \end{cases}, \quad%
+            w_{gz}^{**}\left(x,\tilde{c}_{g}^{a,0}\right) =%
+            \begin{cases}
+                0 & \text{if }x<\overline{x}\left(\tilde{c}_{g}^{a,0}\right)\\
+                x - \beta_{g} a_{z}^{**}\left(\tilde{c}_{g}^{a,0},x\right) & \text{if }x\ge\overline{x}\left(\tilde{c}_{g}^{a,0}\right),
+            \end{cases}
+        \end{align*}
+        %
+        where $\overline{x}\left(\tilde{c}_{g}^{a,0}\right)$ solves $\partial c_{gz}^{a}(\overline{x}\left(\tilde{c}_{g}^{a,0}\right)) / \partial a = \beta_{g}$. Note, however, that in such corner solutions, the optimal wage is $w^{**} = 0$, which is empirically not relevant. Going forward, we focus on the interior solution.%
+    } %
+    %
+
+    We obtain an explicit expression for the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$ corresponding to a given equilibrium amenity level $a_{gz}^{*}$ by rearranging equation \eqref{eq:optimal_amenities} as
+    %
+    \begin{align}
+        \tilde{c}_{g}^{a,0} &= \left( \frac{a_{gz}^{*}}{z} \right)^{1 - \eta^{a}}.
+        \label{eq:amenity_cost_shifter_foc}
+    \end{align}
+    %
+    By plugging equation \eqref{eq:amenity_cost_shifter_foc} into the amenity cost function from equation \eqref{eq:amenity_cost_fn} and using the expression for optimal amenities in equation \eqref{eq:optimal_amenities}, we can rewrite the equilibrium cost of delivering an amenity valuation $\beta_{g}a^{*}$ to the worker as
+    %
+    \begin{align}
+        c_{gz}^{a}\left(a_{gz}^{*}\right) %
+        &= c_{g}^{a,0} \frac{\left( a_{gz}^{*}/z \right)^{\eta^{a}}}{\eta^{a}} z \\
+        &= \beta_{g} \left(\frac{a_{gz}^{*}}{z} \right)^{1 - \eta^{a}} \frac{\left( a_{gz}^{*}/z \right)^{\eta^{a}}}{\eta^{a}} z \\
+        &= \beta_{g} \frac{ a_{gz}^{*} }{ \eta^{a} } \label{eq:optimal_amenity_cost} \\
+        &= \beta_{g} \frac{ \left(\tilde{c}_{g}^{a,0} \right)^{\frac{1}{1 - \eta^{a}}} z }{ \eta^{a} }.
+    \end{align}
+    %
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Lemma \ref{lem:optimal_vacancies} (Optimal Vacancies)\label{app:proof_lemma_optimal_vacancies}}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Restatement of Lemma \ref{lem:optimal_vacancies} (Optimal Vacancies).}
+
+\emph{%
+    \LemmaOptimalVacancies%
+}
+
+\begin{proof}
+    We first reformulate the firm's problem. The expected profits per worker contacted by a firm are
+    %
+    \begin{align}
+        P_{gz}(\tilde{p}_{gz}, x) = h_{gz}(x) J_{gz}(\tilde{p}_{gz}, x),
+    \end{align}
+    where $h_{gz}(x)$ is the acceptance probability and $J_{gz}(\tilde{p}_{gz}, x)$ is the value of employing a worker to a firm with composite productivity $\tilde{p}_{gz}$ providing flow utility $x$. Under the assumption that firms maximize long-run profits, the value of employing a worker is simply
+    %
+    \begin{align}
+        J_{gz}(\tilde{p}_{gz}, x) %
+        &= \frac{\tilde{p}_{gz} - x}{\delta_{gz} + \lambda_{gz}^{E}(1 - F_{gz}(x)) + \lambda_{gz}^{G}}\\
+        &= \frac{\left(\tilde{p}_{gz}-x\right)/\left(\delta_{gz}+\lambda_{gz}^{G}\right)}{1+\kappa_{gz}^{E}\left(1-F_{gz}\left(x\right)\right)},
+    \end{align}
+    %
+    where $\kappa_{gz}^e = \lambda_{gz}^e/(\delta_{gz} + \lambda_{gz}^{G})$. The acceptance probability for a firm offering $x$ is
+    %
+    \begin{align}
+        h_{gz}(x) %
+        &= \frac{u_{gz}+s_{gz}^{E}\left(1-u_{gz}\right)G_{gz}\left(x\right)+s_{gz}^{G}}{u_{gz}+s_{gz}^{E}\left(1-u_{gz}\right)+s_{gz}^{G}} \\
+        &=\frac{\delta_{gz}+s_{gz}^{E}\left(\lambda_{gz}^{U}+\lambda_{gz}^{G}\right)G_{gz}\left(x\right)+s_{gz}^{G}\left(\delta_{gz}+\lambda_{gz}^{U}+\lambda_{gz}^{G}\right)}{\delta_{gz}+s_{gz}^{E}\left(\lambda_{gz}^{U}+\lambda_{gz}^{G}\right)+s_{gz}^{G}\left(\delta_{gz}+\lambda_{gz}^{U}+\lambda_{gz}^{G}\right)}\\
+        &=\frac{1+s_{gz}^{E}\kappa_{gz}^{U}G_{gz}\left(x\right)+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)}{1+s_{gz}^{E}\kappa_{gz}^{U}+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)}\\
+        &=\frac{1+s_{gz}^{E}\kappa_{gz}^{U}\left[\frac{F_{gz}\left(x\right)}{1+\kappa_{gz}^{E}\left[1-F_{gz}\left(x\right)\right]}\right]+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)}{1+s_{gz}^{E}\kappa_{gz}^{U}+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)}\\
+        &=\frac{1+\kappa_{gz}^{E}\left[1-F_{gz}\left(x\right)\right]+s_{gz}^{E}\kappa_{gz}^{U}F_{gz}\left(x\right)+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)\left[1+\kappa_{gz}^{E}\left[1-F_{gz}\left(x\right)\right]\right]}{\left[1+s_{gz}^{E}\kappa_{gz}^{U}+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)\right]\left[1+\kappa_{gz}^{E}\left[1-F_{gz}\left(x\right)\right]\right]},
+    \end{align}
+    %
+    where $\kappa_{gz}^{U} = (\lambda_{gz}^{U} + \lambda_{gz}^{G}) / \delta_{gz}$ and $u_{gz}$ is substituted with its expression in equation \eqref{eq:market_unemployment}. Combining expressions, the expected profits per contacted worker are
+    %
+    \begin{small}
+        \begin{align}
+            z\left(\tilde{p}_{gz},x\right)	%
+            &=h\left(x\right)J\left(\tilde{p},x\right) \\
+            &=\frac{\left\{ 1+\kappa_{gz}^{E}\left[1-F_{gz}\left(x\right)\right]+s_{gz}^{E}\kappa_{gz}^{U}F_{gz}\left(x\right)+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)\left[1+\kappa_{gz}^{E}\left[1-F_{gz}\left(x\right)\right]\right]\right\} \left(\tilde{p}_{gz}-x\right)}{\left[1+s_{gz}^{E}\kappa_{gz}^{U}+s_{gz}^{G}\left(1+\kappa_{gz}^{U}\right)\right]\left[1+\kappa_{gz}^{E}\left(1-F_{gz}\left(x\right)\right)\right]^{2}\left(\delta_{gz}+\lambda_{gz}^{G}\right)}. \label{eq:per_contact_profit}
+        \end{align}
+    \end{small}
+    %
+    Then, the firm's problem becomes
+    %
+    \begin{align}
+        \max_{x,v}\left\{ P_{gz}\left(\tilde{p}_{gz},x\right)vq_{gz}-c_{gz}^{v}\left(v\right)\right\},
+    \end{align}
+    %
+    where $q_{gz}$ is defined as in equation \eqref{eq:offer_arrival_rates}. Therefore, the optimal flow-utility and vacancy policy functions satisfy
+    %
+    \begin{align}
+        x_{gz}^{*}\left(\tilde{p}_{gz},\cdot\right) &= \arg\max_{x}P_{gz}\left(\tilde{p}_{gz},x\right) \notag \\
+        \frac{\partial c_{gz}^{v}\left(v^{*}\left(\tilde{p}_{gz},\cdot\right)\right)}{\partial v} &= q_{gz} \max_{x} P_{gz} \left(\tilde{p}_{gz}, x\right). \label{eq:foc_vacancies}
+    \end{align}
+    %
+    Since the vacancy cost function $c^{v}\left(\cdot\right)$ is convex, and $z\left(\tilde{p}_{gz},x\right)$ in equation \eqref{eq:per_contact_profit} is strictly increasing in $\tilde{p}_{gz}$, then it follows from an application of the envelope theorem to equation \eqref{eq:foc_vacancies} that $v^{*}\left(\tilde{p}_{gz},\cdot\right)$ is strictly increasing in $\tilde{p}_{gz}$. Therefore, $v_{gz}^{*}(\cdot)$ is strictly increasing in productivity $p$, strictly decreasing (constant) in $z_{a}$ for women (men). Finally, optimal vacancies are also strictly decreasing in the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$ due to the result in Lemma \ref{lem:optimal_amenities}.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Lemma \ref{lem:optimal_utility} (Optimal Flow Utility and Wages)\label{app:proof_lemma_optimal_utility}}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Restatement of Lemma \ref{lem:optimal_utility} (Optimal Flow Utility and Wages).}
+
+\emph{%
+    \OptimalFlowPayoffs%
+}
+
+\begin{proof}
+
+    We proceed in two steps.
+
+
+    \textbf{Step 1.}
+
+    In the first step, we prove monotonicity of $x_{gz}^{*}$ in components of $\tilde{p}_{gz}$. Lemma \ref{lem:optimal_amenities} implies that at the optimum, amenities can be equivalently considered exogenous. Thus, we rewrite the FOCs as functions of exogenous parameters, the endogenous offer distribution, and $x_{gz}$:
+    %
+    \begin{small}
+            \begin{align}
+            [\partial v_{gz}]: \quad c_{gz}^{v,0} \frac{\partial \tilde{c}^{v}(v_{gz})}{\partial v_{gz}} &= T_{gz} (\tilde{p}_{gz} - x_{gz}) \left( \frac{1}{\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E} (1 - F_{gz}(x_{gz}))} \right)^2, \label{eq:FOC_1_new} \\
+            %
+            [\partial x_{gz}]: \quad 1 &= (\tilde{p}_{gz} - x_{gz}) \frac{2 \lambda_{gz}^{E} f_{gz} (x_{gz} )}{\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E} (1 - F_{gz}(x_{gz}))}, \label{eq:FOC_3_new}
+            %
+        \end{align}
+    \end{small}
+    %
+    where $T_{gz} = \mu_{gz} [(u_{gz} + s_{gz}^{G}) \lambda_{gz}^{U} (\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E})] / V_{gz}$. Now consider equation \eqref{eq:FOC_1_new}; because the term on the right-hand side is always positive for $\tilde{p}_{gz} > \phi_{gz}$, it follows that optimal vacancies $v_{gz}^{*}(\tilde{p}_{gz},c_{gz}^{v,0})$ are always strictly positive.
+
+    We now show that the derivative of wages with respect to $\tilde{p}_{gz}$ is always positive.
+    Define $h_{gz}(\tilde{p}_{gz}) = F_{gz}(x_{gz}^{*}(\tilde{p}_{gz}))$. Thus
+    %
+    \begin{align}
+        h_{gz}(\tilde{p}_{gz}) = & \frac{\displaystyle\int_{\tilde{p}' \geq \phi_{gz}}^{\tilde{p}_{gz}} {v}_{gz}^{*}(\tilde{p}') \gamma_{gz}(\tilde{p}')}{V_{gz}} \, d \, \tilde{p}' \\
+        h_{gz}'(\tilde{p}_{gz}) = & f_{gz}(x_{gz}^{*}(\tilde{p}_{gz})) \, {x_{gz}^{*}}'(\tilde{p}_{gz}) \\
+        f_{gz}(x_{gz}^{*}(\tilde{p}_{gz})) = & h_{gz}'(\tilde{p}_{gz})/{x_{gz}^{*}}'(\tilde{p}_{gz}), \label{eq:h_prime}
+    \end{align}
+    %
+    where ${v}_{gz}^{*}(\tilde{p}_{gz})$ are optimal vacancies conditional on $\tilde{p}_{gz}$, $\gamma_{gz}(\tilde{p}_{gz})$ is the marginal density of composite productivity $\tilde{p}_{gz}$, and $\partial x_{gz}^{*}(\tilde{p}_{gz})/\partial \tilde{p}_{gz} = {x_{gz}^{*}}'(\tilde{p}_{gz})$ is the derivative of equilibrium flow utility with respect to $\tilde{p}_{gz}$. Thus, we can rewrite $h_{gz}'(\tilde{p}_{gz}) = {v}_{gz}^{*}(\tilde{p}_{gz}) / V_{gz} \gamma(\tilde{p}_{gz})$ by differentiating equation \eqref{eq:h_prime} using Leibniz's integral rule.
+
+    Using these identities, we can write $$f_{gz}(x_{gz}^{*}(\tilde{p}_{gz})) = {v}_{gz}^{*}(\tilde{p}_{gz}) / V_{gz} \gamma_{gz}(\tilde{p}_{gz}) \partial \tilde{p}_{gz} / \partial x_{gz}^{*}(\tilde{p}_{gz}).$$ Thus, we can rewrite equation \eqref{eq:FOC_3_new} as
+    %
+    \begin{align}
+        \frac{\partial x_{gz}^{*}(\tilde{p}_{gz})}{\partial \tilde{p}_{gz}} = (\tilde{p}_{gz} - x_{gz}^{*}) \frac{2 \lambda_{gz}^{E}}{\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E} (1 - h_{gz}(\tilde{p}_{gz}))} \frac{{v}_{gz}^{*}(\tilde{p}_{gz})}{V_{gz}} \gamma_{gz}(\tilde{p}_{gz}). \label{eq:FOC_utility}
+    \end{align}
+    %
+    Because the right-hand side of this expression is positive for $\tilde{p}_{gz} > \phi_{gz}$, we have $\partial x_{gz}^{*}(\tilde{p}_{gz})/\partial \tilde{p}_{gz} > 0$, thus proving that equilibrium flow utility is increasing in $\tilde{p}_{gz}$.
+
+    Since $\tilde{p}_{gz}$ is strictly increasing in productivity $p$, strictly decreasing (constant) in the gender wedge $\tau_{g}$ for women (men), and strictly decreasing in the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$ due to Lemma \ref{lem:optimal_amenities}, it follows that optimal flow utility is strictly increasing in $p$, strictly decreasing (constant) in $\tau_{g}$ for women (men), and strictly decreasing in $\tilde{c}_{g}^{a,0}$.
+
+
+    \textbf{Step 2.}
+
+    In the second step, we prove the monotonicity of $w_{gz}$ in components of $\tilde{p}_{gz}$. The characterization of $w_{gz} = x_{gz} - \beta_{g} a_{gz}$ follows from combining Lemmas \ref{lem:optimal_amenities} and \ref{lem:optimal_vacancies} with Step 1 above.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Alternative Modeling Assumption on Amenity Production\label{app:alternative_amenities}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We here present an alternative formulation of firms' amenity production technology. While in the baseline formulation of the model, firms produce gender-specific amenity values for each worker, an alternative formulation has firms produce a vector of amenities with gender-specific utility weights for each worker. We establish conditions for \emph{observational equivalence} and \emph{counterfactual equivalence} between the baseline model and the alternative model. For ease of exposition, we work with the piece-rate version of our model in which wages and amenity values scale with worker ability $z$.
+
+Firms post an amenity vector $\vec{a}=\left(a_{1},a_{2},\ldots,a_{N}\right)\in\mathbb{R}^{N\times1}$ subject to cost $c^{a}\left(\vec{a}\right)$. Workers derive gender-specific utility from amenities given a preference vector $\vec{\beta}_{g}=\left(\beta_{g,1},\beta_{g,2},\ldots,\beta_{g,N}\right)\in\mathbb{R}^{N\times1}$. A worker of gender $g$ at a firm with amenity vector $\vec{a}$ enjoys amenity utility $\vec{a}'\vec{\beta}_{g}$.
+
+If $N=1$, then $\vec{a}=a\in\mathbb{R}$ and $\vec{\beta}_{g}=\beta_{g}\in\mathbb{R}$. In this case, men and women agree on the ranking of employers in terms of their amenity values as long as $sign(\beta_{M})=sign(\beta_{F})$. Otherwise, if $sign(\beta_{M})\neq sign(\beta_{F})$, then men and women have opposite rankings of employers in terms of their amenity values. This formulation is too restrictive to match the data, which motivates the following two assumptions.
+
+\begin{assumption}\label{ass1-number-amenities}
+    Amenities are at least twofold:
+    %
+    \begin{align}
+        N\ge2.
+    \end{align}
+\end{assumption}
+
+\begin{assumption}\label{ass2-vector-weights}
+    The gender-specific preference vectors $\vec{\beta}_{M}^{a}$ for men and $\vec{\beta}_{F}^{a}$ for women are linearly independent:
+    %
+    \begin{align}
+        \not\exists c\in\mathbb{R}\quad\text{s.t.}\quad\vec{\beta}_{M}=c\vec{\beta}_{F}.
+    \end{align}
+\end{assumption}
+
+Under these assumptions, we obtain the following result, which helps us rationalize the data:
+%
+\newcommand{\LemmaExistenceOfAmenityVector}[1]{%
+    Suppose Assumptions \ref{ass1-number-amenities} and \ref{ass2-vector-weights} hold. Then for any duplet of gender-specific utilities $\left(U_{M}^{a},U_{F}^{a}\right)$ at a given employer, there exists an amenity vector $\vec{a}=\left(a_{1},a_{2},\ldots,a_{N}\right)$
+    such that
+    %
+    \begin{align}
+        \underset{2\times1}{\left[\begin{array}{c}
+            U_{M}^{a}\\
+            U_{F}^{a}
+        \end{array}\right]}=\underset{2\times N}{\left[\begin{array}{c}
+            \vec{\beta}_{M}'\\
+            \vec{\beta}_{F}'
+        \end{array}\right]}\underset{N\times1}{\vec{a}}. \label{#1}
+    \end{align}
+}
+%
+\begin{lemma}[Existence of amenity vector]
+    \label{lemma-amenity-vectors}
+    \LemmaExistenceOfAmenityVector{eq:linear-indep}
+\end{lemma}
+%
+\begin{proof}
+    This is simply a system of two linear equations in $N \ge 2$ unknowns. By linear independence of $\vec{\beta}_{M}$ and $\vec{\beta}_{F}$ due to Assumption \ref{ass2-vector-weights}, the matrix that premultiplies $\vec{a}$ in equation \eqref{eq:linear-indep} has full rank. Therefore, the system admits at least one solution.
+\end{proof}
+%
+If $N = 2$, then Lemma \ref{lemma-amenity-vectors} admits a unique amenity vector $\vec{a}=\left(a_{1},a_{2}\right)$ that rationalizes any amenity-utility duplet $\left(U_{M}^{a},U_{F}^{a}\right)$. If $N>2$, then there exist multiple amenity vectors $\vec{a}$ that rationalize the same duplet of gender-specific utilities $\left(U_{M}^{a},U_{F}^{a}\right)$, among which a profit-maximizing firm will pick the cost-minimizing one.
+
+In addition, we make the following assumption as a natural extension of that in the baseline model:
+%
+\begin{assumption}\label{ass-3-cost-fn}
+    Firms provide firm-wide amenities $\vec{a}$, and the cost of amenity provision is given by
+    %
+    \begin{align}
+        c^{a}\left(\vec{a},l_{M},l_{F}\right)=\int_{j=0}^{l_{M}+l_{F}}\sum_{i=1}^{N}c_{i}^{a,0}\tilde{c}^{a}\left(a_{i}\right)dj,
+    \end{align}
+    %
+    where $j$ indexes workers, $i$ indexes amenities, $c_{i}^{a,0}$ is an amenity-specific cost shifter that differs across firms, and
+    $\tilde{c}^{a}\left(a_{i}\right)$ is increasing convex such that $\tilde{c}^{a}(0)=0$ and $\partial\tilde{c}^{a}/\partial a_{i}(0)=0$.
+\end{assumption}
+%
+Next, we show that there exist (unique) values of productivity $p$, the gender wedge $\tau_g$; there also exist amenity cost shifters $c_{i}^{a,0}$ for $i\in\{1, \ldots, N\}$ that rationalize a given vector of amenities $\vec{a}$ along with wages $w_{M}$ and $w_{F}$ and vacancies $v_{M}$ and $v_{F}$ as firms' equilibrium choices.
+%
+\newcommand{\LemmaObservationalEquivalence}{%
+    Suppose Assumptions \ref{ass1-number-amenities}, \ref{ass2-vector-weights}, and \ref{ass-3-cost-fn} hold. Then, for a given firm-level amenity vector $\vec{a}$, there exists a firm-specific amenity cost function $c^{a}\left(\vec{a}\right)$ such that $\vec{a}$ solves
+    %
+    \begin{align}
+        \left(\vec{a},w_{M},w_{F},v_{M},v_{F}\right) = \argmax_{\tilde{\vec{a}},\tilde{w}_{M},\tilde{w}_{F},\tilde{v}_{M}',\tilde{v}_{F}} \Biggl\{ \sum_{g=M,F} \left[ (1-\tau_g) p-\tilde{w}_{g} -c^{a}\left(\tilde{\vec{a}}\right) \right] l_{g} \left( \tilde{\vec{a}},\tilde{w}_{g},\tilde{v}_{g} \right) \notag \\
+        \quad - \sum_{g=M,F}c^{v} \left(\tilde{v}_{g}\right) \Biggr\}
+    \end{align}
+    %
+    for some levels of firm productivity $p$ and gender wedge $\tau_g$.
+}
+%
+\begin{lemma}[Observational equivalence]
+    \label{lemma-cost-fn}
+    \LemmaObservationalEquivalence
+\end{lemma}
+%
+\begin{proof}
+    The system of FOCs associated with firm optimality is the following:
+    %
+    \begin{small}
+        \begin{align}
+            \left[\partial a_{i}\right] & :\quad c_{i}^{a,0}\frac{\partial\tilde{c}^{a}\left(a_{i}\right)}{\partial a_{i}}
+             =\frac{\left[p-w_{M}-c^{a}\left(\vec{a}\right)\right]\frac{\partial l_{M}\left(\vec{a},w_{M},v_{M}\right)}{\partial a_{i}}+\left[(1-\tau) p - w_{F}-c^{a}\left(\vec{a}\right)\right]\frac{\partial l_{F}\left(\vec{a},w_{F},v_{F}\right)}{\partial a_{i}}}{l_{M}\left(\vec{a},w_{g},v_{g}\right)+l_{F}\left(\vec{a},w_{F},v_{F}\right)}\label{foc1_explicit}\\
+            \left[\partial w_{M}\right] & :\quad1=\left[p-w_{M}-c^{a}\left(\vec{a}\right)\right]\frac{\frac{\partial l_{M}\left(\vec{a},w_{M},v_{M}\right)}{\partial w_{M}}}{l_{M}\left(\vec{a},w_{M},v_{M}\right)}\label{foc2_explicit}\\
+            \left[\partial w_{F}\right] & :\quad1=\left[(1-\tau) p-w_{F}-c^{a}\left(\vec{a}\right)\right]\frac{\frac{\partial l_{F}\left(\vec{a},w_{F},v_{F}\right)}{\partial w_{F}}}{l_{F}\left(\vec{a},w_{F},v_{F}\right)}\label{foc3_explicit}\\
+            \left[\partial v_{M}\right] & :\quad\frac{\partial c_{M}^{v}(v_{M})}{v_{M}}=\left[p-w_{M}-c^{a}\left(\vec{a}\right)\right]\frac{\partial l_{M}\left(\vec{a},w_{M},v_{M}\right)}{\partial v_{M}}\label{foc4_explicit}\\
+            \left[\partial v_{F}\right] & :\quad\frac{\partial c_{F}^{v}(v_{F})}{v_{F}}=\left[p-w_{F}-c^{a}\left(\vec{a}\right)-z\right]\frac{\partial l_{F}\left(\vec{a},w_{F},v_{F}\right)}{\partial v_{F}}\label{foc5_explicit}.
+        \end{align}
+    \end{small}
+    %
+    Note that the only FOC containing the term $\partial\tilde{c}^{a}\left(a_{i}\right)/\partial a_{i}$ is equation \eqref{foc1_explicit}. All other FOCs depend on the level of the amenity cost $c^{a}\left(\vec{a}\right)$ but not its derivative. Hence, we can scale the amenity cost function $c^{a}\left(\vec{a}\right)$, the productivity level for both genders, or the gender wedge for women to satisfy the wage FOCs in equations \eqref{foc2_explicit}--\eqref{foc3_explicit} and vacancy posting in equations \eqref{foc4_explicit}--\eqref{foc5_explicit}. By Assumption \ref{ass-3-cost-fn}, there are $N$ equations (i.e.,
+    FOCs with respect to $a_{i}$ for $i=1,2,\ldots,N$) with $N$ free parameters (i.e., amenity cost shifters $c_{i}^{a,0}$ for $i=1,2,\ldots,N$), so there exists $N$ amenity cost shifters $c_{i}^{a,0}$ that satisfy firm optimality and rationalize $\vec{a}$.
+\end{proof}
+%
+Lemma \ref{lemma-cost-fn} establishes \emph{observational equivalence} between our baseline model with gender-specific amenity values and
+the alternative formulation with an amenity vector and gender-specific utility weights. That is, any observed empirical pattern of employer ranks and pay differences by gender can be rationalized by either of the two models.
+
+Next, we characterize optimal amenity provision. An argument analogous to that in the main paper shows that under assumptions \ref{ass1-number-amenities}--\ref{ass-3-cost-fn}, optimal amenities satisfy
+%
+\begin{align}
+    \left[\partial a_{i}\right]:\quad c_{i}^{a,0}\times\frac{\partial\tilde{c}^{a}\left(a_{i}\right)}{\partial a_{i}}\sum_{g=M,F}l_{g}\left(x_{g},v_{g}\right)=\beta_{M,i}l_{M}\left(x_{M},v_{M}\right)+\beta_{F,i}l_{F}\left(x_{F},v_{F}\right),\quad\forall i. \label{eq:optimal_pi_old}
+\end{align}
+%
+Under these assumptions, optimal amenity provision depends on the gender composition of a firm's workforce, which varies with firm fundamentals and counterfactual policies. However, the model under these assumptions is at odds with the empirical observation that amenity quantities differ significantly across men and women, as demonstrated in Section \ref{subsec:between_vs_within}. %
+%
+For example, in the data, women comprise the vast majority of beneficiaries of parental leaves. Thus, assuming that the cost of amenities that are enjoyed by a subset of workers is paid also for all other workers seems inconsistent with the empirical evidence. Motivated by this observation, we consider the following alternative assumption in lieu of Assumption \ref{ass-3-cost-fn}.
+%
+\begin{assumption}\label{ass-3-cost-fn-alternative}
+    Firms provide individual-specific amenities $\left\{ \vec{a}_{j}\right\} _{j}$ for each worker $j$ and the cost of amenity provision given by
+    %
+    \begin{align}
+        c^{a}\left(\left\{ \vec{a}_{j}\right\} _{j}\right)=\int_{j=0}^{l_{M}+l_{F}}\sum_{i=1}^{N}c_{i}^{a,0}\tilde{c}^{a}\left(a_{i,j}\right)dj,
+    \end{align}
+    %
+    where $j$ indexes workers, $i$ indexes amenities, $c_{i}^{a,0}$ is an amenity-specific cost shifter that differs across firms, and
+    $\tilde{c}^{a}\left(a_{i,j}\right)$ is increasing convex such that $\tilde{c}^{a}(0)=0$ and $\partial\tilde{c}^{a}/\partial a_{i,j}(0)=0$.
+\end{assumption}
+%
+
+An argument analogous to that in Lemma \ref{lemma-cost-fn} establishes observational equivalence between our baseline model and the alternative model under Assumption \ref{ass-3-cost-fn-alternative}. Next, we characterize the dependence of a firm's optimal amenity choice on amenity cost shifters $c_{i}^{a,0}$ for $i\in\{1, \ldots ,N\}$ and other model parameters.
+%
+\newcommand{\LemmaCounterfactualEquivalence}{%
+    Suppose Assumptions \ref{ass1-number-amenities}, \ref{ass2-vector-weights}, and \ref{ass-3-cost-fn-alternative} hold. Then, a firm's optimal amenity policy $a_{i,j}^{*}\left(\cdot\right)$ for all $(i,j)$ is strictly decreasing in its amenity cost shifter $c_{i}^{a,0}$, increasing in gender utility weights $\beta_{g,i}$ for $g \in \{ M,F \}$, and invariant to all other parameters.
+}
+%
+\begin{lemma}[Counterfactual equivalence]
+    \label{lem:amenities-counterfactual-equiv}
+    \LemmaCounterfactualEquivalence
+\end{lemma}
+%
+\begin{proof}
+    Based on the insight that workers care only about the flow utility of a job, we can rewrite the problem of a firm as one of choosing
+    in each market a flow utility $x_{g}=w_{g}+\vec{a}_{g}'\vec{\beta}_{g}$ and vacancies $v_{g}$ that solve the following problem:
+    %
+    \begin{align}
+        \max_{\left\{ x_{g},v_{g}\right\}_{g=M,F}} \left\{ \sum_{g=M,F} \left[ (1 - \tau_g) p \right] l_{g}\left( x_{g}, v_{g} \right)-c^{x} \left( x_{M}, x_{F} \right) - \sum_{g=M,F} c_{g}^{v} \left( v_{g} \right) \right\} , \quad \forall g,
+    \end{align}
+    %
+    where $c^{x}\left(x_{M},x_{F}\right)$ is the solution to the following cost-minimization subproblem in each market $(g, z)$:
+    %
+    \begin{small}
+        \begin{align}
+            c^{x}(x_{M},x_{F}) &= \min_{w_{M},w_{F},\left\{ \vec{a}_{j}\right\} _{j}}\left\{ w_{M}l_{M}(x_{M},v_{M})+w_{F}l_{F}(x_{F},v_{F})+\int_{j=0}^{l_{M}+l_{F}}\sum_{i=1}^{N}c^{a}\left(a_{i,j}\right)dj\right\} \label{eq:minprob_1} \\
+            & \mathrel{\phantom{=}} \quad \text{s.t.}\quad w_{g}+\vec{a}_{g(j)}'\vec{\beta}_{g}=x_{g}\, \quad \forall j \nonumber \\
+            &= \min_{\left\{ \vec{a}_{g} \right\}_{g}}\Biggl{\{} \left(x_{M}-\vec{a}_{M}'\beta_{M}\right)l_{M}\left(x_{M},v_{M}\right)+\left(x_{F}-\vec{a}_{F}'\beta_{F}\right)l_{F}\left(x_{F},v_{F}\right) \label{eq:minprob_2} \\
+            & \mathrel{\phantom{=}} \quad\quad \,\, + \sum_{i=1}^{N}\left[l_{M}\left(x_{M},v_{M}\right)c^{a}\left(a_{M,i}\right)+l_{F}\left(x_{F},v_{F}\right)c^{a}\left(a_{F,i}\right)\right]\Biggr{\}}, \nonumber
+        \end{align}
+    \end{small}
+    %
+    where we move from equation \eqref{eq:minprob_1} to equation \eqref{eq:minprob_2} by using Assumption \ref{ass-3-cost-fn-alternative}. Note that the cost of amenity production $c^{a}(\cdot)$ and the marginal amenity utility $\vec{\beta}_{g}$ are identical for individual workers $j$ of the same gender $g$, but different across genders. Thus, a firm's optimal amenity choice is to offer the same vector of amenities $\vec{a}_g$ to workers of the same gender and different amenities to workers of different genders. This model prediction is consistent with the salient empirical fact that many job amenities (e.g., parental leave benefits) are differentially accessed by men and women at the same employer. The associated optimality conditions for amenities production are the following:
+    %
+    \begin{align}
+        \left[\partial a_{g,i}\right]:\quad c_{i}^{a,0}\times\frac{\partial\tilde{c}^{a}\left(a_{g,i}\right)}{\partial a_{g,i}}=\beta_{g,i},\quad\forall\left(g,i\right). \label{eq:optimal_pi_new}
+    \end{align}
+    %
+    Equation \eqref{eq:optimal_pi_new} pins down a firm's optimal amenity choice $a_{g,i}^{*}(c_{i}^{a,0},\beta_{g,i})$ as a function of the heterogeneous amenity cost shifter $c_{i}^{a,0}$ as well as the set of gender-specific amenity-utility weights $\beta_{g,i}$. The optimal wage is then chosen to deliver the remainder of the flow utility $x_{g}$ to workers of gender $g = M, F$.
+\end{proof}
+%
+Lemma \ref{lem:amenities-counterfactual-equiv} is a powerful result because it establishes \emph{counterfactual equivalence} with respect to the equilibrium decomposition of the gender pay gap, which lies at the heart of our analysis in Section \ref{sec:Counterfactuals}. Specifically, it follows from Lemma
+\ref{lem:amenities-counterfactual-equiv} that the gender-specific amenity vector $\vec{a}_g^{*}$ is independent of productivity $p$, the gender wedge $\tau$, and other model parameters. Therefore, shutting down amenity cost differences across genders in counterfactual 1 of the main body of the paper has the same effects as equalizing gender preferences over the amenity vector in the alternative model.
+
+
+\paragraph{Model Choice.}
+
+Both the baseline model with gender-specific amenity values and the alternative formulation with an amenity vector have attractive features. The alternative formulation seems realistic because it allows for a common set of amenities that are differentially accessible to men and women within a given employer.
+
+A drawback of the alternative formulation is that the formulation with an amenity vector requires the strong assumption that we observe the full vector of amenities $\vec{a}$ or, alternatively, that the econometrician knows the gender-specific preference vectors $\vec{\beta}_{g}$ for $g = M, F$. In contrast, in the baseline model, we treat amenities as an unobserved, gender-employer-specific characteristic that we estimate without making further assumptions about the relevant set of amenities or gender-specific amenity preferences.
+
+In the data, we find that a significant share of the estimated amenity values in our baseline model is accounted for by unobserved gender-firm-specific factors, which seems at odds with the assumption that we observe the full vector $\vec{a}$. Based on the observational equivalence (Lemma \ref{lemma-cost-fn}) and counterfactual equivalence with respect to the equilibrium decomposition (Lemma \ref{lem:amenities-counterfactual-equiv}) of the two formulations under the stated assumptions, we adopt the baseline amenity-value formulation throughout the empirical analysis and for the equilibrium decomposition. When considering the equilibrium effects of policies, however, counterfactual equivalence between the two models does not generally hold. For this purpose, we proceed with our baseline model and consider robustness with regard to different parameterizations of the cost function.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Further Discussion of Model Assumptions\label{app:assumptions_discussion}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Output is Linear Within Worker Types.}
+
+Additive separability of output in worker types allows the model to admit a log-linear wage equation, which we require to take the model to the data by pooling all workers of the same gender. Conceptually, there is no reason not to simultaneously allow for curvature in the ability-weighted number of workers of each type. However, if the marginal product of a given worker type were exceedingly high for small numbers of workers---as would be the case with standard constant-elasticity-of-substitution specifications---then we would see every firm employing a strictly positive mass of each worker type. This outcome would be clearly at odds with the presence of single-gender firms in the data.
+
+Further supporting this assumption, \citet{FukuiNakamuraSteinsson2023} find a small crowd-out between women and men in the U.S. Therefore, a natural starting point treats men and women as interchangeable inputs in production.
+
+
+\paragraph{Labor Market Segmentation.}
+
+Here, we argue that our assumption of labor market segmentation by worker types is reasonable, given the empirical patterns we observe. %
+%
+That firms can direct wages and vacancies toward certain worker types may seem at odds with nondiscrimination laws. But of course a firm need not publicly post different wages or job openings by gender in order to discriminate. Such differences may arise in more subtle ways during r\'{e}sum\'{e} screenings, during interviews, and at the negotiation table \citep{GoldinRouse2000}. This assumption is consistent with evidence that men and women differentially apply to jobs based on the wording of vacancies \citep{AbrahamHallermeierStein2024} and accept jobs subject to deadlines \citep{CortesPanPilossophReubenZafar2023}. %
+%
+Empirically, there are also good reasons to adopt market segmentation. First and foremost, our model must confront the significant differences in the gender-specific employer component of pay, amenity utilization, and employment of men and women within the same employer in the Brazilian data. In the previous section, we have already documented gender differences in pay and employment. Our model provides a natural way to rationalize these differences.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Alternative Modeling Assumptions on Vacancy Posting\label{app:alternative_vacancy_models}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Model Alternative 1: Directed Vacancy Posting with Joint Cost Function.} % \label{app:alternative_vacancy_models_1}
+
+As a first alternative to the benchmark model, suppose that instead of the vacancy cost being separable across genders, we assume that the vacancy cost is a function of the total number of vacancies posted. This model has the stark prediction that any firm will employ either only men or only women, except in knife-edge cases.
+
+Each firm posts a number $v_{Mz}$ of vacancies targeted at male workers and $v_{Fz}$ vacancies targeted at women. The total cost of posting vacancies $(v_{Mz},v_{Fz})$ for men and women is given by $c_{z}^{v}(v_{Mz} + v_{Fz})$, where the function $c_{z}^{v}$ retains the properties laid out in the main text: $c_{z}^{v}(0) = 0$, $\partial c_{z}^{v}(\cdot) / \partial v > 0$, $\partial^2 c_{z}^{v}(\cdot) / \partial v^2  > 0$.
+
+To see that this setup implies gender segregation except in knife-edge cases, note that the firm's problem can now be written as
+%
+\begin{align}
+    \max_{x_{Mz},x_{Fz},v_{Mz},v_{Fz}} & \left\{ \sum_{g = M,F} (\tilde{p}_{gz} - x_{gz}) l_{gz}(x_{gz},v_{gz}) - c_{z}^{v} (v_{Mz} + v_{Fz}).  \right\}
+\end{align}
+%
+The FOCs with respect to vacancy posting now read
+%
+\begin{small}
+    \begin{align}
+        [\partial v_{Mz}]: \quad {c_{z}^{v}}'(v_{Mz} + v_{Fz}) &= T_{Mz} (\tilde{p}_{Mz} - x_{Mz}) \biggl{(} \frac{1}{\delta_{Mz} + \lambda_{Mz}^{G} + \lambda_{Mz}^{E} (1 - F_{Mz}(x_{Mz}))} \biggr{)}^2, \label{eq:app_directed_vacancies_1} \\
+        [\partial v_{Fz}]: \quad {c_{z}^{v}}'(v_{Mz} + v_{Fz}) &= T_{Fz} (\tilde{p}_{Fz} - x_{Fz}) \biggl{(} \frac{1}{\delta_{Fz} + \lambda_{Fz}^{G} + \lambda_{Fz}^{E} (1 - F_{Fz}(x_{Fz}))} \biggr{)}^2. \label{eq:app_directed_vacancies_2}
+    \end{align}
+\end{small}
+%
+Putting equations \eqref{eq:app_directed_vacancies_1} and \eqref{eq:app_directed_vacancies_2} into simple economic terms, the marginal cost of an additional vacancy (the left-hand side) is equated to the marginal benefit of an additional vacancy (the right-hand side). The latter consists of an increase in the employment of that worker type multiplied by the profits made per worker of that type, which is independent of the number of vacancies posted. This is because wages are set according to other FOCs, which do not depend on the number of vacancies posted by that firm.
+
+Since the right-hand sides in equations \eqref{eq:app_directed_vacancies_1} and \eqref{eq:app_directed_vacancies_2} are generically not equal, except in knife-edge cases, it follows that both FOCs cannot hold. This means that the firm will be at a corner solution with regard to one of the two genders, and this must involve posting zero vacancies for that gender.
+
+According to the above analysis, except in knife-edge cases, firms would hire only men or only women---whichever option yields the highest marginal benefit to the firm. This model implication is empirically counterfactual since the vast majority of firms in the real world employ a mix of men and women.
+
+
+\paragraph{Model Alternative 2: Undirected Vacancy Posting.}
+
+As a second alternative to the benchmark model, suppose that instead of vacancies being directed separately to men and women, we assume that firms cannot discriminate between genders in their recruiting. While such a model can qualitatively account for dual-gender firms, it turns out that quantitatively, such a model clearly fails to replicate the empirical distribution of female employment shares across firms that we documented in Section \ref{subsec:emp_het}.
+
+Each firm posts a number $v_{z}$ of gender-neutral vacancies for workers of each ability level $z$ at cost $c_{z}^{v}(v_{z})$. In such a model, a firm's problem can be written as
+%
+\begin{align}
+    \max_{x_{Mz},x_{Fz},v_{a}} & \left\{ \sum_{g = M,F} (\tilde{p}_{gz} - x_{gz}) l_{gz}(x_{gz},v_{a}) - c_{z}^{v} (v_{z})  \right\}.
+\end{align}
+%
+Notice that we do not impose that firms hire both genders in each submarket: it is always possible for a firm to offer flow utility $x_{gz} < \phi_{gz}$ such that no worker of gender $g$ will accept it. Consequently, while a total of $V_{z}$ vacancies are posted in each submarket in the aggregate, only $V_{gz} \leq V_{z} = \int v_{z}(\tilde{p}_{gz}) \, \diff \Gamma_{gz}(\tilde{p}_{gz})$ vacancies are accepted in equilibrium by workers of type $(g, z)$. This implies that the number of matches produced in the labor market is given by
+%
+\begin{align}
+    m_{gz} = \chi_{gz} [\mu_{gz} (u_{gz} + s_{gz}^{E} (1 - u_{gz}) + s_{gz}^{G} )]^{\alpha} V_{z}^{1-\alpha} \frac{V_{gz}}{V_{z}},
+\end{align}
+%
+which already incorporates the probability that a worker of gender $g$ will meet a vacancy that is associated with a wage below the reservation threshold, leading to a rejection. It is straightforward to show that this matching function exhibits all the properties of standard matching functions and that in particular, $f_{gz}/q_{gz} = V_z/[u_{gz} + s_{gz}^{E} (1 - u_{gz}) + s_{gz}^{G}]$, where $f_{gz} = m_{gz}/[u_{gz} + s_{gz}^{E} (1 - u_{gz}) + s_{gz}^{G}]$ is the job-finding rate per effective job searcher and $q_{gz} = m_{gz}/V_z$ is the vacancy yield rate.
+
+The following equation represents the law of motion of firm sizes:
+%
+\begin{align}
+    \dot{l}_{gz}(x,v) = & -\delta_{gz} l_{gz} (x,v) - s_{gz} \lambda_{gz}^{E} (1 - F_{gz}(x)) l_{gz} (x,v) + \\
+    & v q_{gz} \left[ \frac{u_{gz} + s_{gz}^{G}}{u_{gz} + s_{gz}^{G} + (1 - u_{gz}) s_{gz}^e} + \frac{(1 - u_{gz}) s_{gz}^e}{u_{gz} + s_{gz}^{G} + (1-u_{gz}) s_{gz})} G_{gz}(x) \right].
+\end{align}
+%
+Solving for the stationary solution,
+%
+\begin{small}
+    \begin{align}
+        \label{firmsizes_jointv}
+        l_{gz}(x_{gz},v_{z}) = \left( \frac{1}{\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E} (1 - F_{gz}(x_{gz}))} \right)^2 \frac{v_{z}}{V_{z}} \mu_{gz} (u_{gz} + s_{gz}^{G}) \lambda_{gz}^{U} (\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E}).
+    \end{align}
+\end{small}
+%
+To find the firm's policy functions, define $T_{gz} = \mu_{gz} [u_{gz} \lambda_{gz}^{U} (\delta_{gz} + s_{gz} \lambda_{gz}^{U})] / V_{z}$and composite productivity $\tilde{p}_{gz} = (1 - \tau_g) z p + a_{gz} - c_{gz}^{a}(a_{gz}$. We rewrite the firm's problem as a function of the steady state mass of employed workers as follows:
+%
+\begin{align}
+    \max_{x_{Mz},x_{Fz},v_{z}} &\left\{  T_{Mz} v_{z} (\tilde{p}_{Mz} - x_{Mz}) \biggl{(} \frac{1}{\delta_{Mz} + \lambda_{Mz}^{G} + \lambda_{Mz}^{E} (1 - F_{Mz}(x_{Mz}))} \biggr{)}^2 \right. \\
+    & \quad + \left. T_{Fz} v_{z} (\tilde{p}_{Fz} - x_{Fz} ) \biggl{(} \frac{1}{\delta_{Fz} + \lambda_{Fz}^{G} + \lambda_{Fz}^{E} (1 - F_{Fz}(x_{Fz}))} \biggr{)}^2 - c_{z}(v_{z}) \right\}.
+\end{align}
+%
+The associated FOCs read
+%
+\begin{align}
+    c'(v_{z}) &= T_{Mz} (\tilde{p}_{Mz} - x_{Mz}) \biggl{(} \frac{1}{\delta_{Mz} + \lambda_{gz}^{G} + \lambda_{Mz}^{E} (1 - F_{Mz}(x_{Mz}))} \biggr{)}^2 \\
+    & \quad + T_{Fz} (\tilde{p}_{Fz} - x_{Fz}) \biggl{(} \frac{1}{\delta_{Fz} + \lambda_{gz}^{G} + \lambda_{Fz}^{E} (1 - F_{Fz}(x_{Fz}))} \biggr{)}^2 \\
+    1 &= (\tilde{p}_{Mz} - x_{Mz}) \frac{2 \lambda_{Mz}^{E} f_{Mz} (x_{Mz} )}{\delta_{Mz} + \lambda_{Mz}^{G} + \lambda_{Mz}^{E} (1 - F_{Mz}(x_{Mz}))} \\
+    1 &= (\tilde{p}_{Fz} - x_{Fz}) \frac{2 \lambda_{Fz}^{E} f_{Fz} (x_{Fz} )}{\delta_{Fz} + \lambda_{Fz}^{G} + \lambda_{Fz}^{E} (1 - F_{Fz}(x_{Fz}))}.
+\end{align}
+%
+
+Recall from Section \ref{subsec:emp_het} that firm-level female employment shares are dispersed, ranging from almost 0 to almost 1 in the data. It is this salient feature of the data that the undirected vacancy-posting model fails to replicate. To demonstrate this, we show that analytically derived expressions for the lowest and highest female employment shares are inconsistent with the data for realistic calibrations of the labor market parameters guiding worker flows.
+
+Using equation \eqref{firmsizes_jointv}, we can write the female share of a firm as
+%
+\begin{normalsize}
+    \begin{align}
+        s_{f} = & \frac{l_{Fz}(x_{Fz},v_{z})}{l_{Fz}(x_{Fz},v_{z}) + l_{Mz}(x_{Mz},v_{z})} \\
+        = & \frac{1}{1 + \frac{\biggl{(} \frac{1}{\delta_{Mz} + \lambda_{Mz}^{G} + \lambda_{Mz}^{E} (1 - F_{Mz}(x_{Mz}))} \biggr{)}^2 (u_{Mz} + s_{Mz}^{G}) \lambda_{Mz}^{U} (\delta_{Mz} + \lambda_{Mz}^{G} + \lambda_{Mz}^{E})}{\biggl{(} \frac{1}{\delta_{Fz} + \lambda_{Fz}^{G} + \lambda_{Fz}^{U} (1 - F_{Fz}(x_{Fz}))} \biggr{)}^2 (u_{Fz} + s_{Fz}^{G}) \lambda_{Fz}^{U} (\delta_{Fz} + \lambda_{Fz}^{G} + \lambda_{Fz}^{E})}}.
+    \end{align}
+\end{normalsize}
+%
+On the right-hand side, we can substitute our empirical estimates of the U-E transition rates $\lambda_{gz}^u$, the E-U transition rates $\delta_{gz}$, the compulsory offer arrival rate $\lambda_{gz}^{G}$, the voluntary offer arrival rate $\lambda_{gz}^e$, and the compulsory offer search units $s_{gz}^{G}$ from Table \ref{tab:labor_market_obj}. Thus, we obtain:
+%
+\begin{align}
+    (u_{Mz} + s_{Mz}^{G}) \lambda_{Mz}^{U} (\delta_{Mz} + \lambda_{Mz}^{G} + \lambda_{Mz}^{E}) \\ \notag
+    = (0.236 + 0.101) \times 0.104 \times (0.036 + 0.010 + 0.009) \approx 0.0019
+\end{align}
+\begin{align}
+    (u_{Fz} + s_{Fz}^{G}) \lambda_{Fz}^{U} (\delta_{Fz} + \lambda_{Fz}^{G} + \lambda_{Fz}^{E}) \\ \notag
+    = (0.219 + 0.083) \times 0.091 \times (0.028 + 0.007 + 0.007) \approx 0.0012 .
+\end{align}
+%
+Thus, this ratio is approximately equal to 0.0019/0.0012 = 1.583, and the expression simplifies to
+\begin{align}
+    s_{f} = \frac{1}{1 + 1.583 \times \biggl{(} \frac{\delta_{Fz} + \lambda_{Fz}^{G} + \lambda_{Fz}^{E} (1 - F_{Fz}(x_{Fz}))}{\delta_{Mz} + \lambda_{Mz}^{G} + \lambda_{Mz}^{E} (1 - F_{Mz}(x_{Mz}))} \biggr{)}^2 } \\ \notag
+    = \frac{1}{1 + 1.583 \times \biggl{(} \frac{0.036 + 0.007 \times (1 - F_{Fz}(x_{Fz}))}{0.046 + 0.009 \times (1 - F_{Mz}(x_{Mz}))} \biggr{)}^2 }.
+\end{align}
+%
+Since firm sizes are monotonically increasing in flow utility $x$ offered by the firm, we can obtain expressions for the minimum female employment share $\underline{s}_{f}$ and the maximum female employment share $\overline{s}_{f}$ by focusing on employers that are at the very top of the job ladder for one gender and simultaneously at the very bottom of the job ladder for the other gender. Specifically, among all dual-gender firms, the firm with the highest female employment share has $F_{Fz} = 1$ and $F_{Mz} = 0$. Conversely, the firm with the lowest female employment share has $F_{Fz} = 0$ and $F_{Mz} = 1$.
+
+Thus, we find that the minimum (maximum) female employment share in the model is $\approx$ 0.419 (0.596), which is inconsistent with the minimum (maximum) female employment share being close to 0 (1) in the data.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Model with Heterogeneous Separation Rates to Nonemployment\label{app:hetero_delta_model}}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this subsection, we describe how our model would change if we allowed separation rates to nonemployment to be heterogeneous across firms. In particular, we study a case in which  separation rates are a non-decreasing function of composite productivity $\tilde{p}$. We retain all other assumptions regarding demographics, market structure, matching function, utility of workers, production, firm heterogeneity, cost functions, and utility-posting behavior.
+%
+\newline\indent
+%
+In this case, we are still able to rank firms by $\tilde{p}$ and, therefore, we can still write the offer distribution as $F(x) = F(x^{*}(\tilde{p})$. Thus, with a slight abuse of notation, denote $\delta(x) = \delta(\tilde{p}: x^{*}(\tilde{p}) = x)$ as the separation rate of a firm with composite productivity $\tilde{p}$ optimally offering flow utility $x$.
+\footnote{In a more general model where $\delta$ is distributed arbitrarily across firms, workers would rank firms in two dimensions: flow utility $x$ and job security $(1-\delta)$, leading to a substantially more complicated ladder model which at present we are not able to solve in general equilibrium.}
+%
+There are a few key changes to the equilibrium structure of our model. First of all,
+The steady-state nonemployment rate for each worker type is now calculated as
+%
+\begin{align}
+    u_{gz} = \frac{\bar{\delta}_{gz}}{\bar{\delta}_{gz} + \lambda_{gz}^{U} + \lambda_{gz}^{G}}. \label{eq:market_unemployment_hetdelta}
+\end{align}
+%
+where $\bar{\delta}_{g} = \int_{x} \delta_{g}(x) \diff G(x)$ is the average employment-weighted separation rate across firms and $G(x)$ is the cross-sectional distribution of flow utilities of employed workers.
+
+Second, the cross-sectional distribution of flow utilities for each worker type is now written as
+\begin{align}
+    G_{gz}(x) = \frac{F_{gz}(x)}{1 + \kappa_{gz}^{E}(x) \left[1 - F_{gz}(x)\right]},
+    \label{eq:from_F_to_G_hetdelta}
+\end{align}
+%
+where $\kappa_{gz}^{E}(x) \equiv \lambda_{gz}^{E}/(\int_{x' < x} \delta_{g}(x') \diff G(x') / G(x) + \lambda_{gz}^{G})$ governs the effective speed of climbing the firm ladder in utility space, which depends on the average separation rate faced by workers earning utility below $x$.
+
+Third, solving for the stationary employment distribution in each market $(g, z)$, firm sizes are now given by
+\begin{align}
+    l_{gz}(x,v) = \left( \frac{1}{\delta_{g}(x) + \lambda_{gz}^{G} + \lambda_{gz}^{E} \left[1 - F_{gz}(x)\right]} \right) \label{eq:size_stationary_hetdelta} \\
+    \frac{v}{V_{gz}} \mu_{gz} \lambda_{gz}^{U} \left[ u_{gz} + (1 - u_{gz}) s_{g}^{E} G_{gz}(x) + s_{g}^{G} \right] \notag
+\end{align}
+%
+where this time we could not simplify $G_{gz}(x)$ due to it including integral terms that are $x$-dependent. Nevertheless, we can still conclude that firm size will increase in $x$ due to fewer workers quitting to join other firms, and a larger pool of effective searchers moving in from other firms. Also, firm size is decreasing in $\delta_g(x)$.
+
+
+\paragraph{First-Order Conditions.}
+
+To solve the firm's problem, we still take FOCs with respect to utility $x$ and vacancies posted $v$, bearing in mind that $\delta_{g}(\tilde{p}_{gz})$ is not a choice variable:
+%
+\begin{small}
+    \begin{align}
+        \frac{\diff \Pi_{gz}(x,v)}{\diff v}: \quad & c_{g}^{v,0} \frac{\diff c_{g}^{v}(v)}{\diff v} = (\tilde{p}_{gz} - x) \frac{1}{V_{gz}} \left( \frac{ u_{gz} + (1 - u_{gz}) s_{g}^{E} G_{gz}(x) + s_{g}^{G} }{\delta_{g}(\tilde{p}_{gz}) + \lambda_{gz}^{G} + \lambda_{gz}^{E} \left[1 - F_{gz}(x)\right]} \right)  \mu_{gz} \lambda_{gz}^{U}   \label{deltanote:eq:hetdelta_focv} \\
+        \frac{\diff \Pi_{gz}(x,v)}{\diff x}: \quad & l(x,v) = (\tilde{p}_{gz} - x) \lambda_{g}^{E} f_{gz}(x) \frac{v}{V_{gz}} \left( \frac{ u_{gz} + (1 - u_{gz}) s_{g}^{E} G_{gz}(x) + s_{g}^{G} }{\left[ \delta_{g}(\tilde{p}_{gz}) + \lambda_{gz}^{G} + \lambda_{gz}^{E} \left[1 - F_{gz}(x)\right] \right]^{2}} \right)  \mu_{gz} \lambda_{gz}^{U} \nonumber \\
+        & + (\tilde{p}_{gz} - x) \frac{v}{V_{gz}} \left( \frac{ (1 - u_{gz}) s_{g}^{E} g_{gz}(x) }{ \delta_{g}(\tilde{p}_{gz}) + \lambda_{gz}^{G} + \lambda_{gz}^{E} \left[1 - F_{gz}(x)\right] } \right)  \mu_{gz} \lambda_{gz}^{U} \label{deltanote:eq:hetdelta_focx}
+    \end{align}
+\end{small}
+%
+Equations \eqref{deltanote:eq:hetdelta_focv} and \eqref{deltanote:eq:hetdelta_focx} are more general versions of equations \eqref{eq:FOC_1_new} and \eqref{eq:FOC_1_new}, where we allow $\delta_{g}(\tilde{p}_{gz}$ to be a decreasing function of $\tilde{p}_{gz}$. Equation \eqref{deltanote:eq:hetdelta_focx} can be further simplified as:
+%
+\begin{align}
+    1 = & (\tilde{p}_{gz} - x) \left( \frac{\lambda_{g}^{E} f_{g}(x)}{ \delta_{g}(x) + \lambda_{gz}^{G} + \lambda_{gz}^{E} \left[1 - F_{gz}(x)\right] } + \frac{ (1 - u_{gz}) s_{g}^{E} g_{gz}(x) }{ u_{gz} + (1 - u_{gz}) s_{g}^{E} G_{gz}(x) + s_{g}^{G} } \right)  \label{deltanote:eq:hetdelta_focx2}
+\end{align}
+%

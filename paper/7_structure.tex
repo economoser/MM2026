@@ -1,0 +1,221 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\sectionseven}\label{sec:structure}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We now use the estimated model to shed light on the structure of employer compensation by gender.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Intersectoral Differences in Employer Pay, Amenity Valuations, and Ranks\label{subsec:industry_diff}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Grouping our estimates into \input{text/txt_N_ind85_2.tex} sectors, Figure \ref{fig:ind_ranks_x_w} plots mean employer ranks against mean pay ranks for men in Panel \subref{fig:ind_ranks_x_w_A} and for women in Panel \subref{fig:ind_ranks_x_w_B}. The rank-pay relationship is upward-sloping for men but downward-sloping for women. For men, the highest-utility employers---e.g., the automobile sector---are also among the highest-paying ones. For women, however, there is a trade-off between higher pay and higher overall utility---e.g., the public sector offers average pay rank but has the highest utility rank. %
+%
+There are also notable gender differences across sectors. For example, the textile sector has a higher pay rank for men but a higher utility rank for women.%
+%
+\footnote{See also \citet{Sharma2023} for a comprehensive study of gender-specific monopsony power in the Brazilian textile sector.} %
+%
+Overall, this suggests that preferred employers for men are those with higher pay while the same is not true for women.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure3a.eps}}\label{fig:ind_ranks_x_w_A}}%
+    \subfloat[Women]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure3b.eps}}\label{fig:ind_ranks_x_w_B}}%
+    %
+    \caption{Sectoral employer ranks against employer pay ranks, by gender\label{fig:ind_ranks_x_w}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows ranks of employer utility ($x_{g}$) against ranks of employer pay ($w_{g}$) for men in Panel \subref{fig:ind_ranks_x_w_A} and for women in Panel \subref{fig:ind_ranks_x_w_B} across \input{text/txt_N_ind85_2.tex} sectors. Marker sizes represent employment weights on which the linear fit lines are based. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+Figure \ref{fig:ind_ranks_x_a} plots the estimated employer rank-amenity relationship across the same sectors for men in Panel \subref{fig:ind_ranks_x_a_A} and for women in Panel \subref{fig:ind_ranks_x_a_B}. For men, mean employer ranks are approximately flat across amenity ranks, suggesting that amenities are not a key determinant of utility for men. For women, however, the rank-amenity relationship is steeply increasing. Therefore, for women more so than for men, employer amenities are a key determinant of overall utility.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure4a.eps}}\label{fig:ind_ranks_x_a_A}}%
+    \subfloat[Women]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure4b.eps}}\label{fig:ind_ranks_x_a_B}}%
+    %
+    \caption{Sectoral employer ranks against employer amenity ranks, by gender\label{fig:ind_ranks_x_a}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows ranks of employer utility ($x_{g}$) against ranks of employer amenity valuations ($\beta_{g} a_{g}$) for men in Panel \subref{fig:ind_ranks_x_a_A} and for women in Panel \subref{fig:ind_ranks_x_a_B} across \input{text/txt_N_ind85_2.tex} sectors. Marker sizes represent employment weights on which the linear fit lines are based. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Importance of Amenity Valuations in Total Compensation\label{subsec:amenities_wage_utility}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Next, we turn to the relative importance of wages versus amenity valuations in total compensation across employers for men and women. %
+%
+Figure \ref{fig:dist_wage_amenity} shows the gender-specific distributions of pay and amenity valuations. The distribution of pay in Panel \subref{fig:dist_wage_amenity_A} is repeated, for comparison, from the empirical analysis in Section \ref{subsec:emp_het}. The distribution of amenity values in Panel \subref{fig:dist_wage_amenity_B} shows that women are more concentrated than men at employers offering high amenity values. Women's mean log amenity value is $\input{text/txt_mean_log_pi_f.tex}$, while men's is $\input{text/txt_mean_log_pi_m.tex}$, implying a gender amenity gap of $\input{text/txt_gap_log_pi.tex}$ log points.%
+%
+\footnote{We compare pay, amenity valuations, and total compensation in logarithms, consistent with the empirical analysis of log pay. The conversion between levels and logs is purely for presentation purposes and inconsequential to our analysis.} %
+%
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Pay]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure5a.eps}}\label{fig:dist_wage_amenity_A}}%
+    \subfloat[Amenity valuations]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure5b.eps}}\label{fig:dist_wage_amenity_B}}%
+    %
+    \caption{Estimated distributions of pay and amenity valuations, by gender\label{fig:dist_wage_amenity}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows the gender-specific employment-weighted distributions of log pay ($\ln w_{g}$) in Panel \subref{fig:dist_wage_amenity_A} and of log amenity valuations ($\ln(\beta_{g} a_{g})$) in Panel \subref{fig:dist_wage_amenity_B}. The grey patterned vertical lines show the population means for the corresponding gender $g \in \{ M, F \}$. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+The structure of pay and amenity valuations has important implications for gender-specific firm rankings. Figure \ref{fig:components_ranks} shows the relative values of pay, amenity valuations, and total compensation throughout the firm ladder. Relative to bottom-ranked firms, total compensation increases by around \input{text/txt_log_x_m_range.tex} log points for men and \input{text/txt_log_x_f_range.tex} log points for women toward top-ranked firms. For men, more than the full increase in total compensation is due to higher pay at higher firm ranks, while amenity valuations actually decline across the bottom four rank quintiles. For women, pay is relatively flat throughout most of the distribution, so most of the increase in total compensation across firm ranks is due to higher amenity valuations.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure6a.eps}}\label{fig:components_ranks_A}}%
+    \subfloat[Women]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure6b.eps}}\label{fig:components_ranks_B}}%
+    %
+    \caption{Pay, amenity valuations, and total compensation across employer ranks, by gender\label{fig:components_ranks}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows the relative values of log pay ($\ln w_{g}$), log amenity valuations ($\ln(\beta_{g} a_{g})$), and log total compensation ($\ln x_{g}$) across firm ranks ($r_{g}$) separately for men in Panel \subref{fig:components_ranks_A} and for women in Panel \subref{fig:components_ranks_B}. All log values are normalized to zero for the gender-specific group of bottom-ranked employers. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+Next, we inspect amenity shares in total compensation, $\beta_{g} a_{g}/(w_{g} + \beta_{g} a_{g})$. %
+%
+Panel \subref{fig:amenity_shares_A} of Figure \ref{fig:amenity_shares} shows the density of amenity shares. For both men and women, amenity shares range from zero at the low end to approximately three-quarters at the high end. The mean amenity share is {$\input{text/txt_pi_share_m_mean.tex}$\%} for men and {$\input{text/txt_pi_share_f_mean.tex}$\%} for women. Overall dispersion in amenity shares is lower for women than for men. %
+%
+Panel \subref{fig:amenity_shares_B} shows the estimated amenity shares across employer ranks $r_{g}$. For men, the amenity share is decreasing across most employer ranks. For women, the amenity share is mostly flat and then spikes up in the top decile.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Distribution of amenity shares, by gender]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure7a.eps}}\label{fig:amenity_shares_A}}%
+    \subfloat[Amenity shares across ranks, by gender]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure7b.eps}}\label{fig:amenity_shares_B}}%
+    %
+    \caption{Distribution of amenity shares in total compensation, by gender\label{fig:amenity_shares}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        Panel \subref{fig:amenity_shares_A} of this figure shows the gender-specific employment-weighted distribution of amenity shares in total compensation ($a_{g}/(w_{g} + a_{g})$). The grey patterned vertical lines show the population means for the corresponding gender $g \in \{ M, F \}$. Panel \subref{fig:amenity_shares_B} of this figure shows the amenity share in total compensation ($a_{g}/(w_{g} + a_{g})$) across employer ranks ($r_{g}$) separately by gender $g \in \{ M, F \}$. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%
+
+\label{revision_2:editor_comment_4}A potentially important consideration in interpreting these results is sectoral heterogeneity, in particular, the role of the public sector. In Supplemental Appendix \ref{subsec:public_sector}, we conduct a series of analyses to investigate the sensitivity of our results to the in-sample presence of public-sector employers, which form an important part of the Brazilian labor market in general, and more so for women than for men. However, we estimate relatively stable magnitudes of pay gaps, amenity-valuation gaps, and total-compensation gaps across genders in the private sector as well as in the public sector. In this sense, our main results are not sensitive to the presence of the public sector.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Employer Pay Dispersion Reflecting Utility Dispersion\label{subsec:dispersion}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Our framework's ability to account for differences in amenity valuations across employers allows us to revisit hitherto documented facts about labor market inequality. As shown in Table \ref{tab:var_pay_decomp}, the variance of log employer pay is $\input{text/txt_var_log_w_m.tex}$ for men and $\input{text/txt_var_log_w_f.tex}$ for women. Taken at face value, such dispersion in pay for identical workers across employers suggests significant labor market imperfections for both genders. However, we find that the variance of log total compensation across employers is $\input{text/txt_var_log_x_m.tex}$ (i.e., $\input{text/txt_var_x_share_m.tex}$\% of pay dispersion) for men and $\input{text/txt_var_log_x_f.tex}$ (i.e., $\input{text/txt_var_x_share_f.tex}$\% of pay dispersion) for women. Thus, the lion's share of firm pay differences is explained by compensating differentials due to firm amenities, with only a small fraction reflecting differences in utility. As a result, looking only at differences in pay across employers vastly overstates labor market inequality for both men and women.%
+%
+\footnote{This result mirrors a similar finding by \citet{LamadonMogstadSetzler2022} who estimate a model without search frictions for the U.S. labor market. What is striking is that we find a similarly small role for utility dispersion across firms using a model with search frictions for a labor market characterized by significant imperfections in a developing-country context.} %
+%
+
+%
+\begin{table}[htbp!]
+    \caption{Decomposition of employer pay dispersion into utility and amenity terms}
+    \label{tab:var_pay_decomp}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table10.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows the variance and covariance components of log pay ($\ln w$). To this end, we define ``amenities'' as the utility-to-wage ratio $\tilde{a} = x/w$ so that $\ln w + \ln \tilde{a} = \ln x$. The variance components correspond to the variance decomposition $Var(\ln w) = Var(\ln x) + Var(\ln \tilde{a}) - 2 Cov(\ln x, \ln \tilde{a})$. The covariance components correspond to the covariance decomposition $Var(\ln w) = Cov(\ln w, \ln x) - Cov(\ln w, \ln \tilde{a})$. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gender Gaps in Pay, Amenity Valuations, and Total Compensation\label{subsec:gaps_pay_amenities_utility}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+While there is a gender pay gap of $\input{text/txt_gap_log_w.tex}$ log points, we find a gender amenity-valuation gap of $\input{text/txt_gap_log_pi_tilde.tex}$ log points in favor of women. As a result, the gender gap in total compensation is $\input{text/txt_gap_log_x.tex}$ log points (i.e., $\input{text/txt_gap_log_x_share.tex}$\% of the pay gap). That the total compensation gap is lower than the pay gap is a direct consequence of the fact that women work at employers with higher amenity-valuation shares in total compensation.
+
+To shed light on the gender gaps in pay, amenity valuations, and total compensation, Table \ref{tab:oaxaca_blinder_all} shows Kitagawa-Oaxaca-Blinder decompositions into gaps between versus within employers.%
+%
+\footnote{We obtain similar decomposition results for the whole economy (Table \ref{tab:oaxaca_blinder_all}), the private sector only, or the public sector only.} %
+%
+The first row, repeated from the empirical analysis in Section \ref{sec:Empirical-Gender-Gaps}, shows that the majority share of the gender pay gap is between employers. %
+%
+The second row shows that the gender amenity-valuation gap of $\input{text/txt_gap_log_pi_tilde.tex}$ log points is due to a larger between-employer component of $\input{text/txt_kob_level_between_1_log_pi_tilde.tex}$ log points, reflecting the sorting of women into high-amenity-valuation firms, and an offsetting within-employer component of $\input{text/txt_kob_level_within_1_log_pi_tilde.tex}$ log points, reflecting the amenity premium that men enjoy over women at the same firm. %
+%
+Altogether, the gender gap in total compensation of $\input{text/txt_gap_log_x.tex}$ log points is almost entirely accounted for by the within-employer gap. This suggests that in order to close the gender utility gap, we need to inspect factors leading to unequal treatment of men and women within the same employer---such as the gender wedges $\tau$ in our model.%
+%
+\footnote{Supplemental Appendix \ref{app:hetero_delta_results} compares the estimation results between our baseline model and the model extension where we allow separation rates to be heterogeneous and nonincreasing in firm ranks. We demonstrate that our estimates are comparable and that the decomposition results are largely similar to those presented here.} %
+%
+
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions of gaps in pay, amenity valuations, and total compensation}
+    \label{tab:oaxaca_blinder_all}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table11.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gaps in log pay ($\ln w$), log amenity valuations ($\ln \tilde{a} = \ln(x/w)$), and log total compensation ($\ln x$) into a between-employer and a within-employer gap. To this end, we define ``amenity valuations'' as the utility-to-wage ratio $\tilde{a} = x/w$ so that $\ln w + \ln \tilde{a} = \ln x$. All decompositions are based on equation \eqref{eq:oaxaca_blinder_A_short}. Table \ref{tab:oaxaca_blinder} in Supplemental Appendix \ref{app:oaxaca_blinder} as well as Tables \ref{tab:kob_amenities}--\ref{tab:kob_utility} in Supplemental Appendix \ref{subsec:kob_alt} show alternative decompositions using men's compensation for computing the between-employer component of pay, amenity valuations, and total compensation, respectively. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+At this point, it is worth taking a step back and highlighting the significance of the results in Table \ref{tab:oaxaca_blinder_all} in light of existing work on gender pay differences within and between firms \citep[e.g.,][]{CardCardosoKline2016}. Like \citet{CardCardosoKline2016} for Portugal---see Table III on p.\ 667 of their published paper---we find a significant gender gap in firm pay that is mostly between employers (i.e., due to ``sorting'') rather than within employers (i.e., due to ``bargaining''). At the same time, our estimated model suggests that there is a gap in firm amenity valuations in favor of women, which leads the total-compensation gap to be less than half of the pay gap. Strikingly, women sort into employers with relatively high amenity levels compared to the average amenity level enjoyed by men, giving rise to a large negative between-employer amenity-valuation gap. This is partly offset by women enjoying lower amenity levels than men within the same employers, giving rise to a positive within-employer amenity-valuation gap. In other words, women gravitate toward employers with relatively high amenity valuations but they still enjoy lower amenity valuations than their male coworkers at those employers. As a result, the total-compensation gap is almost entirely within, rather than between, employers. These results suggest a novel interpretation of reduced-form wage regressions akin to those in \citet{CardCardosoKline2016} and our paper's Section \ref{sec:Empirical-Gender-Gaps}. Our structural estimates reinforce the finding by \citet{CardCardosoKline2016} that women get lower rents at highly productive firms, which they interpreted as being due to (lack of) bargaining but which our structural model rationalizes through equilibrium behavior reflected in firm posting and worker job mobility patterns that differ across genders.
+
+For brevity, we defer to the supplementary materials some additional results on different margins of gender discrimination (Supplemental Appendix \ref{subsec:amenities_wedges}), the implications of our framework for estimates of firm productivity (Supplemental Appendix \ref{subsec:pay_amenities_ladders}), and the effects of switching employment and compensation policies across genders (Supplemental Appendix \ref{subsec:switching}).

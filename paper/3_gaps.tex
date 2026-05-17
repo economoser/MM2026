@@ -1,0 +1,159 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\sectionthree}\label{sec:Empirical-Gender-Gaps}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The goal of this section is to highlight the roles of employer pay heterogeneity, worker sorting across employers, and workplace amenities in relation to the gender pay gap.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Measuring Gender-Specific Employer Pay\label{subsec:emp_het}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We begin by estimating a variant of \citeauthor{CardCardosoKline2016}'s \citeyearpar{CardCardosoKline2016} extension of the seminal two-way FEs framework due to AKM, which allows for gender-specific employer pay components. Formally, we model log earnings of individual $i$ in year $t$ working at employer $j = J(i,t)$, denoted by $\ln w_{ijt}$, as
+%
+\begin{align}
+  \ln w_{ijt} &= \alpha_{i} + \psi_{G(i)j} + X_{it}\beta_{G(i)} + \varepsilon_{ijt}, \label{eq:akm}
+\end{align}
+%
+where $\alpha_{i}$ is a person FE; %
+%
+$\psi_{G(i)j}$ is a gender-specific employer FE for workers of gender $G(i) \in \{ M, F \}$; %
+%
+$X_{it}$ is a vector of time-varying worker characteristics including a set of restricted education-age dummies as well as dummies for hours, occupation, tenure, actual experience, and education-year combinations, all subject to gender-specific returns $\beta_{G(i)}$; %
+%
+and $\varepsilon_{ijt}$ is a residual.%
+%
+\footnote{To simultaneously identify age, time, and worker FEs, we restrict the age-pay profile be flat around ages 45--49. We view this as an attractive alternative to the approach advocated by \citet{CardCardosoHeiningKline2018}, since it allows us to verify that our restriction leads to smooth education-age FEs around this age window. See Supplemental Appendix Figure \ref{fig:akm_edu_age} for details.} %
+%
+By including person FEs, we control for selection of men and women across employers based on time-invariant worker pay characteristics. Our focus lies in the distribution of gender-specific employer FEs $\psi_{Mj}$ and $\psi_{Fj}$.
+
+Any two-way FE model requires a normalization of the level of employer FEs relative to person FEs. In our case, the inclusion of gender-specific employer FEs in equation \eqref{eq:akm} requires two normalizations---one for each gender.%
+%
+\footnote{To see this, note that we could transform $\alpha_{i} \mapsto \alpha_{i} + k$ and $\psi_{G(i)j} \mapsto \psi_{G(i)j} - k$ for all workers $i$ of a given gender $g = G(i)$, for any constant $k \in \mathbb{R}$, without changing the sum of the components in equation \eqref{eq:akm}.} %
+%
+In previous work, \citet{CardCardosoKline2016} normalized the FEs of employers in each connected set to have a mean of zero in the restaurant and fast-food sector, which they argued has a low surplus. However, those papers were concerned only with employer heterogeneity in pay. Our setting with gender-specific amenities and compensating differentials calls for a different normalization of employer FEs, which we derive in Supplemental Appendix \ref{subsec:norm_firm_pay} based on the theoretical framework presented in Section \ref{sec:Model}. Guided by our theory, we would like to normalize employer pay for a subset of employers that (i) rank near the bottom in the utility ladder for both genders; (ii) treat men and women as near-perfect substitutes in production; and (iii) provide a similar (e.g., close to zero) amenity value to men and women who they employ. We impose condition (i) based on our empirical estimates of revealed-preference ranks derived in Section \ref{subsec:identification_ranks}. We further assume that workers in the restaurant and fast-food sector satisfy conditions (ii) and (iii), which we think of as a reasonable assumption given the nature of jobs in this sector.
+
+We now turn to our object of interest in equation \eqref{eq:akm}---namely, the gender-specific employer FEs.%
+%
+\footnote{Supplemental Appendix \ref{app:akm} shows auxiliary results relating to the AKM equation, including estimated gender-specific hours FEs (Figure \ref{fig:akm_hours}), occupation FEs (Figure \ref{fig:akm_occ}), actual-experience FEs (Figure \ref{fig:akm_exp_act}), tenure FEs (Figure \ref{fig:akm_tenure}), education-year FEs (Figure \ref{fig:akm_edu_year}), and education-age FEs (Figure \ref{fig:akm_edu_age}). Further tests of the log-additivity and exogenous mobility assumptions of similar specifications and data are presented in \citet{AlvarezBenguriaEngbomMoser2018} and \citet{EngbomMoser2022a}.} %
+%
+Panel \subref{fig:akm_fe_A} of Figure \ref{fig:akm_fe} plots the distribution of employer FEs by gender. The distribution for women has a visibly lower mean and lower variance than that for men. Panel \subref{fig:akm_fe_B} of the figure shows the distribution of within-employer differences in FEs for dual-gender employers. The distribution is relatively dispersed compared to its mean. Altogether, this evidence suggests that the sorting of women into lower-paying employers is a significant source of gender pay differences.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Gender-specific employer FE distributions]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure1a.eps}}\label{fig:akm_fe_A}}%
+    \subfloat[Distribution of within-employer FE differences]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure1b.eps}}\label{fig:akm_fe_B}}
+    %
+    \caption{Predicted AKM employer FEs for women and men\label{fig:akm_fe}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows kernel density plots of estimated gender-specific employer FEs based on estimating the earnings equation \eqref{eq:akm}. Panel \subref{fig:akm_fe_A} shows the distributions of gender-specific employer FEs $\psi_{gj}$ separately by gender. Panel \subref{fig:akm_fe_B} shows the distribution of within-employer FE differences $\psi_{Mj} - \psi_{Fj}$ weighted by total employment. Vertical patterned lines show the means of the respective distributions. 
+        %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata
+    \end{figurenotes}
+\end{figure}
+%
+
+To dissect the structure of pay and the relative contribution of employer heterogeneity, Table \ref{tab:akm_decomp} presents a variance decomposition of log earnings based on both the conventional plug-in estimator and the leave-out estimator by \hyperref[sec:bib]{Kline, Saggio, and S{\o}lvsten }(\hyperref[sec:bib]{2020}, henceforth KSS), which uses a jackknife correction for limited-mobility bias.%
+%
+\footnote{\citet{EngbomMoser2022a} show that the leave-out estimator by KSS delivers substantially similar results for a sample of men across time periods from 1994--2018 in the same RAIS data from Brazil. For a discussion of limited-mobility bias and alternative ways to address it, see \citet{BonhommeLamadonManresa2019}, \citet{BorovickovaShimer2020}, and \citet{BonhommeHolzheuLamadonManresaMogstadSetzler2023}.} %
+%
+Men have a slightly higher raw (conditional) variance of earnings, with \input{text/txt_akm_var_m.tex} (\input{text/txt_akm_kss_var_y_1.tex}) log points, compared to \input{text/txt_akm_var_f.tex} (\input{text/txt_akm_kss_var_y_2.tex}) log points for women. %
+%
+For both genders, the largest plug-in (leave-out) variance component is due to estimated worker FEs, which account for \input{text/txt_akm_var_pers_fe_sh_m.tex}\% (\input{text/txt_akm_kss_share_var_pe_leaveout_1.tex}\%) for men and \input{text/txt_akm_var_pers_fe_sh_f.tex}\% (\input{text/txt_akm_kss_share_var_pe_leaveout_2.tex}\%) for women. %
+%
+Importantly for us, the plug-in (leave-out) estimates of employer FEs account for \input{text/txt_akm_var_emp_fe_sh_m.tex}\% (\input{text/txt_akm_kss_share_var_fe_leaveout_1.tex}\%) of the variance of log earnings for men and \input{text/txt_akm_var_emp_fe_sh_f.tex}\% (\input{text/txt_akm_kss_share_var_fe_leaveout_2.tex}\%) of that for women. The close similarity of the plug-in versus leave-out estimates of the variance of employer FEs suggests that the latter are precisely estimated, alleviating concerns about limited-mobility bias in our sample. Overall, these estimates suggest that employer heterogeneity explains a substantial share of earnings dispersion for both genders. %
+%
+The plug-in (leave-out) estimate of the correlation between person and employer FEs is around \input{text/txt_akm_corr_pers_emp_m.tex}\% (\input{text/txt_akm_kss_corr_fe_pe_leaveout_1.tex}\%) for men and \input{text/txt_akm_corr_pers_emp_f.tex}\% (\input{text/txt_akm_kss_corr_fe_pe_leaveout_2.tex}\%) for women. %
+%
+Finally, the plug-in (leave-out) estimate of the coefficient of determination or $R^{2}$ is upward of \input{text/txt_akm_r2.tex}\% (\input{text/txt_akm_kss_r_2_leaveout_1.tex}\%).
+
+%
+\begin{table}[htbp!]
+    \caption{Variance decompositions based on plug-in and leave-out estimates}
+    \label{tab:akm_decomp}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table2.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows the variance components of log earnings based on equation \eqref{eq:akm}. %
+        The variance components correspond to the variance decomposition $Var(\ln w_{ijt}) = Var(\alpha_{i}) + Var(\psi_{G(i)j}) + Var(X_{it}\beta_{G(i)}) + 2 \sum Cov(\cdot) + Var(\varepsilon_{ijt})$. The ``plug-in'' columns refer to conventional plug-in estimates, while the ``leave-out'' columns refer to estimates that correct for limited-mobility bias, following KSS. The variances shown in the ``plug-in'' columns are the variances of raw log earnings, while those in the ``leave-out'' columns are the variances of residualized log earnings conditional on the same controls as those in equation \eqref{eq:akm}.
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcedata
+    \end{tablenotes}
+\end{table}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gender Differences in Sorting Across Employer Pay and Amenities\label{subsec:between_vs_within}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Our starting point is a total gender gap in employer FEs of \input{text/txt_kob_gender_gap_log_w.tex} log points---see the last row of Table \ref{tab:akm_decomp}.
+%
+It is worth noting that this constitutes \input{text/txt_sum_stats_gap_share_fe_earn.tex}\% of the overall gender pay gap of \input{text/txt_sum_stats_earn_gap.tex} log points from Table \ref{tab:sum_stats_main_text} above. The significant role of firms in explaining the gender pay gap is striking in comparison to previous work by \citet[][Table III]{CardCardosoKline2016}, who report that around 21\% of the gender wage gap in Portugal is attributable to firm components. That firms play a larger role in our context can be rationalized by the baseline gender pay gap increasing significantly after the inclusion of Mincerian controls for education, as well as the overall importance of firms in explaining pay dispersion in Brazil \citep{AlvarezBenguriaEngbomMoser2018, EngbomMoser2022a, FirpoPortella2025}.
+%
+
+We closely follow \citet{CardCardosoKline2016} in dissecting the employer pay gap into between- versus within-employer parts. A Kitagawa-Oaxaca-Blinder decomposition allows us to write the total gender gap in employer FEs as
+%
+\begin{align}
+    &\underbrace{\left(\mathbb{E}\left[\left.\psi_{MJ(i,t)}\right| G(i) = M\right] - \mathbb{E}\left[\left.\psi_{MJ(i,t)}\right| G(i) = F\right]\right)}_{\text{between-employer gap}} \notag \\
+    + &\underbrace{\mathbb{E}\left[\left.\psi_{MJ(i,t)} - \psi_{FJ(i,t)}\right| G(i) = F\right]}_{\text{within-employer gap}}, \label{eq:oaxaca_blinder_A_short}%
+\end{align}
+%
+where $\mathbb{E}[\cdot]$ is the mean operator across individuals $i$ and years $t$. %
+Equation \eqref{eq:oaxaca_blinder_A_short} decomposes the gender gap in employer FEs into two terms. %
+%
+The \emph{between-employer pay gap} is the gender-weighted difference in mean male-employer FEs. It reflects differences in pay between men and women that are due to their different allocations across employers. %
+%
+The \emph{within-employer pay gap} is the mean difference in gender-specific employer FEs weighted by the distribution of women. It reflects differences in pay between women and men at the same employer.%
+%
+\footnote{To see that the between-employer gap is invariant to the normalization of gender-employer FEs, note that for any $k \in \mathbb{R}$, $%
+    \mathbb{E} [ \psi_{gJ(i,t)} + k | G(i) = M ] - \mathbb{E} [ \psi_{gJ(i,t)} + k | G(i) = F ] %
+    = \mathbb{E} [ \psi_{gJ(i,t)} | G(i) = M ] - \mathbb{E} [ \psi_{gJ(i,t)} | G(i) = F ] %
+$ for $g \in \{ M, F \}$. The within-employer gap, on the other hand, depends on the normalization of gender-employer FEs, as discussed in the text.} %
+%
+
+Results from the decomposition in equation \eqref{eq:oaxaca_blinder_A_short} are shown in Table \ref{tab:oaxaca_blinder_short}. Out of the total gender gap in employer FEs of \input{text/txt_kob_gender_gap_log_w.tex} log points, a majority share of \input{text/txt_kob_share_between_1_log_w.tex}\% is attributed to the between-employer pay gap. This suggests that women, compared to men, systematically work at lower-paying employers and that gender-specific sorting accounts for most of the gender pay gap.%
+%
+\footnote{An alternative decomposition using women's employer FEs for computing the between-employer component is presented in Supplemental Appendix Table \ref{tab:oaxaca_blinder}. Supplemental Appendix Figure \ref{fig:oaxaca_blinder_components} illustrates the estimates underlying the two decompositions.} % 
+%
+These findings accord well with other contexts: Combining the within-employer pay gap of \input{text/txt_kob_level_within_1_log_w.tex} log points in Table \ref{tab:oaxaca_blinder_short} with the mean of men's employer FEs of \input{text/txt_akm_mean_fe_m.tex} log points in Table \ref{tab:akm_decomp}, we conclude that women have a relative rent-sharing disadvantage of \input{text/txt_kob_level_within_1_log_w.tex}$/$\input{text/txt_akm_mean_fe_m.tex} $=$ \input{text/txt_kob_bargaining_disadvantage.tex}\%, compared to the 10\% rent-sharing disadvantage reported by \citet[][p.\ 618]{CardCardosoKline2016} for Portugal.
+
+%
+\begin{table}[htbp!]
+    \caption{Kitagawa-Oaxaca-Blinder decompositions of the gender gap in employer FEs}
+    \label{tab:oaxaca_blinder_short}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table3.tex}
+    }
+    %
+    \begin{tablenotes}
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the gender gap in employer FEs into a between-employer gap and a within-employer gap. The decomposition corresponds to equation \eqref{eq:oaxaca_blinder_A_short} and uses men's employer FEs for computing the between-employer component. An alternative decomposition using women's employer FEs for computing the between-employer component is presented in Table \ref{tab:oaxaca_blinder} in Supplemental Appendix \ref{app:oaxaca_blinder}.
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcedata
+    \end{tablenotes}
+\end{table}
+%
+
+While there are many causes behind gendered sorting across employers, we are particularly interested in quantifying the extent to which both pay and nonpay employer attributes contribute toward the gender pay gap. To this end, we develop an empirical equilibrium model of firm heterogeneity in pay, amenities, and employment.%
+%
+\footnote{Beyond labor-demand-side factors related to firms' pay and nonpay attributes, labor-supply-side factors could be important. In our structural analysis, we allow for gender differences in labor market attachment and job mobility. Our framework is flexible enough to allow for the separate analysis of more granular population subgroups---for example, different education groups or worker groups split by age group or parental status.} %
+%

@@ -1,0 +1,351 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\sectionfour}\label{sec:Model}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section, we develop an equilibrium search model based on the seminal framework by \citet{BurdettMortensen1998} that features endogenous firm pay, amenities, and hiring that may differ across workers of different genders. Our main contribution is to use such a framework to shed new light on the fundamental drivers behind gender gaps in pay, amenities, and employment across firms.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Workers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Workers are infinitely lived, risk-neutral, and discount the future at a rate $\rho$. They differ in their \emph{gender} $g \in \{M, F\}$ and \emph{ability} $z > 0$, with associated measure $\mu_{gz} \ge 0$ satisfying $\sum_{g} \int_{z} \mu_{gz} \diff z = 1$.
+
+
+\paragraph{Job Search.}
+
+Workers find themselves either employed or nonemployed.%
+%
+\footnote{Throughout the paper, we think of ``nonemployed'' workers in the model as capturing real-world workers who are not formally employed---that is, those who are unemployed, on temporary parental or other leave, marginally attached to the labor force, or in informal employment. When mapping the model to the data, our estimation of labor market parameters will take into account that some workers may spend longer periods outside of formal employment due to these factors.} %
+%
+From both states, they engage in random job search within labor markets segmented by worker type. Search is random in the sense that workers cannot direct their search to specific firms. Labor markets are segmented in the sense that workers search for jobs in a market specific to their type.
+
+While employed, a worker of type $(g, z)$ at firm $j$ receives flow utility from total compensation $x = w + \beta_{g}(j) a$, where $w \ge 0$ is the monetary wage, $a \ge 0$ is a workplace amenity, and $\beta_{g}(j) > 0$ is the relative preference weight on amenities for workers of gender $g$ at firm $j$.%
+%
+\footnote{With ``preferences,'' we have in mind the induced demand for certain workplace amenities and other employer characteristics due to household arrangements and societal norms that differ across men and women \citep{Goldin2014, Goldin2024}.} %
+%
+While nonemployed, a worker of type $(g, z)$ receives flow utility from home production $x = b_{g} z$ for some $b_{g} \in \mathbb{R}$.
+
+Workers receive voluntary job offers at a rate $\lambda_{gz}^{U}$ from nonemployment and at a rate $\lambda_{gz}^{E}$ from employment. While those job offers allow for free disposal, workers also receive involuntary job offers at a rate $\lambda_{gz}^{G}$, which captures idiosyncratic reasons for switching jobs. We write $\lambda_{gz}^{E} = s_{g}^{E} \lambda_{gz}^{U}$ and $\lambda_{gz}^{G} = s_{g}^{G} \lambda_{gz}^{U}$, where $s_{g}^{E} > 0$ and $s_{g}^{G} \ge 0$ are the relative hazards of voluntary and involuntary on-the-job offers, which may differ by gender $g$.
+
+A job offer is an opportunity to work at a firm with wage $w$ and amenity level $a$. Since workers of type $(g, z)$ rank a firm $j$ according to its flow utility $x = w + \beta_{g}(j) a$, their decisions depend only on the flow-utility offer distribution $F_{gz}(x)$ and not additionally on the distribution of $(w, a)$.
+
+Jobs are endogenously terminated when a worker of type $(g, z)$ with flow utility $x$ accepts a higher-utility job at rate $\lambda_{gz}^{E}(1 - F_{gz}(x))$. Jobs are exogenously terminated either when the worker moves into nonemployment at rate $\delta_{g}$ or when the worker relocates to a randomly drawn job at rate $\lambda_{gz}^{G}$.%
+%
+\footnote{In Supplemental Appendix \ref{app:hetero_delta_model}, we present a version of our model with heterogeneity in firm-level separation rates, as in \citet{Jarosch2023}, which we assume to be nonincreasing in firm ranks. Later, we discuss the identification of this more general model and its quantitative implications for our estimates.} %
+%
+
+
+\paragraph{Value Functions.}
+
+The Hamilton-Jacobi-Bellman (HJB) equation for an employed worker of type $(g, z)$ in a job with flow utility $x$ is
+%
+\begin{align}
+    \rho S_{gz}(x) &= x + \lambda_{gz}^{E} \int_{x' \ge x} \left[ S_{gz}(x') - S_{gz}(x) \right] \diff F_{gz}(x') \notag \\
+    &\quad + \lambda_{gz}^{G} \int_{x'} \left[ S_{gz}(x') - S_{gz}(x) \right] \diff F_{gz}(x') + \delta_{g} \left[ W_{gz} - S_{gz}(x) \right], \label{eq:value_emp}
+\end{align}
+%
+where $S_{gz}(x)$ is the value of employment of a worker of type $(g, z)$ in a job offering flow utility $x$ and $W_{gz}$ is the value of nonemployment of a worker of type $(g, z)$.
+
+Analogously, the HJB equation for a nonemployed worker of type $(g, z)$ is
+%
+\begin{align}
+    \rho W_{gz} = b_{g} z + (\lambda_{gz}^{U} + \lambda_{gz}^{G}) \int_{x'} \max \left\{ S_{gz}(x') - W_{gz}, 0 \right\} \diff F_{gz}(x') . \label{eq:value_unemp}
+\end{align}
+%
+
+
+\paragraph{Policy Functions.}
+
+Strict monotonicity of $S_{gz}(x)$ in $x$ implies that optimal job acceptance of the nonemployed follows a threshold rule with reservation flow utility $\phi_{gz} \in \mathbb{R}$ such that a nonemployed worker accepts an offer if $x \ge \phi_{gz}$ and rejects it otherwise. Clearly, $\phi_{gz}$ equals the sum of the flow utility in nonemployment plus the forgone option value of receiving job offers while nonemployed:
+%
+\begin{align}
+    \phi_{gz} = b_{g} z + (\lambda_{gz}^{U} - \lambda_{gz}^{E}) \int_{x' \ge \phi_{gz}} \frac{1 - F_{gz}(x')}{\rho + \delta_{g} + \lambda_{gz}^{G} + \lambda_{gz}^{E} \left[1 - F_{gz}(x')\right]} \diff x'. \label{eq:outsideoption}
+\end{align}
+%
+Employed workers in a job with flow utility $x$ simply accept any job that delivers flow utility $x' > x$.
+
+
+\paragraph{Nonemployment.}
+
+The steady-state nonemployment rate for each worker type is
+%
+\begin{align}
+    u_{gz} = \frac{\delta_{g}}{\delta_{g} + \lambda_{gz}^{U} + \lambda_{gz}^{G}}. \label{eq:market_unemployment}
+\end{align}
+%
+
+
+\paragraph{Utility Distribution.}
+
+The cross-sectional distribution of flow utilities for each worker type is
+%
+\begin{align}
+    G_{gz}(x) = \frac{F_{gz}(x)}{1 + \kappa_{gz}^{E} \left[1 - F_{gz}(x)\right]},
+    \label{eq:from_F_to_G}
+\end{align}
+%
+where $\kappa_{gz}^{E} \equiv \lambda_{gz}^{E}/(\delta_{g} + \lambda_{gz}^{G})$ governs the effective speed of climbing the firm ladder in utility space.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Firms\label{subsec:model_firms}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Firms differ in four dimensions: \emph{productivity} $p > 0$, as in \citet{BurdettMortensen1998}, a set of \emph{gender wedges} $\tau_{g} \in \mathbb{R}$ representing the firm's disutility from employing workers of gender $g$, as in \citet{becker1971}, a set of \emph{preference weights on amenities} $\beta_{g} > 0$ for workers of each gender $g$, as in \citet{Goldin2014}, and a set of \emph{amenity cost shifters} $c_{g}^{a,0} > 0$ for each gender $g$, as in \citet{HwangMortensenReed1998}. Thus, a firm's type is $(p, \{\tau_{g}\}_{g}, \{\beta_{g}\}_{g}, \{c_{g}^{a,0}\}_{g})$, which we assume is continuously distributed with CDF $\Gamma(\cdot)$.
+
+
+\paragraph{Wages, Amenities, and Vacancies.}
+
+Firms deliver value through wages $w$ and amenities $a$.%
+%
+\footnote{Supplemental Appendix \ref{app:alternative_amenities} presents an alternative model, in which firms produce an amenity vector with a gender-specific vector of preference weights on amenities, and establishes conditions for \emph{observational equivalence} and \emph{counterfactual equivalence} between the two models.} %
+%
+The flow cost of providing amenity level $a \ge 0$ to workers of type $(g, z)$ is paid per worker, as in \cite{HwangMortensenReed1998}, and given by
+%
+\begin{align}
+    c_{gz}^{a}(a) = c_{g}^{a,0} \frac{ (a/z)^{\eta^{a}} }{ \eta^{a} } z, \label{eq:amenity_cost_fn}
+\end{align}
+%
+where $\eta^{a} > 1$ is the economy-wide amenity cost elasticity. This formulation is consistent with amenities provided as piece rates relative to worker ability $z$, as for parental leaves and paid time off.
+
+To hire workers, a firm posting $v \ge 0$ job vacancies for workers of type $(g, z)$ pays a flow cost
+%
+\begin{align}
+    c_{gz}^{v}(v) = c_{g}^{v,0} \frac{v^{\eta^{v}}}{\eta^{v}} z, \label{eq:vacancy_cost_fn}
+\end{align}
+%
+where $c_{g}^{v,0} > 0$ is a gender-specific vacancy cost shifter and $\eta^{v} > 1$ is the economy-wide vacancy cost elasticity. This formulation is consistent with recruiting costs being denominated either in terms of new hires' onboarding time or in terms of identical incumbent workers' time spent on recruiting.
+
+
+\paragraph{Production.}
+
+A firm with productivity $p$ employing $\{ l_{gz} \}_{gz}$ workers of each type produces output
+%
+\begin{align}
+    y(p, \{ l_{gz} \}_{gz}) = p \sum_{g} \int_{a} z l_{gz} \diff z .
+\end{align}
+%
+
+
+\paragraph{Gender Wedges.}
+
+We allow employers to have preferences over workers' gender captured by employer-specific gender wedges $\{\tau_{g}\}_{g}$. Two popular theories that map into this gender wedge include taste-based discrimination and firm-level comparative advantages in production. Without loss of generality, we normalize $\tau_{g} = \tau \mathbf{1}[g = F]$, where $\tau \in \mathbb{R}$ captures the relative disadvantage of women relative to men at the same employer, all else (i.e., estimates of worker ability, firm productivity, preference weights on amenities, and the firm's amenity cost shifters) equal. Without loss of generality, we write gender wedges as an implicit tax on firm revenues, as in the literature on factor-input misallocation \cite[e.g.,][]{RestucciaRogerson2008}.%
+%
+\footnote{As will become clear soon, the exact functional form by which $\tau_{g}$ enters firms' payoff function (e.g., multiplicatively or additively) is immaterial for the model's identification and estimation.} %
+%
+
+
+\paragraph{Value Function.}
+
+In summary, firms post wages, amenities, and vacancies in each market to maximize their steady-state flow payoff. The value $\Pi(\cdot)$ of a firm of type $(p, \{\tau_{g}\}_{g}, \{\beta_{g}\}_{g},$ $\{c_{g}^{a,0}\}_{g})$ satisfies
+% 
+\begin{align}
+    \rho \Pi (\cdot) = \max_{\{w_{gz}, a_{gz}, v_{gz}\}_{gz}} & \left\{ \sum_{g} \int_{z} \left[ (1 - \tau_{g}) p z - w_{gz} - c_{gz}^{a}(a_{gz}) \right] l_{gz}(x_{gz}, v_{gz}) - c_{gz}^{v}(v_{gz}) \diff z \right\} \notag \\
+    & \quad \text{s.t.} \quad w_{gz} + \beta_{g} a_{gz} = x_{gz}, \quad \forall (g, z), \label{eq:firm_problem}
+\end{align}
+%
+where $l_{gz}(x_{gz}, v_{gz})$ is the equilibrium mapping from flow utility---i.e., the wages plus gender- and firm-specific amenity valuations---and vacancies into employment at a given firm.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Matching}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The effective mass of job searchers and total mass of vacancies in market $(g, z)$ are given by
+%
+\begin{align}
+    U_{gz} = \mu_{gz} \left[ u_{gz} + s_{g}^{E} (1 - u_{gz}) + s_{g}^{G} \right], \quad V_{gz} = \int_{j} v_{gz}(j) \, \diff\Gamma(j). \label{eq:aggregate_vacancies} % \label{eq:aggregate_search}
+\end{align}
+%
+A Cobb-Douglas matching function with constant returns to scale combines the mass of job searchers with the mass of vacancies to produce $m_{gz} = \chi_{g} V_{gz}^{\alpha} U_{gz}^{1 - \alpha}$ matches between workers and firms, where $\chi_{g} > 0$ is the matching efficiency and $\alpha \in (0,1)$ is the matching elasticity. Labor market tightness is
+%
+\begin{align}
+    \theta_{gz} &\equiv \frac{V_{gz}}{U_{gz}}. \label{eq:market_tightness}
+\end{align}
+%
+Workers' job-finding rates among the nonemployed, $\lambda_{gz}^{U}$, the voluntary job offer rates among the employed, $\lambda_{gz}^{E}$, the involuntary job offer rates, $\lambda_{gz}^{G}$, and firms' job-filling rates, $q_{gz}$, are given by
+%
+\begin{align}
+    \lambda_{gz}^{U} = \chi_{g} \theta_{gz}^{\alpha}, %
+    \quad %
+    \lambda_{gz}^{E} = s_{g}^{E} \lambda_{gz}^{U}, %
+    \quad %
+    \lambda_{gz}^{G} = s_{g}^{G} \lambda_{gz}^{U}, %
+    \quad \text{and} %
+    \quad%
+    q_{gz} = \chi_{g} \theta_{gz}^{\alpha - 1}. \label{eq:offer_arrival_rates}
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Firm Size Distribution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The following Kolmogorov forward equation describes employment's law of motion given a firm's flow-utility and vacancy policies $(x, v)$, the offer distribution $F_{gz}(x)$, and tightness $\theta_{gz}$ in market $(g, z)$:
+%
+\begin{align}
+    \dot{l}_{gz}(x, v) &= \left[ -\delta_{g} - \lambda_{gz}^{G} - \lambda_{gz}^{E} \left[1 - F_{gz}(x)\right] \right] l_{gz}(x, v) \notag \\
+    &\quad + \left[ \frac{u_{gz} + (1 - u_{gz}) s_{g}^{E} G_{gz}(x) + s_{g}^{G}}{u_{gz} + (1 - u_{gz}) s_{g}^{E} + s_{g}^{G}} \right] v q_{gz},
+\end{align}
+%
+Solving for the stationary employment distribution in each market $(g, z)$, firm sizes are given by
+%
+\begin{align}
+    l_{gz}(x, v) = \left( \frac{1}{\delta_{g} + \lambda_{gz}^{G} + \lambda_{gz}^{E} \left[1 - F_{gz}(x)\right]} \right)^{2} \frac{v}{V_{gz}} \mu_{gz} (u_{gz} + s_{g}^{G}) \lambda_{gz}^{U} (\delta_{g} + \lambda_{gz}^{G} + \lambda_{gz}^{E}). \label{eq:size_stationary}
+\end{align}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equilibrium Characterization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Supplemental Appendix \ref{app:def_stat_equ} defines a \emph{stationary equilibrium} of the economy. Our assumptions that markets are segmented and that technology is additively separable across worker types keep the analysis tractable by allowing us to divide the firm's problem into separate subproblems across markets. In particular, a firm with preference weight on amenities $\beta_{g}$ offering wage $w_{gz}$ and amenity level $a_{gz}$ finds itself ranked according to its flow utility $x_{gz} = w_{gz} + \beta_{g} a_{gz}$ along a firm ladder in market $(g, z)$. Next, we provide comparative statics results for the optimal policy functions of a firm of type $(p, \{\tau_{g}\}_{g}, \{\beta_{g}\}_{g}, \{c_{g}^{a,0}\}_{g})$. To this end, we first define the \emph{preference-adjusted amenity cost shifter} $\tilde{c}_{g}^{a,0} \equiv c_{g}^{a,0} / \beta_{g}$ as the ratio of the firm's amenity cost shifter to the marginal utility from amenities at that firm for workers of gender $g$.
+%
+\newcommand{\LemmaOptimalAmenities}{%
+    A firm's optimal amenity policy function $a_{gz}^{*}(\cdot)$ can be written as $a_{z}^{*}(\tilde{c}_{g}^{a,0}) = (\tilde{c}_{g}^{a,0})^{1/(1 - \eta^{a})} z$. The optimal amenity cost function $c_{gz}^{a,*}(\cdot)$ can be written as $c_{z}^{a,*}(\tilde{c}_{g}^{a,0}) = (\tilde{c}_{g}^{a,0})^{1/(1 - \eta^{a})} z/\eta^{a}$.%
+}
+%
+\begin{lemma}[Optimal Amenities]
+    \label{lem:optimal_amenities}
+    \LemmaOptimalAmenities
+\end{lemma}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_lemma_optimal_amenities}.
+\end{proof}
+%
+Due to their convex per-worker cost, amenities are offered up to the point where the ratio of a firm's marginal cost of amenities to workers' marginal utility from amenities at that firm equals the same ratio for wages, which is unity. Lemma \ref{lem:optimal_amenities} states that the preference-adjusted amenity cost shifter, $\tilde{c}_{g}^{a,0}$, is sufficient to determine the optimal amenity level and the optimal amenity cost for a given worker ability $z$. Intuitively, a firm optimally produces higher amenity levels $a^{*}$ either if it has a lower cost of providing the amenity, $c_{g}^{a,0}$, or if workers have a greater preference weight on amenities, $\beta_{g}$. An important implication of this is that we cannot distinguish between the optimal amenity level $a_{gz}^{*}$ and its preference weight $\beta_{g}$. We can only infer their product---i.e., the \emph{amenity valuation} $\beta_{g}a_{gz}^{*}$.%
+%
+\footnote{Equivalently, we could formulate a firm's type as consisting of a gender-specific wedge on the gender-neutral amenity cost shifter, which in our formulation above is absorbed in the preference weight on amenities.\label{revision_2:r2_comment_2b}} %
+%
+
+Next, we define a firm's \emph{composite productivity} in market $(g, z)$,
+%
+\begin{align}
+    \tilde{p}_{gz} \equiv (1 - \tau_{g}) p z + \beta_{g} a_{z}^{*}(\tilde{c}_{g}^{a,0}) - c_{z}^{a,*}(\tilde{c}_{g}^{a,0}), \label{eq:composite_prod}
+\end{align}
+%
+as revenues net of the gender wedge, $(1 - \tau_{g}) p z$, plus the optimized amenity valuation, $\beta_{g} a_{z}^{*}(\tilde{c}_{g}^{a,0})$, minus optimized amenity costs $c_{z}^{a,*}(\tilde{c}_{g}^{a,0})$. %
+%
+While amenities are endogenously produced in equilibrium, Lemma \ref{lem:optimal_amenities} allows us to treat the optimal amenity valuation $\beta_{g} a_{gz}^{*} = a_{z}^{*}(\tilde{c}_{g}^{a,0})$ and optimal amenity cost $c_{gz}^{a,*} = c_{z}^{a,*}(\tilde{c}_{g}^{a,0})$, and thus composite productivity $\tilde{p}_{gz}$, for workers of type $(g, z)$ as an exogenous firm characteristic. Consequently, we can rewrite the firm's subproblem in market $(g, z)$ as
+%
+\begin{align}
+    % &\max_{w, a, v} \left\{ \left[ pa - w - c_{gz}^{a}(a) - \tau_{g} \right] l_{gz}(w, a, v, j) - c_{gz}^{v}(v) \right\} \\
+    % = &%
+    \rho \Pi_{gz}(\tilde{p}_{gz}) = \max_{x, v} \left\{ \left[ \tilde{p}_{gz} - x \right] l_{gz}(x, v) - c_{gz}^{v}(v) \right\}. \label{eq:firm_problem_rewrite}
+\end{align}
+%
+Equation \eqref{eq:firm_problem_rewrite} implies that composite productivity $\tilde{p}_{gz}$ is a sufficient statistic for a firm's type when solving for equilibrium in market $(g, z)$. Thus, our model is isomorphic to one without amenities or gender wedges but with productivity $p$ replaced by composite productivity $\tilde{p}$ and wages $w$ replaced by flow utility $x$.%
+%
+\footnote{See \citet{Mortensen2003} and \citet{EngbomMoser2022a} for examples of such a model.} %
+%
+Firms with the same composite productivity $\tilde{p}$ offer the same flow utility from total compensation $x^{*}(\tilde{p})$ and post the same number of vacancies $v^{*}(\tilde{p})$ in equilibrium.
+
+%
+\newcommand{\LemmaOptimalVacancies}{%
+    Keeping fixed all other parameters, a firm's optimal vacancy policy $v_{gz}^{*}(\cdot)$ is strictly increasing in composite productivity $\tilde{p}_{gz}$ and, thus, strictly increasing in productivity $p$, strictly decreasing in the gender wedge $\tau$ for women, and strictly decreasing in the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$.%
+}
+%
+\begin{lemma}[Optimal Vacancies]
+    \label{lem:optimal_vacancies}
+    \LemmaOptimalVacancies
+\end{lemma}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_lemma_optimal_vacancies}.
+\end{proof}
+%
+The intuition behind Lemma \ref{lem:optimal_vacancies} is that more profitable firms benefit more from each worker contact.
+
+%
+\newcommand{\OptimalFlowPayoffs}{%
+    Keeping fixed all other parameters, a firm's optimal flow utility offer $x_{gz}^{*}(\cdot)$ is strictly increasing in composite productivity $\tilde{p}_{gz}$ and, thus, strictly increasing in productivity $p$ for all worker types, strictly decreasing in the gender wedge $\tau$ for women, and strictly decreasing in the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$. %
+    A firm's optimal wage offer $w_{gz}^{*}(\cdot)$ is strictly increasing in productivity $p$ for all worker types and strictly decreasing in the gender wedge $\tau$ for women.%
+}
+%
+\begin{lemma}[Optimal Flow Utility and Wages]
+    \label{lem:optimal_utility}
+    \OptimalFlowPayoffs
+\end{lemma}
+%
+\begin{proof}
+    See Supplemental Appendix \ref{app:proof_lemma_optimal_utility}.
+\end{proof}
+%
+Lemma \ref{lem:optimal_utility} extends well-known comparative statics results for wages \citep[e.g.,][]{BontempsRobinvandenBerg1999, BontempsRobinvandenBerg2000} to a richer environment with both wages and amenities. Intuitively, firms with a greater payoff from employment optimally offer higher flow utility in order to attract and retain more workers.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equilibrium Properties}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Our model has several notable equilibrium properties. %
+%
+% OBSERVATION 1: search frictions ==> utility dispersion
+First, search frictions give rise to gender-specific monopsony power across firms, which results in utility dispersion both within and across genders.%
+%
+\footnote{By search frictions, here we refer to the combination of the vacancy cost shifter $c_{g}^{v,0} > 0$, the relative hazard of voluntary on-the-job offers $s_{g}^{E} < \infty$, the relative hazard of involuntary on-the-job offers $s_{g}^{G} > 0$, and the separation hazard $\delta > 0$.} %
+%
+Search frictions imply that low- and high-utility firms coexist and relocation towards higher-utility firms is sluggish. As a result, gender differences both within and between firms depend on the severity of search frictions.
+
+% OBSERVATION 2: wage $\neq$ utility
+Second, observed wage differences are neither necessary nor sufficient for the existence of utility differences. Two firms can offer the same wage $w = w'$ but different utility $x \neq x'$ if $a \neq a'$. Conversely, two firms can offer different wages $w \neq w'$ but the same utility $x = x'$ if $a' = a + w - w'$. The competitive environment determines the extent to which amenities are priced into wages, giving rise to compensating differentials \citep{Rosen1986}. Consequently, gender pay gaps in the data may either understate or overstate inequality in utility, the measurement of which requires a structural model.
+
+% OBSERVATION 3: job-to-job transitions with wage declines
+Third, the model rationalizes job-to-job transitions with wage declines through two channels. A worker may voluntarily transition from a job with wage-amenity combination $(w, a)$ to one with $(w', a')$ and $w' < w$ if $x' > x$. In addition, a worker may involuntarily transition from a job offering $(w, a)$ to a randomly drawn job $(w', a')$ with $w' < w$, regardless of $x' \lesseqgtr x$.
+
+% OBSERVATION 4: wages, amenities, and vacancies
+Fourth, firms have multiple levers to discriminate between genders---wages $w$, amenities $a$, and vacancies $v$. Firms choose these levers to maximize the payoff given their productivity $p$, preference-adjusted amenity cost shifters $\tilde{c}_{g}^{a,0}$, and gender wedges $\tau$, as well as the general competitive environment. Thus, gender gaps in pay, amenities, and employment are all jointly determined.
+
+% OBSERVATION 5: within-firm differences across genders
+Fifth, what is a high-paying, high-amenity, or large employer may differ across genders. While we naturally expect pay, amenities, and size to be correlated within an employer across genders, our model allows these characteristics to differ freely, so men and women climb separate firm ladders.
+
+% OBSERVATION 6: discrimination spillovers
+Sixth, even nondiscriminatory firms (i.e., those with $\tau = 0$ and $\tilde{c}_{M}^{a,0} = \tilde{c}_{F}^{a,0}$) may treat women differently than men due to the presence of other discriminatory firms \citep[i.e., those with $\tau \neq 0$, as in][or $\tilde{c}_{M}^{a,0} \neq \tilde{c}_{F}^{a,0}$]{becker1971}. On-the-job search leads profit-maximizing firms to account for other employers' characteristics when making their own equilibrium decisions. In this sense, our model features ``discrimination spillovers'' arising from strategic links across firms.%
+%
+\footnote{\citet{Black1995} studies a related phenomenon with degenerate wage distributions, while \citet{Flabbi2010} considers spillovers through gender-specific values of unemployment without on-the-job search. Relatedly, \citet{CaldwellDanieli2024} show that workers' outside employment opportunities affect current employment outcomes.} %
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sources of Gender-Specific Sorting across Firms\label{subsec:sorting}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We can group the reasons why men and women are sorted differently across firms with different amenities and wages in our model into four forces.
+%
+The first force behind gendered sorting comprises \emph{gender-specific firm heterogeneity in total compensation}. Akin to classical job-ladder models \citep{BurdettMortensen1998, BontempsRobinvandenBerg1999, BontempsRobinvandenBerg2000}, firms in equilibrium offer workers different utility levels $x_{gz}$ as a strictly increasing function of composite productivity $\tilde{p}_{gz}$. Intuitively, men and women climb different job ladders, and a firm's job-ladder rank determines its share of job offers accepted by workers of a given type $(g, z)$. %
+%
+
+The second force is \emph{gender-specific firm heterogeneity in wage and amenity-valuation shares}. Conditional on a firm's utility offer $x_{gz}$, its shares of wages $w$ and amenity valuations $\beta_{g} a$ in total compensation $x = w + \beta_{g} a$ vary as a function of the preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$, while adjusting productivity net of the gender wedge, $(1-\tau_{g})p$, to hold fixed composite productivity $\tilde{p}$. Intuitively, compensating differentials imply that men and women may enjoy different total-compensation bundles of wages and amenity valuations across firms. Thus, women may have a relative preference---or induced demand due to household arrangements and other constraints---for certain workplace amenities and other employer characteristics, captured by $\beta_{g}$, consistent with the arguments in \citet{Goldin2014, Goldin2024}. %
+%
+
+The third force pertains to \emph{gender-specific search frictions}. Due to the random nature of job offers, reaching higher-utility employers takes time. The strength of search frictions is summarized by the effective speed of climbing the job ladder, $\kappa_{gz}^{E} = \lambda_{gz}^{E}/(\delta_{g} + \lambda_{gz}^{G})$, which differs across workers of gender $g$ and ability $z$. Intuitively, men and women may be differently distributed across rungs of their respective job ladders as a result of differential search frictions \citep{Bowlus1997}.%
+%
+\footnote{While the job offer rate from nonemployment, $\lambda_{gz}^{U}$, matters for the nonemployment rate of workers of type $(g, z)$, it does not affect their distribution across firms conditional on being employed.} %
+%
+
+The fourth and final force stems from \emph{gender-specific firm heterogeneity in vacancies}. A firm's number of vacancies, $v_{gz}$, relative to all other firms' vacancy postings, determines a worker's probability of receiving a job offer from that firm conditional on receiving any offer. Note that a firm's number of posted vacancies $v_{gz}$ is strictly increasing in its composite productivity $\tilde{p}_{gz}$. Intuitively, for a given gender, the payoff from recruiting workers is larger for firms with greater composite productivity.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Discussion of Model Assumptions\label{subsec:discussion_model_assumptions}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We now discuss some of our more restrictive modeling assumptions and their implications---see Supplemental Appendix \ref{app:assumptions_discussion} for details. %
+%
+First, that output is linear within worker types is arguably not particularly restrictive since a firm's profit function is already concave due to convex vacancy costs.
+
+Second, labor market segmentation allows firms to tailor wages, amenities, and vacancies to each market, which we view as a modeling device to match the empirical gender segregation across employers, together with observed differences in pay and amenity utilization even within employers.%
+%
+\footnote{For robustness, we have solved a number of alternative models. A model with firms offering a single wage for men and women fails to account for the empirical within-firm pay differences documented in section \ref{subsec:emp_het}. A model in which amenity values are the same across genders within a firm counterfactually predicts no dispersion in firm ranks conditional on gender-specific pay. A model in which firms produce an amenity vector with gender-specific utility weights is discussed in Supplemental Appendix \ref{app:alternative_amenities}. Finally, a model in which vacancies are gender-neutral, as in Supplemental Appendix \ref{app:alternative_vacancy_models}, fails to account for the empirical dispersion of female employment shares and, hence, the between-employer pay gap in the data.}
+
+Third, while our model allows for gender differences in labor market flow rates, we do not take into account workers' family status. This simplifying assumption is grounded in the empirical observation that women do not systematically sort into lower-paying firms around parental leaves in our data. Furthermore, women may be treated differently by employers even before childbirth in anticipation of future fertility events.
+
+Fourth, we have paid special attention to gender differences while abstracting from labor demand or supply factors within genders. However, our framework is more general than its application to gender, as it can be applied to any set of population groups indexed by $g$, which could be either observed (e.g., parental status, education, race) or inferred in a pre-estimation step (e.g., $k$-means clustering). This makes our model a flexible tool for studying employer heterogeneity in pay, amenities, and employment across population groups.
+
+Finally, the Brazilian labor market is characterized by many firm-level distortions \citep{Dix-CarneiroGoldbergMeghirUlyssea2024} that may be more pronounced than in other contexts such as the U.S. Therefore, what we refer to as ``productivity'' ($p$) should really be interpreted as productivity net of distortions or implicit taxes, in the spirit of \citet{RestucciaRogerson2008}. Our notion of misallocation captures the output and welfare losses from the misallocation of workers across firms due to search frictions, relative to an economy with the same distribution of firm-level productivities and gender wedges but without labor market frictions.

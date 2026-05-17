@@ -1,0 +1,221 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{B. {\sectionthree} Appendix\label{app:gaps}}
+\renewcommand*{\thepage}{\Alph{section}\arabic{page}}
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detailed AKM Estimation Results\label{app:akm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% HOURS EFFECTS:
+\begin{figure}[htbp!]
+    %
+    \includegraphics[width=0.66\columnwidth]{figures/figureB1.eps}%
+    %
+    \caption{\label{fig:akm_hours}Predicted AKM contractual work hours FEs, by gender}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        Figure shows predicted AKM contractual work hours FEs separately for men and women based on estimating earnings equation \eqref{eq:akm}. The omitted category is 1 hour, for which the FE value is normalized to 0.
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+
+% OCCUPATION EFFECTS:
+\begin{figure}[htbp!]
+    %
+    \includegraphics[width=0.66\columnwidth]{figures/figureB2.eps}%
+    %
+    \caption{\label{fig:akm_occ}Predicted AKM occupation FEs, by gender}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows the predicted AKM occupation FEs separately for men and women based on estimating the earnings equation \eqref{eq:akm}. The fixed effects of both genders are sorted by the mean FEs of men's FE quantiles. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+
+% ACTUAL-EXPERIENCE EFFECTS:
+\begin{figure}[htbp!]
+    %
+    \includegraphics[width=0.66\columnwidth]{figures/figureB3.eps}
+    %
+    \caption{Predicted AKM actual-experience FEs, by gender\label{fig:akm_exp_act}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows predicted AKM actual-experience FEs separately for men and women based on estimating the earnings equation \eqref{eq:akm}. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+
+% TENURE EFFECTS:
+\begin{figure}[htbp!]
+    %
+    \includegraphics[width=0.66\columnwidth]{figures/figureB4.eps}
+    %
+    \caption{Predicted AKM tenure FEs, by gender\label{fig:akm_tenure}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows predicted AKM tenure FEs separately for men and women based on estimating earnings equation \eqref{eq:akm}. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+
+% EDUCATION-YEAR EFFECTS:
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men]{\includegraphics[width=0.50\columnwidth]{figures/figureB5a.eps}}%
+    \subfloat[Women]{\includegraphics[width=0.50\columnwidth]{figures/figureB5b.eps}}
+    %
+    \caption{Predicted AKM education-year FEs, by gender\label{fig:akm_edu_year}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        Figure shows predicted AKM education-year FEs separately for men and women based on estimating earnings equation \eqref{eq:akm}. Note that the declining pattern for both genders and all education categories is due to measuring earnings in multiples of the prevailing minimum wage, which increased over this period---see \citet{EngbomMoser2022a} for details. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+
+% EDUCATION-AGE EFFECTS:
+\begin{figure}[htbp!]
+    %
+    \subfloat[Men]{\includegraphics[width=0.50\columnwidth]{figures/figureB6a.eps}}%
+    \subfloat[Women]{\includegraphics[width=0.50\columnwidth]{figures/figureB6b.eps}}
+    %
+    \caption{Predicted AKM education-age FEs, by gender\label{fig:akm_edu_age}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        Figure shows predicted AKM education-age FEs separately for men and women based on estimating earnings equation \eqref{eq:akm}. Age-pay profiles for all education groups are constrained to be constant from age 45 to age 49 and unconstrained otherwise. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Further Details on Between vs. Within-Employer Pay Differences\label{app:oaxaca_blinder}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Here, we present two alternative Kitagawa-Oaxaca-Blinder decompositions of the gender pay gap, only the first of which is presented in the main text. The overall gender gap in employer FEs can be written as
+%
+\begin{small}
+    \begin{align}
+        %
+        &\mathbb{E}\left[\left.\psi_{MJ(i,t)}\right| G(i) = M\right] - \mathbb{E}\left[\left.\psi_{FJ(i,t)}\right| G(i) = F\right] \label{eq:gender_pay_gap} \\
+        %
+        &= %
+        \underbrace{\left(\mathbb{E}\left[\left.\psi_{MJ(i,t)}\right| G(i) = M\right] - \mathbb{E}\left[\left.\psi_{MJ(i,t)}\right| G(i) = F\right]\right)}_{\text{between-employer gap}}%
+        %
+        + %
+        %
+        \underbrace{\mathbb{E}\left[\left.\psi_{MJ(i,t)} - \psi_{FJ(i,t)}\right| G(i) = F\right]}_{\text{within-employer gap}} \label{eq:oaxaca_blinder_A} %
+        %
+        \\
+        %
+        &= %
+        \underbrace{\left(\mathbb{E}\left[\left.\psi_{FJ(i,t)}\right| G(i) = M\right] - \mathbb{E}\left[\left.\psi_{FJ(i,t)}\right| G(i) = F\right]\right)}_{\text{between-employer gap}}%
+        %
+        + %
+        %
+        \underbrace{\mathbb{E}\left[\left.\psi_{MJ(i,t)} - \psi_{FJ(i,t)}\right| G(i) = M\right]}_{\text{within-employer gap}} \label{eq:oaxaca_blinder_B} %
+        %
+        .
+        %
+    \end{align}
+\end{small}
+%
+
+Table \ref{tab:oaxaca_blinder} shows the results from the two alternative decompositions of the gender log pay gap corresponding to equations \eqref{eq:oaxaca_blinder_A} and \eqref{eq:oaxaca_blinder_B}.
+
+%
+\begin{table}[htbp!]
+    \caption{Alternative Kitagawa-Oaxaca-Blinder decompositions of the gender log pay gap}
+    \label{tab:oaxaca_blinder}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableB1.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows results from the Kitagawa-Oaxaca-Blinder decomposition of the overall gender log pay gap into a between-employer gap (i.e., pay-policy component) and a within-employer gap (i.e., sorting component). Decomposition 1 corresponds to equation \eqref{eq:oaxaca_blinder_A} and uses men's employer FEs for computing the between-employer component. Decomposition 2 corresponds to equation \eqref{eq:oaxaca_blinder_B} and uses women's employer FEs for computing the between-employer component. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcedata%
+    \end{tablenotes}
+\end{table}
+%
+
+To illustrate these two decompositions, Figure \ref{fig:oaxaca_blinder_components} shows the distributions of gender-specific employer FEs underlying the individual terms in equations \eqref{eq:oaxaca_blinder_A} and \eqref{eq:oaxaca_blinder_B}.
+
+%
+\begin{figure}[htbp!]
+  %
+  \subfloat[Decomposition 1: Between-gap, men's FEs]{\includegraphics[width=0.50\columnwidth]{figures/figureB7a.eps}\label{fig:oaxaca_blinder_components_A}}%
+  \subfloat[Decomposition 1: Within-gap, women's weights]{\includegraphics[width=0.50\columnwidth]{figures/figureB7b.eps}\label{fig:oaxaca_blinder_components_B}} \\
+  %
+  \subfloat[Decomposition 2: Between-gap, women's FEs]{\includegraphics[width=0.50\columnwidth]{figures/figureB7c.eps}\label{fig:oaxaca_blinder_components_C}}%
+  \subfloat[Decomposition 2: Within-gap, men's weights]{\includegraphics[width=0.50\columnwidth]{figures/figureB7d.eps}\label{fig:oaxaca_blinder_components_D}}
+  %
+  \caption{Components of Kitagawa-Oaxaca-Blinder decompositions\label{fig:oaxaca_blinder_components}}
+  %
+  \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows the pay distributions underlying the Kitagawa-Oaxaca-Blinder decompositions---specifically, %
+        %
+        the between-gap using men's FEs (Panel \subref{fig:oaxaca_blinder_components_A}) %
+        and using women's FEs (Panel \subref{fig:oaxaca_blinder_components_C}), %
+        %
+        as well as %
+        %
+        the within-gap using women's weights (Panel \subref{fig:oaxaca_blinder_components_B}) %
+        and using men's weights (Panel \subref{fig:oaxaca_blinder_components_D}). %
+        %
+        Decomposition 1 (Panels \subref{fig:oaxaca_blinder_components_A} and \subref{fig:oaxaca_blinder_components_B}) %
+        and decomposition 2 (Panels \subref{fig:oaxaca_blinder_components_C} and \subref{fig:oaxaca_blinder_components_D}) %
+        %
+        correspond to equations \eqref{eq:oaxaca_blinder_A} and \eqref{eq:oaxaca_blinder_B}, respectively. The dashed vertical line shows the mean of the distribution. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+%

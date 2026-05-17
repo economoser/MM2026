@@ -1,0 +1,966 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{D. {\sectionfive} Appendix\label{app:numerical}}
+\renewcommand*{\thepage}{\Alph{section}\arabic{page}}
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Proposition \ref{prop:akm_equation} (Equilibrium Wage Equation)\label{app:proof_prop_akm_equation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Restatement of Proposition \ref{prop:akm_equation} (Equilibrium Wage Equation).}
+
+%
+\emph{%
+    \PropEquilibriumWageEquation{eq:prop_AKM_endog_app}{eq:psi_app}%
+}%
+%
+\begin{proof}
+    We proceed in two steps. First, we prove the proposition under exogenous firm-level vacancies that are constant within but may differ across genders. Second, we prove that the same result applies under endogenous vacancy posting.
+
+
+    \paragraph{Step 1.}
+
+    Suppose firms differ in their exogenous number of vacancies for each gender, $\{ v_{g} \}_{g}$. Define $T_{gz} = \mu_{gz} [(u_{gz} + s_{gz}^{G}) \lambda_{gz}^{U} (\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E})] / V_{gz}$. First of all, we guess (and later verify) that  $\lambda_{gz}^{U} = \lambda_{g}^{U}$ for all ability types $z$, and therefore also $\lambda_{gz}^{G} = \lambda_{g}^{G}$ and $\lambda_{gz}^{E} = \lambda_{g}^{E}$. Thus, our assumptions also imply that $T_{gz} = T_{g}$ for all $z$. Second, under exogenous vacancies, a firm's type is defined by its composite productivity $\tilde{p}_{gz}$ and its exogenous vacancies $v_{g}$, which are constant across ability markets. As a consequence, $V_{gz} = V_{g}$ in all $z$-markets. Using equation \eqref{eq:size_stationary}, the firm's problem can therefore be written as
+    %
+    \begin{align}
+        x_{gz}^{*}(\tilde{p}_{gz}) = \arg \max_{x} (\tilde{p}_{gz} - x) \biggl{(} \frac{1}{\delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - F_{gz}(x))} \biggr{)}^2 v_{g} T_{g}.
+    \end{align}
+    %
+    Thus, given fixed vacancies, equilibrium firm profits in equation \eqref{eq:firm_problem_rewrite} can be written as
+    \begin{align}
+        \Pi_{gz}(\tilde{p}_{gz},v_{g}) = (\tilde{p}_{gz} - x^{*}(\tilde{p}_{gz})) \biggl{(} \frac{1}{\delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - F_{gz}(x^{*}(\tilde{p}_{gz}))} \biggr{)}^2 v_{g} T_{g}. \label{eq:profits_tildep}
+    \end{align}
+    %
+    We can write the offer distribution as
+    %
+    \begin{align}
+        F_{gz}(x^{*}(\tilde{p}_{gz})) = h_{gz}(\tilde{p}_{gz}) = \frac{1}{V_{gz}} \int_{p' > \phi_{gz}}^{\tilde{p}_{gz}} \int v_{g} \gamma(p',v') \diff p' \diff v' ,
+    \end{align}
+    %
+    where $\gamma_{gz}(p',v')$ is the joint density function of $\tilde{p}_{gz}$ and $v_{g}$, and $h_{gz}(\tilde{p}_{gz})$ is the CDF of the marginal distribution of $\tilde{p}_{gz}$, in which values are weighted by vacancies posted by firms with each particular $\tilde{p}_{gz}$. The expression for $h_{gz}$ is equivalent to equation \eqref{eq:h_prime} in Lemma \ref{lem:optimal_utility}, except that here we are integrating over exogenous rather than endogenous vacancies. Applying the Envelope Theorem yields
+    %
+    \begin{align}
+        \frac{\partial \Pi_{gz}(\tilde{p}_{gz},v_{g})}{\partial \tilde{p}_{gz}} = \biggl{(} \frac{1}{\delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - h_{gz}(\tilde{p})} \biggr{)}^2 v_{g} T_{gz}. \label{eq:profits_tildep_derivative}
+    \end{align}
+    %
+    When $\tilde{p}_{gz} = \phi_{gz}$, $\Pi(\phi_{gz}, v_{g}) = 0$ for all $v_{g}$, which gives us a boundary condition to solve the differential equation for profits. Rearranging \eqref{eq:profits_tildep} and integrating equation \eqref{eq:profits_tildep_derivative} yields
+    %
+    \begin{align}
+        x_{gz}\left(\tilde{p}_{gz}\right) = \tilde{p}_{gz} %
+        - \int_{y \ge \phi_{gz}}^{\tilde{p}_{gz}} \biggl{[} \frac{1 + \kappa_{g}^{E} (1 - h_{gz} (\tilde{p}_{gz}))}{1 + \kappa_{g}^{E} (1 - h_{gz} (y))} \biggr{]}^2 \diff y, \label{eq:BMutility}
+    \end{align}
+    %
+    where $\kappa_{g}^{E} = \lambda_{g}^{E}/(\delta_{g} + \lambda_{g}^{G})$. This equation parallels equation (47) in \cite{BurdettMortensen1998}, where composite productivity $\tilde{p}_{gz}$ in the current model plays the role of job productivity differentials in their model.
+
+    Lemma \ref{lem:optimal_amenities} already proves that amenities are proportional to ability $z$, therefore we can express them as $a_{gz} = a_{g} z$, and the cost of producing amenities as $\tilde{c}_{gz}^{a}(a_{gz}) = z \tilde{c}_{g}^{a}(a_{g})$.
+
+    Summing up, it follows that $a_{gz} = z a_{g}$ and $\tilde{c}_{gz}^{a}(a_{gz}) = z \tilde{c}_{g}^{a}(a_{g})$. Therefore, composite productivity $\tilde{p}_{gz} = (1 - \tau_{g}) p z + \beta_{g} a_{gz} - \tilde{c}_{gz}^{a}(a_{gz})$ is proportional to $z$, and we can write $\tilde{p}_{gz} = z \tilde{p}_{g}$, where $\tilde{p}_{g} = (1-\tau_{g}) p + \beta_{g} a_{g} - \tilde{c}_{g}^{a}(a_{g})$ is distributed according to $h_{g}(\tilde{p}_{g})$. By definition, $h_{gz}(\tilde{p}_{gz}) = h_{gz}(z \tilde{p}_{g}) = h_{g}(\tilde{p}_{g})$. %Owing to Assumption \ref{ass:akm_2}, $\kappa_{gz} = \kappa_{g}$ for all $z$.
+    Thus, with a change of variables and using the fact that vacancies of each firm are constant across ability markets, we can rewrite equation \eqref{eq:BMutility} as
+    %
+    \begin{align}
+        x_{g}\left(z,\tilde{p}_{g}\right) &= \tilde{p}_{g} z %
+        - \int_{y \ge \phi_{gz}}^{\tilde{p}_{g}} z \biggl{[} \frac{1 + \kappa_{g}^{E} (1 - h_{g} (\tilde{p}_{g})}{1 + \kappa_{g}^{E} (1 - h_{g} (y))} \biggr{]}^2 \, d y. \label{eq:BMutility2}
+    \end{align}
+    %
+    We still need to prove that $\phi_{gz}$ is also proportional to $z$ under the assumption that $b_{gz} = z b_{g}$. We use a guess-and-verify approach: we guess that the case in which $\phi_{gz}$ and equilibrium flow utility $x\left(\tilde{p}_{g},v_{g}\right)$ are proportional to $z$ is an equilibrium of the model, and we verify it below. From equation \eqref{eq:outsideoption}, we have
+    %
+    \begin{align}
+        \phi_{gz} = z b_{g} + (\lambda_{g}^{U} - \lambda_{g}^{E}) \int_{x' \ge \phi_{gz}} \frac{1 - F_{gz}(x')}{\rho + \delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - F_{gz}(x'))} \, d x' \, .
+    \end{align}
+    %
+    We proceed to show that if $\phi_{gz} = z \phi_{g}$, then $x\left(\tilde{p}_{g}\right)$ is also proportional to $z$. The proof follows trivially from equation \eqref{eq:BMutility2} since $\phi_{gz} = z \phi_{g}$ implies that
+    %
+    \begin{align}
+        x_{g}\left(z,\tilde{p}_{g}\right) &= z \tilde{p}_{g} %
+        - z \int_{y \ge \phi_{g}}^{\tilde{p}_{g}} \biggl{[} \frac{1 + \kappa_{g}^{E} (1 - h_{g} (\tilde{p}_{g})}{1 + \kappa_{g}^{E} (1 - h_{g} (y))} \biggr{]}^2   \, d y \, .
+    \end{align}
+    %
+    Next we show that if $x\left(z,\tilde{p}_{g}\right)$ is proportional to $z$, then $\phi_{gz}$ must be proportional to $z$. Consider the bijective mapping $\tilde{p}_{g}(x,z) = [x^{*}(z,\tilde{p}_{g})]^{-1}$. We can rewrite the outside option as
+    %
+    \begin{small}
+        \begin{align}
+            \phi_{gz} %
+            &= z b_{g} + (\lambda_{g}^{U} - \lambda_{g}^{E}) \int_{x' \ge \phi_{gz}} \frac{1 - h_{gz}([x'(z,\tilde{p}_{g})]^{-1})}{\rho + \delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - h_{gz}([x'(z,\tilde{p}_{g})]^{-1}))} \, d x' \\
+            &= z b_{g} + z (\lambda_{g}^{U} - \lambda_{g}^{E}) \int_{x' \ge \phi_{gz}} \frac{1 - h_{g}([x'(1,\tilde{p}_{g})]^{-1})}{\rho + \delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - h_{gz}([x'(1,\tilde{p}_{g})]^{-1}))} \, d x' \, ,
+        \end{align}
+    \end{small}
+    %
+    which implies that the only solution to this equation satisfies $\phi_{gz} = z \phi_{g}$.
+
+    Finally, recalling that $\tilde{p}_{g} = (1-\tau) p + a_{g} - c_{g}^{a}(a_{g})$ and that $w = x - \beta a$, we can write monetary wages as
+    %
+    \begin{small}
+        \begin{align}
+            w\left(z,\tilde{p}_{g},\beta_{g},\tilde{c}_{g}^{a,0}\right) &= %
+            z \left[ \tilde{p}_{g} - \beta_{g} a_{g}(\tilde{c}_{g}^{a,0})%
+            - \int_{\tilde{p}' \ge \phi_{g}}^{\tilde{p}_{g}} \biggl{[} \frac{1 + \kappa_{g}^{E} (1 - h_{g} (\tilde{p}_{g})}{1 + \kappa_{g}^{E} (1 - h_{g} (\tilde{p}'))} \biggr{]}^2  \, d \tilde{p}' \right], \label{eq:wage_equation_app}
+        \end{align}
+    \end{small}
+    %
+    which completes the proof that the desired equilibrium wage equation holds under exogenous vacancies that are constant across ability levels.
+
+
+    \paragraph{Step 2.}
+
+    All that remains to be shown for the desired result to follow is that in the model with endogenous vacancy posting, we have $v_{gz}^{*} = v_{g}^{*}$ for all $z$, so that the offer distribution $h_{gz}$ is the same across all ability markets. We follow a guess-and-verify approach. Suppose that $x_{gz}^{*}(\tilde{p}_{g})$ is proportional to ability $z$. Using that $F_{gz}(x_{gz}^{*}(\tilde{p}_{gz})) = h_{gz}(\tilde{p}_{gz})$, we can write the FOC for vacancy creation in equation \eqref{eq:FOC_1_new} as
+    %
+    \begin{align}
+        z c_{g}^{v,0} \frac{\partial \tilde{c}_{g}^{v}(v_{gz})}{\partial v_{gz}} & = T_{gz} (\tilde{p}_{gz} - x_{gz}^{*}(\tilde{p}_{gz}) \left( \frac{1}{\delta_{gz} + \lambda_{gz}^{G} + \lambda_{gz}^{E} (1 - h_{gz}(\tilde{p}_{gz}))} \right)^2 \\
+        c_{g}^{v,0} \frac{\partial \tilde{c}_{g}^{v}(v_{gz})}{\partial v_{gz}} & = T_{g} (\tilde{p}_{g} - x_{g}^{*}(\tilde{p}_{g}) \left( \frac{1}{\delta_{g} + \lambda_{g}^{G} + \lambda_{g}^{E} (1 - h_{g}(\tilde{p}_{g}))} \right)^2,
+    \end{align}
+    %
+    immediately proving that $v_{gz} = v_{g}$ for all $z$. Equation \eqref{eq:aggregate_vacancies} thus implies that aggregate vacancies satisfy $V_{gz} = V_{g}$, which also implies that in equilibrium, $\lambda_{gz}^{U} = \lambda_{g}^{U}$ (which we previously guessed) and $u_{gz} = u_{g}$. As a consequence, all terms in the wage equation \eqref{eq:wage_equation_app} scale linearly in ability. Therefore, log wages take the form of the desired equilibrium wage equation.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equilibrium Amenity Equation\label{app:equm_amenity_eq}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+An analogous result shows that equilibrium amenities in this environment also have a log-additive structure, akin to the treatment of wages by the variant of the AKM framework introduced by \citet{CardCardosoKline2016}.
+%
+\newcommand{\CorEquilibriumAmenityEquation}[2]{%
+    The equilibrium amenity of a worker of gender $g$ and ability $z$ at a firm with preference weight $\beta_{g}$ and preference-adjusted amenity cost shifter $\tilde{c}_{g}^{a,0}$ is
+    %
+    \begin{align}
+        \ln \beta_{g} a_{gz}\left(\tilde{c}_{g}^{a,0} \right) %
+        &= \underbrace{\alpha_{z}}_{\text{``worker amenity FE''}} + \underbrace{ \psi^{a} \left( \beta_{g}, \tilde{c}_{g}^{a,0} \right) }_{\text{``gender-firm amenity FE''}}, \label{#1}
+    \end{align}
+    %
+    where
+    %
+    \begin{align}
+        \alpha_{z} %
+        &= \ln z, \\
+        %
+        \tilde{c}_{g}^{a,0} %
+        & = \frac{c_{g}^{a,0}}{\beta_{g}} \\
+        %
+        \psi^{a} \left( \beta_{g}, \tilde{c}_{g}^{a,0} \right) %
+        &= \ln \beta_{g} + \frac{1}{1 - \eta^{a}} \ln \tilde{c}_{g}^{a,0}. \label{#2}
+    \end{align}
+    %
+}
+%
+\begin{corollary}[Equilibrium Amenity Equation]
+    \label{cor:akm_amenities}
+    \CorEquilibriumAmenityEquation{eq:prop_AKM_amenities}{eq:psi_amenities}
+\end{corollary}
+%
+\begin{proof}
+    This result follows directly from equation \eqref{eq:optimal_amenities} in the proof of Lemma \ref{lem:optimal_amenities} in Section \ref{app:proof_lemma_optimal_amenities}.
+\end{proof}
+%
+Corollary \ref{cor:akm_amenities} shows that amenities, like wages, follow a specification that is log-additive between worker heterogeneity ($\alpha_{z}$) and gender-specific firm heterogeneity ($\psi^{a}$). The worker amenity FE $\alpha_{z}$ is a strictly monotonic transformation of worker ability. The gender-firm amenity FE $\psi^{a}(\beta_{g}, \tilde{c}_{g}^{a,0})$ depends only on a firm's preference weight $\beta_{g}$ and amenity cost shifter $c_{g}^{a,0}$ for each gender, scaled by a function of the economy-wide amenity cost elasticity $\eta^{a}$. However, an explicit treatment of amenities and compensating differentials was missing from the analysis in \citet{CardCardosoKline2016}. Our framework fills this gap by explicitly modeling firms' equilibrium wage and amenity choices.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Normalization of Gender-Specific Firm Pay\label{subsec:norm_firm_pay}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{General Model with Endogenous Amenities.}
+
+Here, we discuss the normalization of gender-specific firm pay in our baseline model with endogenous amenities. Recall that we estimate gender-specific firm pay components by applying a two-way fixed effect model {\`{a}} la AKM separately for each gender:
+%
+\begin{align}
+    \ln( w_{ijt} ) = \alpha_{i} + \psi_{G(i) j} + X_{it}\beta_{G(i)} + \varepsilon_{ijt}. \label{eq:AKM_by_gender}
+\end{align}
+%
+From here on, with a slight abuse of notation and to be consistent with the notation in our structural model, we write $w_{gr} \equiv \exp( \psi_{gJ_{g}(r)} )$ to denote the level pay of firm $j = J_{g}(r)$ at rank $r \in [0,1]$ for gender $g$. %
+%
+As explained in \citet{AbowdCreecyKramarz2002} and \citet{CardCardosoKline2016}, equation \eqref{eq:AKM_by_gender} identifies the gender-specific firm fixed effects up to a constant within each connected set---i.e., one normalization must be imposed on a reference firm for each connected set. Because the connected sets for men and women are disconnected by construction, comparing firm pay across genders requires an additional normalization on the level of firm fixed effects for men compared to women. The baseline assumption in \citet{CardCardosoKline2016} is that firms in a lower range of the value added per worker distribution have firm fixed effects equal to zero for both genders. \citet{CardCardosoKline2016} show that similar results are obtained when imposing an alternative normalization that sets mean firm fixed effects equal to zero in the hotel and restaurant sector for both genders.
+
+Through the lens of our equilibrium model, any normalization of gender-specific firm fixed effects must take into account the fact that amenities differ between firms for a given gender as well as within a firm across genders, in addition to the existence of firm-specific gender wedges. Thus, we derive a model-consistent normalization to the gender-specific estimates of fixed effects in equation \eqref{eq:AKM_by_gender}.
+
+Building on the equilibrium wage equation \eqref{eq:prop_AKM_endog}, we can derive a model-consistent normalization of gender-firm FEs that allows us to compare firm pay between men and women. Intuitively, our model suggests that such a normalization requires finding a set of firms $j$ with the same $\tilde{p}_{g}$, $\beta_{g}$ and $\tilde{c}_{g}^{a,0}$ across genders $g \in \{ M, F \}$ so that $\psi_{M}(\tilde{p}_{M}, \beta_{M}, \tilde{c}_{M}^{a,0}) = \psi_{F}(\tilde{p}_{F}, \beta_{F}, c_{F}^{a,0})$. An advantage of our model is that it provides us guidance on how to find such a set of firms. To this end, let $\mathcal{B}_{g} \equiv [0, \hat{r}_{g}] \subseteq [0, 1]$ for some strictly positive but small $\hat{r}_{g} \approx 0$ be a set of firms with utility ranks near the bottom for gender $g$. Let $\mathcal{D}_{g} \subseteq [0,1]$ be a set of firms with $\tau_{Fr} \approx 0$. Let $\mathcal{A}_{g} \subseteq [0,1]$ be a set of dual-gender firms with $\beta_{gr} a_{gr} \approx \beta_{-gR_{-g}(J(r))} a_{-gR_{-g}(J(r))}$. Then the following result provides us a model-consistent normalization of gender-firm FEs:
+%
+\newcommand{\PropFirmPayNorm}{%
+    Firm pay $\psi_{gj}$ can be equated across genders $g \in \{ M, F \}$ for a set of firms $j$ with rank $R_{g}(j) \in \mathcal{B}_{g} \cap \mathcal{D}_{g} \cap \mathcal{A}_{g}$ simultaneously for both genders $g$:
+    %
+    \begin{align}
+        \mathbb{E}_{j}[\psi_{Mj}] = \mathbb{E}_{j}[\psi_{Fj}] \quad \forall j: \, R_{g}(j) \in \mathcal{B}_{g} \cap \mathcal{D}_{g} \cap \mathcal{A}_{g}, \, \forall g \in \{ M, F \}. \label{eq:normalization_endog}
+    \end{align}
+    %
+}
+%
+\begin{proposition}[Firm Pay Normalization]
+    \label{prop:firm_pay_norm}
+    \PropFirmPayNorm
+\end{proposition}
+%
+\begin{proof}
+    Recall the definition of composite productivity of a firm at rank $r$ for gender $g$,
+    %
+    \begin{align}
+        \tilde{p}_{gr} \equiv (1 - \tau_{gr}) p_{r} + \beta_{gr} a_{gr} - \tilde{c}_{gr}^{a}(a_{gr}). \label{eq:reminder_ptilde}
+    \end{align}
+    %
+    Our model-consistent normalization applies to the intersection of three sets of firms.
+
+    First, we consider a set of firms with close-to-zero profits. Let $\mathcal{B}_{g} \equiv [0, \hat{r}_{g}] \subseteq [0, 1]$ for some strictly positive but small $\hat{r}_{g} \approx 0$ be a set of firms with utility ranks near the bottom for gender $g$. Bottom-ranked firms with $r \in \mathcal{B}_{g}$ provide worker utility $x_{gr} \equiv w_{gr} + \beta_{gr} a_{gr}$ approximately equal to their composite productivity $\tilde{p}_{gr}$ under the assumption that the lower bound of the support of $(p, \tau_{g})$ extends low enough, which can always be guaranteed:
+    %
+    \begin{align}
+        \tilde{p}_{gr} \approx x_{gr} \qquad \forall r \in \mathcal{B}_{g}. \label{eq:zero_profit_bottom}
+        % (1 - \tau_{r}) p_{r}- c^{a}(a_{r}) - w_{r} \approx 0 \qquad &\forall r \in \mathcal{B}. \label{eq:zero_profit_bottom}
+    \end{align}
+    %
+
+    Second, we consider a set of firms that treat workers of both genders interchangeably in production. Let $\mathcal{D}_{g} \subseteq [0,1]$ be a set of firms with $\tau_{Fr} \approx 0$. Also, recall that $\tau_{Mr} = 0$ by assumption. For those firms, we have
+    %
+    \begin{align}
+        \tilde{p}_{gr} \approx p_{r} + \beta_{gr} a_{gr} - \tilde{c}_{g}^{a}(a_{gr}) \qquad \forall r \in \mathcal{D}_{g}, \label{eq:nondisc_firms}
+    \end{align}
+    %
+    so the only gender-specific aspect of firms $r \in \mathcal{D}_{g}$ is $\beta_{gr} a_{gr} - \tilde{c}_{g}^{a}(a_{gr})$. Combining equations \eqref{eq:zero_profit_bottom} and \eqref{eq:nondisc_firms}, we have $p_{r} + \beta_{gr} a_{gr} - c_{g}^{a}(a_{gr}) \approx w_{gr} + \beta_{gr} a_{gr}$ for $r \in \mathcal{B}_{g} \cap \mathcal{D}$ for both genders.
+
+    Third, we consider a set of firms that provide the same level of amenities to both genders. Let $\mathcal{A}_{g} \subseteq [0,1]$ be a set of dual-gender firms with $\beta_{gr} a_{gr} \approx \beta_{-gR_{-g}(J(r))} a_{-gR_{-g}(J(r))}$. In words, the amenities enjoyed by gender $g$ are enjoyed to the same level by gender $-g$ (e.g., both gender-specific amenities equal zero), where $-g \equiv \{ M, F \} \setminus \{ g \}$.
+
+    Due to our model result that a firm's optimal amenity choice $a^{*}$ is strictly decreasing in the preference-adjusted amenity cost parameter $\tilde{c}^{a,0}$, a firm optimally provides the same level of amenities to both genders if and only if it faces the same cost function $/$ preference combination for both genders. As a result,
+    %
+    \begin{small}
+        \begin{align}
+            \beta_{gr} a_{gr} - \tilde{c}_{g}^{a}(a_{gr}) = \beta_{-gR_{-g}(J(r))} a_{-gR_{-g}(J(r))} - \tilde{c}_{-g}^{a}(a_{-gR_{-g}(J(r))}) \qquad \forall r \in \mathcal{A}_{g}, \label{eq:equal_amen_firms}
+            % (1 - \tau_{gr}) p_{r} = (1 - \tau_{-gR_{-g}(J(r))}) p_{r}
+        \end{align}
+    \end{small}
+    %
+    so the only gender-specific aspect of firms $r \in \mathcal{A}_{g}$ is $\tau_{gr}$.
+
+    Combining the above insights, the definition of $\tilde{p}_{gr}$ in equation \eqref{eq:reminder_ptilde} yields that $w_{MR_{M}(j)} = w_{FR_{F}(j)}$ for any firm $j$ with rank $R_{g}(j) \in \mathcal{B}_{g} \cap \mathcal{D}_{g} \cap \mathcal{A}_{g}$ for both genders $g$ at the same time. In words, for a subset of firms that simultaneously (i) are located near the bottom of both genders' utility ranks, (ii) treat men and women as perfect substitutes in production, and (iii) provide the same amenity level to men and women, we can equalize the gender-specific AKM firm fixed effects in equation \eqref{eq:AKM_by_gender} across men and women according to equation \eqref{eq:normalization_endog}.
+\end{proof}
+%
+In words, Proposition \ref{prop:firm_pay_norm} states that we can equalize the gender-specific AKM firm fixed effects in equation \eqref{eq:prop_AKM_endog} across men and women for a subset of firms that simultaneously (i) are located near the bottom of both genders' utility ranks, (ii) treat men and women as perfect substitutes in production, and (iii) provide a fixed amenity level to men and women.
+
+The normalization in equation \eqref{eq:normalization_endog} embeds two untestable assumptions, namely that (i) men and women are treated as perfect substitutes (i.e., $\tau_{Fr} \approx 0$) at firms with rank $r \in \mathcal{D}_{F}$ for women, and (ii) the same amenity value is provided to both men and women (i.e., $\beta_{MR_{M}(j)} a_{MR_{M}(j)} \approx \beta_{FR_{F}(j)} a_{FR_{F}(j)}$) at firms $j$ such that $R_{g}(j) \in \mathcal{A}_{g}$ for both genders $g$. Note that the fact that we are looking for firms near the bottom of both genders' utility ranks (i.e., $R_{g}(j) \in \mathcal{B}_{g}$ for both genders $g$) is a verifiable condition given our revealed-preference measures of gender-specific firm ranks.
+
+To summarize, while the original normalization of gender-firm FEs based on value added per worker proposed by \citet{CardCardosoKline2016} is not valid in our environment, equation \eqref{eq:normalization_endog} provides a normalization that extends the argument in \citet{CardCardosoKline2016} to our environment with gender-specific amenities and compensating differentials.
+
+
+\paragraph{Special Case of the Model with Exogenous Amenities.}
+
+Now suppose that gender-specific firm amenities $a_{gr}$ are exogenous. Then $c_{g}^{a}(a_{gr}) = 0$ without loss of generality. In this case, equation \eqref{eq:zero_profit_bottom} reduces to
+%
+\begin{align}
+    (1 - \tau_{gr}) p_{r} - w_{gr} \approx 0 \qquad &\forall r \in \mathcal{B}. \label{eq:exog_amenities}
+\end{align}
+%
+Therefore, if we can find a subset of firms in $\mathcal{B} \cap \mathcal{D}$ that simultaneously (i) are located near the bottom of the utility ranks for both genders (i.e., $r \in \mathcal{B}$) and (ii) treat men and women as perfect substitutes in production net of employers' taste for gender (i.e., $r \in \mathcal{D}$), then equalizing firm pay across genders for this set of firms constitutes a normalization of the gender-specific AKM firm fixed effects in equation \eqref{eq:AKM_by_gender} that is consistent with our model featuring exogenous amenities:
+%
+\begin{align}
+    \mathbb{E}_{r}[\psi_{Fr}] = \mathbb{E}_{r}[\psi_{Mr}] \qquad &\forall r \in \mathcal{B} \cap \mathcal{D}. \label{eq:normalization_exog}
+\end{align}
+%
+The normalization in equation \eqref{eq:normalization_exog} embeds only one untestable assumption, namely that men and women are treated as perfect substitutes (i.e., $\tau_{r} \approx 0$) at firms with rank $r \in \mathcal{D}$. Note that the same normalization as imposed in the case with endogenous amenities, discussed in Section \ref{subsec:norm_firm_pay} is still valid in this case.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Proposition \ref{prop:ranks} (Employer Ranks)\label{app:proof_employer_ranks}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Restatement of Proposition \ref{prop:ranks} (Employer Ranks)}
+
+%
+\emph{%
+    \PropRanks%
+}
+%
+\begin{proof}
+    First, note that Propositions \ref{prop:akm_equation} and Corollary \ref{cor:akm_amenities} together imply that the flow consumption that a worker of gender $g$ and ability $z$ receives at firm $j$ can be written as
+    %
+    \begin{align}
+        x_{gz}(j) %
+        &= w_{gz}(j) + \beta_{g}(j) a_{gz}(j) \\
+        &= \exp\left( \alpha_{z} + \psi_{g}^{w}(j) \right)  +  \exp\left( \alpha_{z} + \psi^{a}(j) \right) \\
+        &= \exp\left( \alpha_{z} \right) \exp\left( \psi_{g}^{w}(j) \right)  +  \exp\left( \alpha_{z} \right) \exp\left( \psi^{a}(j) \right) \\
+        &= \exp\left( \alpha_{z} \right) \left[ \exp\left( \psi_{g}^{w}(j) \right)  +  \exp\left( \psi^{a}(j) \right) \right] \\
+        &= z \left[ \exp\left( \psi_{g}^{w}(j) \right)  +  \exp\left( \psi^{a}(j) \right) \right] \label{eq:ranking_within_gender}
+    \end{align}
+    %
+    Fixing gender $g$, equation \eqref{eq:ranking_within_gender} is linear in worker ability $z$. In particular, the firm-specific term, $\exp( \psi_{g}^{w}(j) )  +  \exp( \psi^{a}(j) )$, is independent of worker ability $z$. Therefore, in the eyes of a worker of type $(g,z)$, a firm $j$ is higher-ranked than another firm $j'$ if and only if it provides higher flow utility $x_{gz}(j) > x_{gz}(j')$ if and only if $\exp( \psi_{g}^{w}(j) )  +  \exp( \psi^{a}(j) ) > \exp( \psi_{g}^{w}(j') )  +  \exp( \psi^{a}(j') )$. This proves that all workers of the same gender share a common ranking of all firms in the economy. Therefore, for the remainder of the proof we drop the ability subscript $z$, and we focus on one gender at a time, thus dropping the gender subscript $g$ too for readability.
+
+    As we have proved in Lemma \ref{lem:optimal_utility} that utility $x(\tilde{p})$ is increasing in composite productivity $\tilde{p}$, and that higher utility $x$ means that an employer is higher-ranked, it follows that employers with higher $\tilde{p}$ are higher-ranked. Therefore, higher-ranked employers:
+    %
+    \begin{enumerate}
+        \item Post higher utility: $x(r') > x(r)$ whenever $r' > r$, from Lemma \ref{lem:optimal_utility};
+        \item Retain more workers: by definition $F(x(r')) > F(x(r))$ whenever $x(r') > x(r)$;
+        \item Post more vacancies: from Lemma \ref{lem:optimal_vacancies}, $v(r') > v(r)$ whenever $r'>r$;
+        \item Have larger size: as a result of posting more vacancies and offering higher utility, $l(r') > l(r)$ whenever $r'>r$.
+    \end{enumerate}
+    %
+    These results demonstrate that firm sizes $l(r)$ are monotonically increasing in a firm's rank, and therefore we can recover firm ranks $r$ by ordering firms by size, thereby proving the proposition.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Proposition \ref{prop:lab_params} (Labor Market Objects)\label{app:proof_lab_params}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Restatement of Proposition \ref{prop:lab_params} (Labor Market Objects)}
+
+%
+\emph{%
+    \PropLaborMarketObjects%
+}%
+%
+\begin{proof}
+    We proceed in steps, with each step linking one empirical object to one model object (i.e., either a model parameter or an equilibrium outcome of interest).
+
+    \uline{Empirical Firm Nonemployment Hiring Shares $\leftrightarrow$ Model Recruiting Intensities.} %
+    We obtain the empirical gender-specific distribution of recruiting intensities $f(r)$ by inverting the gender-specific distribution of employment $G_{g}$ across ranks by solving equation \eqref{eq:from_F_to_G} for the offer distribution $F_{g}$. We then obtain the hiring distribution as the change in $F_{g}$ across ranks.
+
+    This empirical object directly corresponds to firms' recruiting intensities $v_{r}/V$ in the model, where $v_{r}$ denotes the vacancies posted by firm $r$ and $V \equiv \int_{r}v_{r}dr$ denotes the total number of vacancies in the economy.%
+    %
+    \footnote{Since $f_{r} = v_{r}/V$ refers to shares (i.e., not levels), the mass of aggregate vacancies $V$ does not matter for its computation. At the end of this section, we spell out how to deduce the mass of aggregate vacancies $V$, which will be useful later on.} %
+    %
+
+    \uline{Empirical Rate of Moving into Nonemployment $\leftrightarrow$ Model Rate of Exogenous Separations.} %
+    We identify $\delta$ off rates of workers $i$ moving into nonemployment:
+    %
+    \begin{align}
+        \hat{\delta} &= \mathbb{E}_{i} \mathbf{1}\left[ \left. \text{nonemployed}_{i,t+1} \right| \text{employed}_{i,t} \right]. \label{eq:identify_delta}
+    \end{align}
+    %
+
+    \uline{Empirical Job Finding Rate $\leftrightarrow$ Model Rate of Job Offers from Nonemployment.} %
+    A simple log-hazard model of worker $E$-$N$-$E$ transitions, where $E$ denotes employment at some firm and $N$ denotes nonemployment, can be used to recover $\widehat{\lambda^{U} + \lambda^{G}}$ separately by gender.%
+    %
+    \footnote{Since in our model, the job-finding rate from nonemployment is $\lambda^{U} + \lambda^{G}$, we use our estimate $\hat{\lambda}^{G}$ below to obtain $\hat{\lambda}^{U}$.} %
+    %
+
+    \uline{Empirical Share of Moves Down the Firm Ranks $\leftrightarrow$ Model Rate of Involuntary Job Offer Shocks.} %
+    Two insights allow us to use information on worker transitions between employers to identify $\lambda^{G}$. First, we focus on transitions in rank space, not pay space. Second, the share of rank-increasing transitions due to involuntary on-the-job offers declines in $F_{r}$. Formally, the total number of job-to-job transitions from employer rank $r$ is
+    %
+    \begin{align}
+        J2J_{r} &= l_{r} [\lambda^{E} (1 - F^{r}) + \lambda^{G}], \label{eq:j2j}
+    \end{align}
+    %
+    where $l_{r}$ is the gender-specific number of workers at firm $r$. Rearranging and averaging across all firms, we have
+    %
+    \begin{align}
+        \hat{\lambda}^{G} &= \mathbb{E}_{r} \left[ \frac{ J2J_{r \downarrow}}{l_{r} {F}_{r}} \right],
+    \end{align}
+    %
+    where $J2J_{r \downarrow} = J2J_{r} - l_{r} (\lambda^{E} + \lambda^{G}) (1 - F_{r})$ is the number of job-to-job transitions to lower ranks. Based on this, we derive the parameter estimate $\hat{s}^{G} \equiv \hat{\lambda}^{G}/\hat{\lambda}^{U}$.
+
+    \uline{Empirical Share of Moves up the Firm Ranks $\leftrightarrow$ Model Rate of Voluntary On-the-Job Offers.} %
+    On-the-job offers not associated with involuntary transitions must have been voluntary. Hence, once we know $\hat{\lambda}^{G}$, we can use equation \eqref{eq:j2j} to estimate $\lambda^{E}$ as
+    %
+    \begin{align}
+        \hat{\lambda}^{E} &= \frac{J2J_{r}/n_{r} - \hat{\lambda}^{G}}{1 - {F}_{r}}.
+    \end{align}
+    %
+    Notice that all of these parameters are over-identified, as in principle, we could use just a fraction of the firms and job-to-job moves to identify them. We choose to use the overall sample average of these two moments. Based on this, we derive the parameter estimate $\hat{s}^{E} \equiv \hat{\lambda}^{E}/\hat{\lambda}^{U}$.
+
+    \uline{Aggregate Vacancies.} %
+    Given estimates of $\delta$, $\lambda^{U}$, $\lambda^{E}$, and $\lambda^{G}$, in addition to the relative mass of workers of a given gender, $\mu$, we are equipped to deduce aggregate vacancies $V$. To this end, recall that a worker's job-finding probability due to the aggregate matching function is
+    %
+    \begin{align}
+        \frac{m}{u} = \lambda^{U} + \lambda^{G} = \chi \left[ \mu \left( u + s^{E} (1 - u) + s^{G} \right) \right]^{\alpha} V^{1-\alpha}, \label{eq:matching_rate}
+    \end{align}
+    %
+    where $m$ is the number of matches and $u = \delta / (\delta + \lambda^{U} + \lambda^{G})$ is the nonemployment rate. Given the normalization $\chi = 1$, we can solve equation \eqref{eq:matching_rate} for aggregate vacancies $V$:%
+    %
+    \footnote{As discussed in the main text, this normalization is inconsequential for our purposes.}
+    %
+    \begin{align}
+        V = \left( \frac{ \lambda^{U} + \lambda^{G}}{\left[ \mu \left( u + s^{E} (1 - u) + s^{G} \right) \right]^{\alpha}} \right)^{\frac{1}{1-\alpha}}. \label{eq:aggregate_V}
+    \end{align}
+    %
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Proposition \ref{prop:identification} (Firm-Level Parameters)\label{app:proof_firm_level_params}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Restatement of Proposition \ref{prop:identification} (Firm-Level Parameters)}
+
+%
+\emph{%
+    \PropFirmLevelParameters%
+}%
+%
+\begin{proof}
+    Here, we present an identification result based on continuous firm types, as in the model developed in Section \ref{sec:Model} and further discussed in Section \ref{sec:Identification}. In Supplemental Appendix \ref{app:identification_discrete}, we extend this argument to the case of discrete firm types, as in the data.
+
+    First, by the results of Proposition \ref{prop:akm_equation} and Corollary \ref{cor:akm_amenities}, we abstract from heterogeneity in ability and replace $z=1$ in all functional forms without loss of generality. Therefore, the vacancy cost function can be written as $c^{v}(v) = c^{v,0} v^{\eta^{v}}/\eta^{v}$ and the amenity cost function can be written as $c^{a}(a) = c^{a,0} a^{\eta^{a}}/\eta^{a}$.
+
+    Recall that the composite productivity of firm $r$ is given by $\tilde{p}(r) = (1 - \tau(r)) p(r) + \beta(r) a(r) - c^{a}(a(r);r)$. Let
+    %
+    \begin{align}
+        T &\equiv \frac{\mu [(u + s^{G}) \lambda^{u} (\delta + \lambda^{G} + \lambda^{E})]}{V} \label{eq:constant_T}
+    \end{align}
+    %
+    be a constant which only depends on previously estimated labor market rates and aggregate vacancies. We start from the firm's FOCs for optimality in equations \eqref{eq:FOC_1_new} and \eqref{eq:FOC_3_new}. We substitute the functional form of $c^{v}(v)$ in equation \eqref{eq:FOC_1_new} and express the FOCs as a coupled pair of differential equations:
+    %
+    \begin{small}
+        \begin{align}
+            h'(\tilde{p}(r)) &= \frac{1}{V}\left[\frac{T(\tilde{p}(r)-x(\tilde{p}(r)))}{c^{v,0}\left[\delta+\lambda^{G}+\lambda^{E}(1-h(\tilde{p}(r)))\right]^{2}}\right]^{\frac{1}{\eta^{v}-1}}\gamma(\tilde{p}(r)), \label{eq:hprime_continuous} \\
+            %
+            x'(\tilde{p}(r)) &=\frac{1}{V}\frac{2\lambda^{E}(\tilde{p}(r)-x(\tilde{p}(r)))}{\delta+\lambda^{G}+\lambda^{E}(1-h(\tilde{p}(r)))}\left[\frac{T(\tilde{p}(r)-x(\tilde{p}(r)))}{c^{v,0}\left[\delta+\lambda^{G}+\lambda^{E}(1-h(\tilde{p}(r)))\right]^{2}}\right]^{\frac{1}{\eta^{v}-1}}\gamma(\tilde{p}(r)). \label{eq:xprime_continuous}
+        \end{align}
+    \end{small}
+    %
+    We first derived the differential equation \eqref{eq:xprime_continuous} as equation \eqref{eq:FOC_utility} in Supplemental Appendix \ref{app:proof_lemma_optimal_utility}, and here we substituted therein the explicit solution for vacancies in equation \eqref{eq:hprime_continuous}. In equations \eqref{eq:hprime_continuous}--\eqref{eq:xprime_continuous} above, $h(\tilde{p}(r)) \equiv F(x(\tilde{p}(r))) = F(r)$ is the CDF of \emph{composite productivity offers} (i.e., weighted by firms' vacancies) and $h'(\tilde{p}(r)) = \partial h(\tilde{p}(r)) / \partial \tilde{p}$ is the derivative thereof, while $\Gamma(\tilde{p}(r))$ and $\gamma(\tilde{p}(r)) \equiv \Gamma'(\tilde{p}(r))$ are the CDF of \emph{composite productivity} and its derivative. Note that we can obtain $h(\tilde{p}(r))$ by integrating the hiring density $f(r)$ over observed ranks $r$, since $F(r) = \int_{r'=0}^{r} f(r') \diff r'$.
+
+    Next, we perform a change of variables using the fact that, by definition,
+    %
+    \begin{align}
+        \Gamma(\tilde{p}(r)) = \int_{\tilde{p}'=\uline{\tilde{p}}}^{\tilde{p}(r)} \gamma(\tilde{p}') \diff \tilde{p}' = \int_{r'=0}^{r} 1 \diff r' = r, \label{eq:Gamma_r}
+    \end{align}
+    %
+    That is, the share of firms with composite productivity up to $\tilde{p}(r)$ equals the share of firms with rank up to $r$. Therefore, $\gamma(\tilde{p}(r)) \diff \tilde{p} / \diff r = 1 \, \forall r$. Equivalently, $h'(\tilde{p}(r)) \diff \tilde{p} / \diff r = f(r)$. Using the definition that $F(r) = h(\tilde{p}(r))$, we can rewrite equation \eqref{eq:hprime_continuous} to obtain an expression for the firm's \emph{flow payoff per matched worker},
+    %
+    \begin{align}
+        P(r) \equiv \tilde{p}(r) - x(\tilde{p}(r)) &= \left[ f(r) V \right]^{\eta^{v} - 1} \frac{c^{v,0}}{T} \left[\delta+\lambda^{G}+\lambda^{E}(1-F(r))\right]^{2}, \label{eq:flow_profits_P_r}
+    \end{align}
+    %
+    In equation \eqref{eq:flow_profits_P_r}, $f(r)$, $c^{v,0}$, and $F(r)$ are all known quantities identified by applying Proposition \ref{prop:lab_params} to the data. Thus, equation \eqref{eq:flow_profits_P_r} can be rearranged to yield an explicit expression for $P(r)$ as a function of known objects. Finally, we perform a similar change of variables to write the derivative of utility $x'(r)$ as a function of ranks:
+    %
+    \begin{align}
+        x'(r) =  \frac{1}{V} \frac{2 \lambda^{E} P(r)}{\delta + \lambda^{G} + \lambda^{E} (1 - F(r))}  \biggr{[} \frac{T P(r)}{c^{v,0} \left[ \delta + \lambda^{G} + \lambda^{E} (1 - F(r)) \right]^2} \biggr{]}^{\frac{1}{\eta^{v}-1}}.\label{eq:x_prime}
+    \end{align}
+    %
+    Plugging $P(r)$ from equation \eqref{eq:flow_profits_P_r} into this expression allows us to identify flow utility across ranks, $x(r) = K + \int_{r'=0}^{r} x'(r') \diff r'$, up to a constant of integration $K$. Intuitively, the model helps us pin down differences in utilities between rungs of the job ladder. We choose a value for the constant of integration $K$ such that the equilibrium distribution of amenities---derived in equation \eqref{eq:identified_amenities} below---attains a lower bound strictly above but arbitrarily close to zero.%
+    %
+    \footnote{Our choice of amenities starting strictly above but arbitrarily close to zero seems natural given the interpretation of amenities being endogenously produced by firms. It can be rationalized through an assumption that some employers put a vanishingly small weight on the (unmeasured by the tax authorities) amenity-related welfare of their workforce. At the same time, this choice minimizes the share of amenity valuations in total compensation across firms and maximizes the remaining gender gap in log total compensation. In contrast, if we modeled amenities as exogenous firm characteristics, then the choice of the constant of integration $K$ would be inconsequential for our analysis as the absolute level of amenities would not be pinned down in that case.} %
+    %
+
+    This allows us to identify gender-firm-specific amenity valuations, $\beta(r) a(r)$, by simply taking the difference between utility and wages at each firm, and to identify productivity net of the gender wedge, $(1 - \tau(r)) p(r)$, by adding wages and the cost of amenities to the firm's flow payoff per matched worker:
+    %
+    \begin{align}
+        \beta(r) a(r) &= x(r) - w(r), \label{eq:identified_amenities} \\
+        (1 - \tau(r)) p(r) &= P(r) + w(r) + c^{a}(a(r); r). \label{eq:identified_productivity}
+    \end{align}
+    %
+    On the right-hand side of equation \eqref{eq:identified_amenities}, $x(r)$ is known from integrating equation \eqref{eq:x_prime} and $w(r)$ is known from the data, so we can infer $\beta(r) a(r)$. %
+    On the right-hand side of equation \eqref{eq:identified_productivity}, $P(r)$ is known from equation \eqref{eq:flow_profits_P_r}, $w(r)$ is known from the data, and $c^{a}(a(r); r) = \beta(r) a(r) / \eta^{a}$ is known from equation \eqref{eq:optimal_amenity_cost} of Lemma \ref{lem:optimal_amenities}, with the known value for $\beta(r) a(r)$ substituted from equation \eqref{eq:identified_amenities}.
+
+    If, in addition, we fix the preference weights $\beta(r)$ at a known value, say $\beta(r) = 1$, then we can obtain gender- and firm-specific preference-adjusted amenity cost shifters by inverting the firm's FOC for optimal amenity creation---see Lemma \ref{lem:optimal_amenities} and the functional form in equation \eqref{eq:amenity_cost_fn}---which yields
+    %
+    \begin{align}
+        \tilde{c}^{a,0}(r) = \left[ a(r) \right]^{1 - \eta^{a}}. \label{eq:identified_amenity_cost_shifter}
+    \end{align}
+    %
+    Regardless of whether or not the preference weights $\beta(r)$ are known, after having identified productivity $p(r)$ for men, under the normalization that $\tau(r) = 0$ for them, and $(1 - \tau(r))p(r)$ for women from equation \eqref{eq:identified_productivity}, we recover the gender wedge $\tau(r)$ based on the ratio of estimated productivities net of the gender wedge at dual-gender firms. It is worth noting that, for this last step, the exact functional form by which $\tau(r)$ enters firms' payoff function (e.g., multiplicatively or additively) is immaterial for identification and estimation.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Identification of Firm-Level Parameters With Discrete Firm Types\label{app:identification_discrete}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Here, we adapt the identification proof in Section \ref{app:proof_firm_level_params} to discrete data where we observe a finite number of firms $N$. We observe their ranks, defined as $r \in \{ 1/N, 2/N, \ldots, 1 \}$, their empirical hiring intensities $f_{r}$ and their wage $w_{r}$.%
+%
+\footnote{Instead of functional notation, here we denote firm-specific objects by subscript $r$ to highlight that there is a discrete number of firms in the data.} %
+%
+The FOCs read:
+%
+\begin{small}
+    \begin{align}
+        h'(\tilde{p}_{r}) &= \frac{1}{V} \biggl{[} \frac{T (\tilde{p}_{r} - x(\tilde{p}_{r}))}{c^{v,0}} \biggl{(} \frac{1}{\delta + \lambda^{G} + \lambda^{E} (1 - h(\tilde{p}_{r}))} \biggr{)}^2 \biggr{]}^{\frac{1}{\eta^{v} - 1}} \gamma(\tilde{p}_{r}), \label{eq:hprime} \\
+        x'(\tilde{p}_{r}) &=  \frac{1}{V} \frac{2 \lambda^{E} (\tilde{p}_{r} - x(\tilde{p}_{r}))}{\delta + \lambda^{G} + \lambda^{E} (1 - h(\tilde{p}_{r}))}  \biggr{[} \frac{T (\tilde{p}_{r} - x(\tilde{p}_{r}))}{c^{v,0}} \biggl{(} \frac{1}{\delta + \lambda^{G} + \lambda^{E} (1 - h(\tilde{p}_{r}))} \biggr{)}^2 \biggr{]}^{\frac{1}{\eta^{v}-1}} \gamma(\tilde{p}_{r}). \label{eq:xprime}
+    \end{align}
+\end{small}
+%
+In what follows, we want to move from model objects as functions of continuous firm ranks $r$ (e.g., $\tilde{p}_{r}$) to empirical objects as functions of discrete firm ranks, $r$. For example, the change in the CDF of recruiting intensities between two adjacent firm ranks $r - 1$ and $r$ is
+%
+\begin{align}
+    \Delta h(\tilde{p}_{r}) %
+    &\equiv \int_{\tilde{p}_{r - 1}}^{\tilde{p}_{r}} \frac{v(\tilde{p})}{V} \gamma(\tilde{p}) \, d \tilde{p} \label{eq:offer_dist_step_1} \\
+    &\approx \frac{v(\tilde{p}_{r - 1})}{V} \gamma(\tilde{p}_{r - 1}) \times [\tilde{p}_{r} - \tilde{p}_{r - 1}], \label{eq:offer_dist_step_2}
+\end{align}
+%
+where $\Delta$ is an operator that takes differences between the current and the previous (discrete) rank. %
+%
+We write a discretized version of equation \eqref{eq:Gamma_r} as follows:
+%
+\begin{align}
+    \Gamma(\tilde{p}_{r}) = \int_{\tilde{p}_{1}}^{\tilde{p}_{r}} \gamma(\tilde{p}) \, d \tilde{p}
+\end{align}
+%
+and interpreting the empirical (discrete) distribution of firms as representative of the theoretical (continuous) distribution of firms, the CDF of composite productivity $\tilde{p}$ of the first $n$ firms in the ranking is simply%
+%
+\footnote{Recall that $r \in \{ 0, 1/(N - 1), \ldots, 1 \}$, where $N$ is the total number of firms, so $n \equiv r N \in \{ 1, 2, \ldots, N \}$ is the rescaled rank of a firm, with workers of a given gender preferring firms with higher values of $n$.}
+%
+\begin{align}
+    \Gamma(\tilde{p}_{r}) = r \in \left\{ \frac{1}{N}, \frac{2}{N}, \ldots, 1 \right\}. % \Gamma_N(n) = n/N
+\end{align}
+%
+Therefore, a good approximation for the change in the CDF of composite productivity is simply
+%
+\begin{align}
+    \gamma(\tilde{p}_{r - 1}) (\tilde{p}_{r} - \tilde{p}_{r - 1}) \approx 1/N \label{eq:approx}
+\end{align}
+%
+at all rungs of the ladder.%
+%
+\footnote{Note that our data covers the universe (i.e., a very large number) of firms in Brazil. If we consider a small sample of firms randomly drawn from the population, then for the first few firms in the left tail of the distribution of ranks, our approximation may be relatively poor. However, as we sum over increasingly higher ranks, our approximation becomes increasingly precise since errors vanish rather than accumulate.} %
+%
+Now we rewrite the change in the CDF of composite productivity offers using a finite-difference approximation and equation \eqref{eq:hprime}:
+%
+\begin{small}
+    \begin{align}
+        \Delta F(x(\tilde{p}_{r})) &= h'(\tilde{p}_{r - 1}) (\tilde{p}_{r} - \tilde{p}_{r - 1}) \\
+        &= \frac{1}{V} \biggl{[} \frac{T (\tilde{p}_{r - 1} - x(\tilde{p}_{r - 1}))}{c^{v,0}} \biggl{(} \frac{1}{\delta + \lambda^{G} + \lambda^{E} (1 - h(\tilde{p}_{r - 1}))} \biggr{)}^2 \biggr{]}^{\frac{1}{\eta^{v} - 1}} \gamma(\tilde{p}_{r - 1}) (\tilde{p}_{r} - \tilde{p}_{r - 1})
+    \end{align}
+\end{small}
+%
+Now replace $\Delta F(x(\tilde{p}_{r}))$ by $\hat{f}_{r}$, replace $\gamma(\tilde{p}_{r - 1}) (\tilde{p}_{r} - \tilde{p}_{r - 1})$ by $1/N$, and replace $h(\tilde{p}_{r - 1})$ by $F_{r - 1}$. It then follows that
+%
+\begin{align}
+    \hat{f}_{r} = \biggl{[} \frac{T (\tilde{p}_{r - 1} - x(\tilde{p}_{r - 1}))}{c^{v,0}} \biggl{(} \frac{1}{\delta + \lambda^{G} + \lambda^{E} (1 - F_{r - 1})} \biggr{)}^2 \biggr{]}^{\frac{1}{\eta^{v} - 1}} \frac{1}{V N} \label{eq:offer_dist_rewritten}
+\end{align}
+%
+All of the elements of equation \eqref{eq:offer_dist_rewritten} are known from the data, except for the firm's flow payoff per matched worker, $P_{r - 1} \equiv (\tilde{p}_{r - 1} - x(\tilde{p}_{r - 1}))$. Thus, we have one equation \eqref{eq:offer_dist_rewritten} in one unknown ($P_{r}$) for each firm rank $r$, which can be rewritten as
+%
+\begin{align}
+    P_{r - 1} &\equiv (\tilde{p}_{r - 1} - x_{r - 1}(\tilde{p}_{r - 1})) = \biggl{(} \hat{f}_{r} V N \biggr{)}^{\eta^{v} - 1} \frac{V c^{v,0}}{T} \biggl{(} \delta + \lambda^{G} + \lambda^{E} (1 - F_{r - 1})) \biggr{)}^2. \label{eq:flowprofits}
+\end{align}
+%
+Intuitively, a firm posts more vacancies if it receives a greater flow payoff per matched worker.
+
+Going back to equation \eqref{eq:xprime}, we apply a similar finite-difference approximation:
+%
+\begin{small}
+    \begin{align}
+        \Delta x_{r} %
+        &= x'(\tilde{p}_{r - 1}) (\tilde{p}_{r} - \tilde{p}_{r - 1}) \\
+        &= \frac{2 \lambda^{E} (P_{r - 1})}{\delta + \lambda^{G} + \lambda^{E} (1 - F_{r - 1})}  \biggr{[} \frac{T P_{r - 1}}{c^{v,0}} \biggl{(} \frac{1}{\delta + \lambda^{G} + \lambda^{E} (1 - F_{r - 1})} \biggr{)}^2 \biggr{]}^{\frac{1}{\eta^{v}-1}} \frac{1}{V N}. \label{eq:discrete_flow}
+    \end{align}
+\end{small}
+%
+
+Recall that equation \eqref{eq:flowprofits} above already identifies $P_{r}$. Therefore, we can iteratively apply equation \eqref{eq:discrete_flow} through ranks $r > 0$ to deduce $x_{r}$ as follows:
+%
+\begin{align}
+    x_{r} = x_{0} + \sum_{i=1}^{r} \Delta x_{i}. \label{eq:x_r}
+\end{align}
+%
+For a given initial condition $x_{0}$, based on equation \eqref{eq:x_r}, we deduce
+%
+\begin{align}
+    \beta_{r} a_{r} = x_{r} - w_{r}, \label{eq:pi_r}
+\end{align}
+%
+where $\beta_{r} a_{r}$ is the amenity valuation to be pinned down, $x_{r}$ is the total compensation recursively defined in equation \eqref{eq:x_r}, and $w_{r}$ is the known firm component of wages at firm rank $r$. Similarly to the continuous case, we set $x_{0}$ such that $\min\{ \beta_{r} a_{r} \}_{r} \approx 0$. This allows us to pin down the distribution of firm-level amenity valuations, $\beta_{r} a_{r}$, based on equation \eqref{eq:pi_r}. From this, we deduce the amenity cost, $c^{a}(a_{r})$, by plugging back $\beta_{r} a_{r}$ into the expression for the optimal amenity cost in equation \eqref{eq:optimal_amenity_cost}. Finally, as we have already identified $P_{r} = \tilde{p}_{r} - x_{r} = p_{r} - w_{r} - c^{a}(a_{r})$, we can deduce $p_{r}$ firm by firm as
+%
+\begin{align}
+    p_{r} = P_{r} + w_{r} + c^{a}(a_{r}), \label{eq:p_r}
+\end{align}
+%
+proceeding exactly as in the continuous case in Supplemental Appendix \ref{app:proof_firm_level_params}.
+
+Having identified $p_{Mj}$ for men and $p_{Fj}$ for women at the same firm $j$, we can recover the gender wedge $\tau_{j}$ as
+%
+\begin{align}
+    \tau_{j} = 1 - \frac{p_{Fj}}{p_{Mj}}. \label{eq:tau_discrete}
+\end{align}
+%
+In summary, equations \eqref{eq:pi_r}, \eqref{eq:p_r}, and \eqref{eq:tau_discrete} jointly identify the unobserved multidimensional type $(p_{g,r}, \beta_{g,r} a_{g,r}, \tau_{g,r})$ of firms at any rank $r$ and for both genders $g$. Intuitively, what our identification proof exploits is the fact that firm surplus and utility offers---consisting of productivity, the gender wedge, and the amenity value net of amenity creation costs---are identified by firms' labor demand as revealed through hires from nonemployment, while information on wage offers together with the already-revealed utility offers identifies firm amenity values. Finally, comparing outcomes across men and women at the same firm allows us to deduce the gender wedge, which stands in for differences in firm surplus of employing otherwise identical male and female workers at the same wage rate and amenity value net of amenity creation costs.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Proposition \ref{prop:economy_wide_params} (Economy-Wide Parameters)\label{app:proof_economy_wide_params}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{Restatement of Proposition \ref{prop:economy_wide_params} (Economy-Wide Parameters).}
+
+%
+\emph{%
+    \PropEconomyWideParameters%
+}%
+%
+\begin{proof}
+    We proceed in three parts.
+
+    \uline{Part (i): vacancy cost shifter.} %
+    First, we find an expression for firm profits $\rho\Pi(r)$. Recall the definition of profits per matched worker,
+    %
+    \begin{align}
+        p(r) - w(r) - c^{a}(a_{r})	& = \left[f(r)V\right]^{\eta^{v}-1}\frac{c^{v,0}}{T}\left[\delta+\lambda^{G}+\lambda^{E}(1-F(r))\right]^{2}.
+    \end{align}
+    %
+    From this expression, we multiply by size $l(r) = f(r) V T / [\delta + \lambda^G + \lambda^E (1-F(r)]^2$ and subtract vacancy posting costs to obtain flow profits $\rho \Pi(r)$,
+    %
+    \begin{align}
+        \rho \Pi(r) %
+        &= \left( p(r) - w(r) - c^{a}(a_{r}) \right) l(r) - c^{v} (v(r)) \\
+        & = \left[ f(r)V \right]^{\eta^{v}} c^{v,0} - c^{v}(v(r)).
+    \end{align}
+    %
+    We now substitute the functional form of the cost of posting vacancies $c^{v}(v(r)) = c^{v,0} v(r)^{\eta^{v}}/\eta^{v}$ and $f(r)V = v(r)$ to obtain
+    %
+    \begin{align}
+        \rho \Pi(r) & = \left[v(r)\right]^{\eta^{v}}c^{v,0} - c^{v,0} \frac{ \left[ v(r) \right]^{\eta^{v}}}{\eta^{v}} \\
+        & = \left(1 - \frac{1}{\eta^{v}} \right) \left[v(r)\right]^{\eta^{v}} c^{v,0}. \label{eq:profits_per_worker_proof}
+    \end{align}
+    %
+    From this expression, it is immediately clear that flow profits $\rho \Pi(r)$ are proportional to $c^{v,0}$. Specifically, profits are always positive but they can be arbitrarily large as $c^{v,0} \rightarrow \infty$ and arbitrarily small as $c^{v,0} \rightarrow 0^{+}$, and therefore the profit share of the economy can range from 0 to 1 depending on the value of $c^{v,0}$.
+
+    Substituting back $v(r) = f(r) V$ to make clear the dependency on observed hiring intensities $f(r)$ we obtain
+    %
+    \begin{align}
+       \rho \Pi(r) & = \left(1 - \frac{1}{\eta^{v}} \right) \left[f(r) V\right]^{\eta^{v}} c^{v,0} \label{eq:flow_profits_cv0}
+    \end{align}
+    %
+    In equation \eqref{eq:flow_profits_cv0}, $\eta^{v}$ is treated as unknown. However, its value does not matter for any of our arguments concerning the identification of the vacancy cost shifter $c^{v,0}$. We can write the labor share as
+    %
+    \begin{align}
+        \mathcal{L}  &\equiv \frac{ \int w(r) l(r) \diff r}{ \int \left[ p(r)l(r) - c^{a}(a(r))l(r) - c^{v}(v(r)) \right] \diff r } \\
+        &= \frac{ \int w(r)l(r) \diff r }{ \int \left[ w(r)l(r) + \rho \Pi(r) \right] \diff r } \\
+        &= 1 - \frac{ \int \rho \Pi(r) \diff r}{ \int \left[ w(r)l(r) + \rho \Pi(r) \right] \diff r }. \label{eq:labor_share_rewritten}
+    \end{align}
+    %
+    Since flow profits $\rho \Pi(r)$ in equation \eqref{eq:flow_profits_cv0} are strictly increasing in the vacancy cost shifter $c^{v,0}$ and the labor share in equation \eqref{eq:labor_share_rewritten} is strictly decreasing in profits $\rho \Pi(r)$, it follows that the labor share is strictly decreasing in the vacancy cost shifter $c^{v,0}$. Furthermore, the labor share in equation \eqref{eq:labor_share_rewritten} can take on any value in $(0, 1)$ by choosing an appropriate value of the vacancy cost shifter $c^{v,0}$. As a result, the vacancy cost shifter $c^{v,0}$ is identified based on the aggregate labor share in the data. This proves part (i).
+
+    \uline{Part (ii): elasticity of the vacancy cost function.} %
+    Next, we show that the variance of log profits is monotonically increasing in $\eta^{v}$. Applying natural logarithms to both sides of \eqref{eq:flow_profits_cv0} yields
+    %
+    \begin{align}
+        \ln (\rho \Pi(r)) & = \ln \left(1 - \frac{1}{\eta^{v}} \right) + \eta^{v} \ln [f(r) V] + \ln(c^{v,0}). \label{eq:log_pi_r_proof}
+    \end{align}
+    %
+    Taking variances on both sides of equation \eqref{eq:log_pi_r_proof}, we get
+    %
+    \begin{align}
+        Var\left[\ln (\rho \Pi(r)) \right] %
+        & =Var \left[\left(\eta^{v} \times\ln f(r) \right)+ \eta^{v} \times \ln V + \ln\left(c^{v,0} \right) \right] \label{eq:var_log_flow_profits_temp} \\
+        & =\left(\eta^{v}\right)^{2}\times Var\left[\ln f(r)\right] \label{eq:var_log_flow_profits}
+    \end{align}
+    %
+    Except for $f(r)$, all terms in equation \eqref{eq:var_log_flow_profits_temp} are constant across firms, so they drop out of the calculation of the variance. As a result, equation \eqref{eq:var_log_flow_profits} shows that the variance of log profits is proportional to $(\eta^{v})^2$ and thus monotonically increasing in $\eta^{v}$. Now consider a regression of log firm pay on log profits,
+    %
+    \begin{align}
+        \ln w(r) &= \alpha + \beta \ln \Pi(r) + \varepsilon(r),\label{eq:regression_pay_profits}
+    \end{align}
+    %
+    where the regression coefficient $\beta$ in equation \eqref{eq:regression_pay_profits} captures the elasticity of firm pay with respect to firm profits. The regression coefficient
+    %
+    \begin{align}
+        \beta &= \frac{Cov[ \ln w(r), \ln (\rho \Pi(r)) ]}{Var[ \ln (\rho \Pi(r)) ]}, \label{eq:regression_beta}
+    \end{align}
+    %
+    is inversely proportional to the variance of log profits, which scales in $(\eta^{v})^2$, and proportional to the covariance between log profits and observed log pay, which scales in $\eta^{v}$, we know that the regression coefficient is strictly decreasing in $\eta^{v}$. Thus, if an empirical regression coefficient $\beta$ is attained for some parameter value $\eta^{v}$, then this is the unique value of $\eta^{v}$ that rationalizes this empirical $\beta$. As a result, $\eta^{v}$ is identified based on the elasticity of firm pay to firm profits. This proves part (ii).
+
+    \uline{Part (iii): amenity cost elasticity.} %
+    Finally, in equation \eqref{eq:optimal_amenity_cost} in Lemma \ref{lem:optimal_amenities} we demonstrated that amenity costs are inversely proportional to $\eta^{a}$.
+    Therefore, we can write the economy-wide cost share of amenities as
+    %
+    \begin{align}
+        \mathcal{A} &\equiv \frac{ \int c^{a}(a^{\ast}(r))l(r) \diff r }{ \int \left[ p(r)l(r) - c^{a}(a^{\ast}(r))l(r) - c^{v}(v(r)) \right] \diff r }.
+    \end{align}
+    %
+    Obviously, the aggregate amenity cost share in equation \eqref{eq:optimal_amenity_cost} is monotonically decreasing in $\eta^{a}$, as the numerator is monotonically decreasing in $\eta^{a}$ and the denominator is monotonically increasing in $\eta^{a}$. Furthermore, as $\eta^{a} \rightarrow \infty$, the amenities cost share monotonically tends to zero. Thus, if an empirical value of the aggregate amenity cost share $\mathcal{A}$ is attained for some parameter value $\eta^{a}$, then this is the unique value of $\eta^{a}$ that rationalizes this empirical $\mathcal{A}$. This proves that the elasticity of the amenity cost function $\eta^{a}$ is identified based on the aggregate amenity cost share in the data.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Recovering Parameter Values in Monte Carlo Simulations\label{app:appendix_montecarlo}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this subsection, we perform Monte Carlo simulations of our model and use our estimation algorithm to recover the underlying distribution of firm-level parameters, based only on the same information we observe in the data, as detailed in Section \ref{sec:Identification}. As our proof shows that all parameters are point-identified, this exercise is not strictly necessary, but we view it as a proof of concept and as further validation of our strategy.
+
+For the purpose of this exercise, we only need to focus on one gender, with the understanding that the simulations recover $p$ if the algorithm is run on men's data and $(1 - \tau) p$ if the algorithm is run on women's data. We start by drawing 100,000 firms, characterized by productivity $p$ and amenities $a$, jointly normally distributed with correlation $\rho(p,a)$. We then transform productivity to have a Pareto marginal distribution.
+
+We then feed the nonparameteric joint distribution of $\{p, a\}$ to our discrete numerical solution algorithm, detailed in Supplemental Appendix \ref{app:solution_algorithm}, to solve our model. The outputs of the simulation are firm-level wages, amenities, ranks, and hiring intensities. We use this data to construct our estimates of rank $r$, hiring intensities $f_r$, and offer CDF $F_r$ as explained in Proposition \ref{prop:lab_params}. Finally, in order to test whether our algorithm is successful at uncovering the true firm-specific parameters, we use only data on firm-level ranks $r$, wages $w_r$, hiring intensities $f_r$, and CDF $F_r$ to estimate amenities and productivity at the firm level.
+
+Our results are summarized in Table \ref{tab:monte_carlo}, which shows moments of the distribution of recovered estimates under different parameterizations of the underlying amenities distribution. Under different parameterizations of the data-generating process, shown in columns (1)--(5) of the table, our algorithm recovers estimates of the amenity values and productivities that are {\it{identical}} to the true values up to machine precision. In all experiments, we keep the marginal distribution of productivity fixed, but we alter the economy-wide parameters $\eta^{v}$ and $\eta^a$, as well as the underlying variance of amenities $Var(a)$ and the correlation of amenities and productivity $\rho(p, a)$ in the initial joint normal distribution. %
+%
+In Column (1), $Var(a) = 0.1$, $\rho(p,a) = 0$, $\eta^{v} = 2$ and $\eta^{a} = 8$. In Column (2), $Var(a) = 0.15$, $\rho(p,a) = 0$, $\eta^{v} = 3$ and $\eta^{a} = 4$. In Column (3), $Var(a) = 0.125$, $\rho(p,a) = 0$, $\eta^{v} = 3.5$ and $\eta^{a} = 7$. In Column (4), $Var(a) = 0.2$, $\rho(p,a) = -0.5$, $\eta^{v} = 2$ and $\eta^{a} = 9$. In Column (5), $Var(a) = 0.15$, $\rho(p,a) = 0.5$, $\eta^{v} = 2.5$ and $\eta^{a} = 10$.
+
+To evaluate the goodness of fit of our procedure, Panel E shows the correlations and mean squared error (MSE) between our amenity estimates and true amenity values, and those between our productivity estimates and true productivity values. It also shows the MSE for the estimates of economy-wide parameters. The correlation for all estimates is equal to $1$ approximated at the seventh decimal digit. The MSE for amenities, productivities, and economy-wide parameters is close to machine zero.
+
+Figure \ref{fig:amenities_MC_100000} visualizes the fit of our estimation routine with respect to the main objects of interest---namely, the amenity values. Across all five simulations, estimates lie on the 45-degree line, showing how our procedure is robust to different joint distributions of amenities and productivity, and different values of economy-wide parameters.
+
+%
+\begin{table}[htbp!]
+    \caption{Monte Carlo simulation and estimation on 100,000 firms \label{tab:monte_carlo}}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableD1.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        Table reports estimation results using simulated data from 100,000 firms under different parameterizations of the underlying distribution of firm heterogeneity, including amenity values $a$, productivity $p$, wages $w$, and employer ranks $r$. MSE denotes the mean squared error. Columns (1)--(5) show separate simulations under different parameterizations of the data-generating process described in the text of Supplemental Appendix \ref{app:appendix_montecarlo}. %
+        %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcesimulation%
+    \end{tablenotes}
+\end{table}
+%
+
+\clearpage
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Simulation 1]{\includegraphics[width=.3333\columnwidth]{figures/figureD1a.eps}\label{fig:amenities_MC_100000_1}}
+    \subfloat[Simulation 2]{\includegraphics[width=.3333\columnwidth]{figures/figureD1b.eps}\label{fig:amenities_MC_100000_2}}
+    \subfloat[Simulation 3]{\includegraphics[width=.3333\columnwidth]{figures/figureD1c.eps}\label{fig:amenities_MC_100000_3}} \\
+    \subfloat[Simulation 4]{\includegraphics[width=.3333\columnwidth]{figures/figureD1d.eps}\label{fig:amenities_MC_100000_4}}
+    \subfloat[Simulation 5]{\includegraphics[width=.3333\columnwidth]{figures/figureD1e.eps}\label{fig:amenities_MC_100000_5}}
+    %
+    \caption{{\label{fig:amenities_MC_100000} Amenity estimates against true amenities in Monte Carlo simulations}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        Figure plots average amenity estimates against percentile bins of true amenity values. The simulations in Panels \subref{fig:amenities_MC_100000_1}--\subref{fig:amenities_MC_100000_5} correspond to columns (1)--(5) in Table \ref{tab:monte_carlo}. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcesimulation%
+    \end{figurenotes}
+\end{figure}
+%
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Simulation 1]{\includegraphics[width=.3333\columnwidth]{figures/figureD2a.eps}\label{fig:productivities_MC_100000_1}}
+    \subfloat[Simulation 2]{\includegraphics[width=.3333\columnwidth]{figures/figureD2b.eps}\label{fig:productivities_MC_100000_2}}
+    \subfloat[Simulation 3]{\includegraphics[width=.3333\columnwidth]{figures/figureD2c.eps}\label{fig:productivities_MC_100000_3}} \\
+    \subfloat[Simulation 4]{\includegraphics[width=.3333\columnwidth]{figures/figureD2d.eps}\label{fig:productivities_MC_100000_4}}
+    \subfloat[Simulation 5]{\includegraphics[width=.3333\columnwidth]{figures/figureD2e.eps}\label{fig:productivities_MC_100000_5}}
+    %
+    \caption{{\label{fig:productivity_MC_100000} Productivity estimates against true productivities in Monte Carlo simulations}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        Figure plots average productivity estimates against percentile bins of true productivity values. The simulations in Panels \subref{fig:productivities_MC_100000_1}--\subref{fig:productivities_MC_100000_5} correspond to columns (1)--(5) in Table \ref{tab:monte_carlo}. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcesimulation%
+    \end{figurenotes}
+\end{figure}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Robustness to Model Misspecification and Subgroup Heterogeneity\label{app:appendix_misspecification}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To assess the robustness of our estimation results to model misspecification, we use a series of Monte Carlo simulations using a more flexible DGP that allows for heterogeneity in idiosyncratic worker preferences and firm attributes across population subgroups, even within gender. In what follows, we describe the details of how we estimate our (misspecified) model based on simulated data from such a DGP, and the results from this analysis. The bottom line is that we find our model to be remarkably robust to a wide range of misspecifications in the form of idiosyncratic worker and firm attributes.
+
+To address the concern that preferences may be heterogeneous in the worker population and that, therefore, firm rankings may be heterogeneous, we run the following experiment. We assume that there are two groups of workers labeled $A$ and $B$. Each firm is characterized by six objects: a shared productivity fundamental, $p$, a shared amenity cost shifter fundamental, $c^{a, 0}$, two group-specific productivity components, $\{ \varepsilon_{i} \}_{i \in \{ A, B \}}$, and two group-specific amenity cost components $\{ \zeta_{i} \}_{i \in \{ A, B \}}$. We define the group-specific productivity and amenity cost shifter, respectively, for population group $i \in \{ A, B \}$ at firm $j$ as:
+%
+\begin{align*}
+    p_{ij} = & p_{j} + \varepsilon_{i}, \\
+    c_{ij}^{a, 0} = & c_{j}^{a, 0} + \zeta_{i}.
+\end{align*}
+%
+We refer to $p_{ij}$ and $c_{ij}^{a, 0}$---and thus the implied equilibrium amenities $a_{ij}$---as the \emph{group-specific fundamentals}, in contrast to the to fundamentals $p_{j}$ and $c_{j}^{a, 0}$ that are shared between worker groups at the same firm $j$. Starting from these two sets of group-specific fundamentals, we fix all labor market parameters $(\lambda^{U}, \lambda^{E}, \lambda^{G}, \delta)$ across groups and across simulations, and we fix the economy-wide parameters $\eta^{v}$ and $\eta^{a}$ across simulations. We then solve the general equilibrium across firms $j$ in our model, separately for each group $i \in \{A, B\}$, as if these were two separate economies populated by workers who climb separate job ladders. This is the sense in which this simulation exercise features idiosyncratic worker preferences and firm rankings. Importantly, we can link workers within the same firm $j$ by use of the simulated firm identifier.
+
+Next, we treat the group identity $i \in \{ A, B \}$ as unobserved by the econometrician. Instead, the econometrician observes pooled population averages as we measure them in our paper. To this end, we construct firm-level total employment $g_{j}$ as the sum of employment of workers of type $i$, $g_{ij}$, and firm-level mean wages $w_{j}$ as the weighted average of wages of workers of type $i$, $w_{ij}$, for each firm $j$ by aggregating group-level quantities across model simulations for worker groups $i \in \{ A, B \}$:
+%
+\begin{align*}
+    g_{j} = & g_{Aj} + g_{Bj}, \\
+    w_{j} = & \frac{g_{Aj}}{g_{j}} w_{Aj} + \frac{g_{Bj}}{g_{j}} w_{Bj}.
+\end{align*}
+%
+We then use data on firm-level employment $g_{j}$ and firm-level wages $w_{j}$ as inputs to our estimation procedure, again assuming that the econometrician cannot separately observe outcomes of individual worker groups $i \in \{ A, B \}$. Specifically, we use firm-level average employment $g_{j}$ to infer firm ranks, we back out firm-level hires following the steps described in the paper, and we assign each firm their average wages as computed above. Importantly, our model with shared worker preferences across firms is generally misspecified vis-{\`{a}}-vis the DGP featuring two separate firm rankings of worker groups $i \in \{ A, B \}$.
+
+We construct three sets of experiments. In the first experiment, the group-specific components $\varepsilon_{i}$ and $\zeta_{i}$ are uncorrelated across groups. In the second experiment, the group-specific components are perfectly negatively correlated across groups. In the last experiment, the group-specific components are perfectly positively correlated. For each set of experiments, we simulate six different scenarios in which we let the variance of the group-specific components become an increasingly large multiple of the variance of the shared fundamental. In our most extreme case study, group-specific components of $p_{ij}$ and $c_{ij}^{a, 0}$ feature 200\% of the dispersion as that of the shared fundamentals, including firm productivity and amenities. We then evaluate the performance of our algorithm by comparing the estimated values of productivity $\hat{p}$ and estimated amenities $\hat{a}$ with the true employment-weighted average productivity at the same firm $\bar{p}$ and the true employment-weighted average amenity valuation at the same firm $\bar{a}$, which we define as the employment-weighted average of group-specific fundamentals.
+
+The simulation results from our first experiment, in which group-specific fundamentals are uncorrelated across groups, are summarized in Table \ref{tab:MC_misspecification_etav2_rho0}. We find that our estimation algorithm recovers well the \emph{average} firm-level fundamentals in all exercises. As we increase the importance of group-specific fundamentals, the performance of our estimation procedure worsens, but it remains strong throughout, where the correlation between estimates and true averages never drops below 0.97. For comparison, we also display the correlation of the firm-specific average fundamentals that we estimate and the group-specific fundamentals. Obviously, as we increase the importance of group-specific drivers, the firm-level average becomes a worse predictor of the group-specific fundamentals. However, it remains highly reliable at estimating the average fundamental.
+
+%
+\begin{table}[htbp!]
+    \caption{Estimation under uncorrelated group-specific components}
+    \label{tab:MC_misspecification_etav2_rho0}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableD2.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports results from estimation in the case of a misspecified model in which two groups of workers have different, uncorrelated group-specific components. Column 1 is the baseline estimation with no group-specific components. Between columns 2 and 6, the relative variances of group-specific components progressively increase from 10\% to 200\% of those of the shared components. %
+    \end{tablenotes}
+\end{table}
+%
+
+For our second experiment, we assume that group-specific components are perfectly negatively correlated. Intuitively, it is more difficult for our estimation algorithm to accurately approximate the objects of interest when group-specific components are perfectly negatively correlated.%
+%
+\footnote{To see why a negative correlation causes difficulties, consider the case in which the shared fundamental is irrelevant so that group-specific components are the {\emph{only}} determinant of a firm's rank, wages, and employment---i.e., $p_{ij} = \varepsilon_{i}$ and $c_{ij}^{a, 0} = \zeta_{i}$. If the group-specific components are perfectly negatively correlated across groups, then average employment at each firm is constant in expectation once aggregated across worker groups. This is despite the existence of clear firm rankings and meaningful firm size distributions within each worker group.} %
+%
+The simulation results from this second experiment are summarized in Table \ref{tab:MC_misspecification_etav2_rho-1}. While the performance of our estimation algorithm slightly worsens, it is still surprisingly effective at recovering the firm-specific average productivities and amenity valuations, even when the relative variance of group-specific components is large. For productivity, the correlation between the estimated value and the true average remains at or above 0.976 through all exercises. For amenities, it decreases to 0.908, highlighting the challenge of identifying group-specific determinants of utility and employment when they are negatively correlated. Obviously, the relationship between our estimated average fundamentals and the group-specific fundamentals worsens.
+
+%
+\begin{table}[htbp!]
+    \centering
+    \caption{Estimation under perfectly negatively correlated group-specific components}
+    \label{tab:MC_misspecification_etav2_rho-1}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableD3.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports results from estimation in the case of a misspecified model in which two groups of workers have different, perfectly negatively correlated group-specific components. Column 1 is the baseline estimation with no group-specific components. Between columns 2 and 6, the relative variances of group-specific components progressively increase from 10\% to 200\% of those of the shared components. %
+    \end{tablenotes}
+\end{table}
+%
+
+As a third experiment and sanity check, we let the group-specific components be perfectly positively correlated across groups. In this case, there is, of course, a common ranking for both worker groups $i \in \{ A, B \}$. As a result of this shared ranking among all workers in the population, our estimation should deliver the exact values of productivity and amenities for any variance of the different components. The simulation results from this third experiment are summarized in Table \ref{tab:MC_misspecification_etav2_rho1}. Reassuringly, in this case, our estimation procedure successfully recovers the exact fundamentals---see also the additional Monte Carlo simulation results in Supplemental Appendix \ref{app:appendix_montecarlo} of the revised paper.
+
+%
+\begin{table}[htbp!]
+    \caption{Estimation under perfectly positively correlated group-specific components}
+    \label{tab:MC_misspecification_etav2_rho1}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/tableD4.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports results from estimation in the case of a misspecified model in which two groups of workers have different, perfectly positively correlated group-specific components. Column 1 is the baseline estimation with no group-specific components. Between columns 2 and 6, the relative variances of group-specific components progressively increase from 10\% to 200\% of those of the shared components. %
+    \end{tablenotes}
+\end{table}
+%
+
+Our simulation-based findings that individual heterogeneity and other sources of noise approximately wash out in our model estimation can be rationalized based on an interesting property of our model. To see this, we start by revisiting equation \eqref{eq:flow_profits_P_r} from the identification proof of Proposition \ref{prop:identification} in Supplemental Appendix \ref{app:proof_firm_level_params}:
+%
+\begin{align*}
+    P_{r - 1} &\equiv (\tilde{p}_{r - 1} - x_{r - 1}(\tilde{p}_{r - 1})) = \biggl{(} \hat{f}_{r} V N \biggr{)}^{\eta^{v} - 1} \frac{V c^{v,0}}{T} \biggl{(} \delta + \lambda^{G} + \lambda^{E} (1 - F_{r - 1})) \biggr{)}^{2},
+\end{align*}
+%
+where $P_{r}$ is the flow payoff per matched worker, $\tilde{p}_{r}$ is the composite productivity, $x_{r}(\tilde{p}_{r})$ is the flow utility delivered to workers, $f_{r}$ is the recruiting intensity, and $F_{r}$ is the ladder rank, all for a firm at rank $r$, and $V$ is a constant reflecting aggregate vacancies, $N$ is the number of firms, $\eta^{v}$ is the elasticity of the vacancy cost function, $c^{v,0}$ is the economy-wide vacancy cost intercept, $T$ is a constant defined in equation \eqref{eq:constant_T}, and $(\delta, \lambda^{G}, \lambda^{E})$ are labor market transition rates.
+
+What is key is that there are two idiosyncratic terms in the expression for $P_{r}$ above: the recruiting intensity $f_{r}$ and the firm rank $F_{r}$. Hence, both $f_{r}$ and $F_{r}$ are potential sources for estimation error based on idiosyncratic variation due to preference heterogeneity or other sources of noise. Let us first inspect the term reflecting a firm's estimated rank, $F_{r}$. Importantly, we see that $F_{r}$ is premultiplied by $\lambda^{E} \approx 1\%$ and the whole term containing $F_{r}$ is of magnitude $\approx 5\%$, which means that the squared term becomes of magnitude $\approx (5\%)^{2} \ll 1\%$. Therefore, idiosyncratic variation in the estimate of a firm's rank, $F_{r}$, has limited influence on our estimates of $P_{r}$ and thus firm productivity $p$ and amenities $a$.
+
+This leaves us with only one source of idiosyncratic variation in the estimation, namely, firms' recruiting intensity $f_{r}$. In general, the impact of noise in $f_{r}$ can be substantial in our model through the term $(\hat{f}_{r} V N)^{\eta^{v} - 1}$ on the right-hand side of the equation above. However, a result of our estimation procedure is that our estimated elasticity of the vacancy cost function is $\eta^{v} =\input{text/txt_model_baseline_eta_v.tex} \approx 2$, which implies that $(\hat{f}_{r} V N)^{\eta^{v} - 1} \approx \hat{f}_{r} V N$. Therefore, $P_{r}$ is approximately linear in $\hat{f}_{r}$, which implies that any idiosyncratic variation in $\hat{f}_{r}$ washes out in expectation when estimating $P_{r}$.%
+%
+\footnote{The same logic also predicts that idiosyncratic variation in $f_{r}$ should have more substantial effects on the accuracy of our model estimates, which we confirm in Monte Carlo simulations as described above.} %
+%
+As a result, our estimation procedure recovers estimates of $P_{r}$ that are unbiased. As a result of having an unbiased estimate of the firm's flow payoff from a matched worker, $P_{r}$, we obtain the change in utility offered across rungs of the firm ladder, $\Delta x$, defined in equation \eqref{eq:discrete_flow}. Furthermore, when computing the levels of flow utility $x_{r} = x_{0} + \sum_{i=1}^{r} \Delta x_{i}$ offered at each firm by use of equation \eqref{eq:x_r}, idiosyncratic noise in individual firms' $P_{r}$ washes out because we are summing over many such terms across rungs of the ladder.%
+%
+\footnote{Again, the same logic also predicts that we should have more accurate estimates in the center of the distribution compared to the tails, which we confirm in additional Monte Carlo simulations.} %
+%
+Therefore, our estimation procedure yields unbiased and stable estimates of flow utility $x_{r}$, which is robust to idiosyncratic variation or noise in $f_{r}$. As a result of plugging $x_{r}$ back into equation \eqref{eq:pi_r}, we also see that our amenity estimates are unbiased and stable for a given observation of the empirical firm pay $w_{r}$. Plugging all of these objects back into the definition of $P_{r}$ above, we see that the model object that should pick up most of the idiosyncratic variation in $f_{r}$ should be firm productivity $p_{r}$.
+
+Finally, it is interesting to assess how much the data clearly violate the assumption of homogeneous employer preferences across population subgroups within each gender. To this end, we have split our sample by three worker characteristics, one at a time. These worker characteristics are: low education (i.e., at most high school) vs.\ high education (i.e., at least high school), ever parents (i.e., registered at least one parental leave between 2007 and 2018) vs.\ never parents (i.e., did not register any parental leaves between 2007 and 2018), and young cohorts (i.e., year of birth starting in 1968) vs.\ old cohorts (i.e., year of birth up to 1967). We then compute firm ranks as employment at a given firm, separately for each population subgroup. With this in hand, we are interested in how related the two population subgroups' firm ranks are within each gender. For example, this allows us to study the extent to which the firm ranking of women with kids differs from that of women without kids.
+
+Figure \ref{fig:corr_dem} provides a first look at the results from this exercise by showing binscatter plots of empirical employer ranks across population subgroups, separately by gender. The key takeaway is that there is a strong and close-to-linear relationship between employer ranks of different subpopulations within each gender. In particular, the ranks are close to monotonic in each other. Of course, the linearity and monotonicity of the plotted relationships are not perfect. For example, bottom-ranked firms for population subgroup 1 (on the horizontal axis of each panel) tend to be higher-ranked for members of population subgroup 2 (on the vertical axis of each panel). These imperfections could either reflect preference heterogeneity or measurement error, both of which might be particularly pronounced in the tails of the distribution of firm ranks. Note also that the parent vs.\ nonparent comparison for men shows a relatively worse fit than for the other population subgroups and genders. This may be partly due to misclassification in what we group into the ``parent'' category, which consists of all workers who took a registered parental leave from work between 2007 and 2018. Since women are orders of magnitude more likely to go on paid parental leave than men, our sample of men who are on parental leave might be a special population subgroup and also subject to measurement error. Overall, though, we take these results to be reassuring that firm ranks strongly tend to be shared across population subgroups within workers of a given gender.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Low education vs.\ high education, men]{\centering{}{\includegraphics[width=0.49\columnwidth]{figures/figureD3a.eps}}\label{fig:corr_dem_A}}%
+    \subfloat[Low education vs.\ high education, women]{\centering{}{\includegraphics[width=0.49\columnwidth]{figures/figureD3b.eps}}\label{fig:corr_dem_B}} \\
+    %
+    \subfloat[Parents vs.\ nonparents, men]{\centering{}{\includegraphics[width=0.49\columnwidth]{figures/figureD3c.eps}}\label{fig:corr_dem_C}}%
+    \subfloat[Parents vs.\ nonparents, women]{\centering{}{\includegraphics[width=0.49\columnwidth]{figures/figureD3d.eps}}\label{fig:corr_dem_D}} \\
+    %
+    \subfloat[Young cohorts vs.\ old cohort, men]{\centering{}{\includegraphics[width=0.49\columnwidth]{figures/figureD3e.eps}}\label{fig:corr_dem_E}}%
+    \subfloat[Young cohorts vs.\ old cohort, women]{\centering{}{\includegraphics[width=0.49\columnwidth]{figures/figureD3f.eps}}\label{fig:corr_dem_F}}%
+    %
+    \caption{Binscatter plots of employer ranks across population subgroups, by gender\label{fig:corr_dem}}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure shows binscatter plots of empirical employer ranks across population subgroups, separately by gender. In each panel, the vertical axis shows the mean employer rank for population subgroup 2 corresponding to a set of firms in a given quantile of the distribution of employer ranks for population subgroup 1. Here, population subgroups 1 and 2 refer to the two population subgroups referenced in the relevant panel's caption. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcedata%
+    \end{figurenotes}
+\end{figure}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Identification Under Heterogeneous Separation Rates\label{app:hetero_delta_identification}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To discuss identification of our model when separation rates are heterogeneous, as sketched in Supplemental Appendix \ref{app:hetero_delta_model}, we start as in Supplemental Appendix \ref{app:proof_firm_level_params}, expressing the first-order conditions \eqref{deltanote:eq:hetdelta_focv} and \eqref{deltanote:eq:hetdelta_focx} as a coupled pair of differential equations. We use the same changes of variables as in Supplemental Appendix \ref{app:proof_lemma_optimal_utility}, but we apply them to this more complex case in which $\delta_{g}(\tilde{p}_{gz})$ is a function of composite productivity $\tilde{p}_{gz}$. From now on, we drop the productivity and gender subscripts for readability. Define:
+%
+\begin{align}
+    h(\tilde{p}) = & F(x^{*}(\tilde{p})) = \frac{\int_{\tilde{p}' \geq \phi}^{\tilde{p}} v^{*}(\tilde{p'}) \gamma(\tilde{p}') \diff \tilde{p}'}{V} \label{deltanote:eq:hint} \\
+    j(\tilde{p}) = & G(x^{*}(\tilde{p})) = \frac{\int_{\tilde{p}' \geq \phi}^{\tilde{p}} l^{*}(\tilde{p'}) \gamma(\tilde{p}') \diff \tilde{p}'}{\mu (1 - u)} \label{deltanote:eq:jint} \\
+    h'(\tilde{p}) = & f(x^{*}(\tilde{p})) {x^{*}}'(\tilde{p}) \\
+    j'(\tilde{p}) = & g(x^{*}(\tilde{p})) {x^{*}}'(\tilde{p}) \\
+    f(x^{*}(\tilde{p})) = & h'(\tilde{p}) / {x^{*}}'(\tilde{p}) \\
+    g(x^{*}(\tilde{p})) = & j'(\tilde{p}) / {x^{*}}'(\tilde{p})
+\end{align}
+%
+Thus, by differentiating equations \eqref{deltanote:eq:hint} and \eqref{deltanote:eq:jint} using Leibniz's integral rule, we can write $f(x^{*}(\tilde{p})) = (v^{*}(\tilde{p'}/V) \gamma(\tilde{p}) \diff \tilde{p}/\diff x^{*}(\tilde{p})$, and $g(x^{*}(\tilde{p})) = (l^{*}(\tilde{p})/(\mu (1-u)) \gamma(\tilde{p}) \diff \tilde{p}/\diff x^{*}(\tilde{p})$. Therefore, we can rewrite the first-order conditions as:
+\begin{align}
+    h'(\tilde{p}) = & \frac{1}{V} \left[ (\tilde{p} - x) \frac{1}{c^{v,0} V} \left( \frac{ u + (1 - u) s^{E} j(\tilde{p}) + s^{G} }{\delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[1 - h(\tilde{p})\right]} \right)  \mu \lambda^{U}\right]^{\frac{1}{\eta^{v} - 1}} \gamma(\tilde{p})  \label{deltanote:eq:hint_mod} \\
+    x'(\tilde{p}) = & (\tilde{p} - x) \left( \frac{\lambda^{E} h'(\tilde{p})}{ \delta(x) + \lambda^{G} + \lambda^{E} \left[1 - h(x)\right] } + \frac{ (1 - u) s^{E} j'(\tilde{p}) }{ u + (1 - u) s^{E} j(\tilde{p}) + s_{g}^{G} } \right). \label{deltanote:eq:xint_mod}
+\end{align}
+%
+Once again, equations \eqref{deltanote:eq:hint_mod} and \eqref{deltanote:eq:xint_mod} are more general versions of equations \eqref{eq:hprime} and \eqref{eq:xprime}, where we allow separation rates to be a decreasing function of $\tilde{p}$. Using similar changes of variables as we did in Supplemental Appendix \ref{app:proof_firm_level_params}, we can write an expression for profits per worker depending on ranks by rearranging equation \eqref{deltanote:eq:hint_mod}:
+%
+\begin{align}
+    P(r) = \tilde{p}(r) - x(\tilde{p}(r)) = [f(r) V]^{\eta^{v}-1} \frac{ c^{v,0} V \left( \delta(r) + \lambda^{G} + \lambda^{E} [1 - h(r)] \right)}{\mu \lambda^{U} \left( u + (1-u) s^{E} j(r) + s^{G} \right)}, \label{deltanote:eq:profits_per_worker}
+\end{align}
+%
+which allows us to extract profits per worker from the data using a modified version of our original equation \eqref{eq:flow_profits_P_r}.
+
+We now turn to the identification of $x$. Further substituting $j'(\tilde{p}) = l^{*}(\tilde{p}) \gamma(\tilde{p}) / (\mu (1-u))$, then $l^{*}(\tilde{p})$ with its solution from equation \eqref{eq:size_stationary_hetdelta} and $h'(\tilde{p})$ from equation \eqref{deltanote:eq:hint_mod} yields:
+%
+\begin{small}
+    \begin{align}
+        x'(\tilde{p}) = & (\tilde{p} - x) \biggl( \frac{\lambda^{E}}{ \delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[1 - h(\tilde{p}) \right] }
+        \frac{1}{V} \left[ (\tilde{p} - x) \frac{1}{c^{v,0} V} \left( \frac{ u + (1 - u) s^{E} j(\tilde{p}) + s^{G} }{\delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[1 - h(\tilde{p})\right] } \right)  \mu \lambda^{U} \right]^{\frac{1}{\eta^{v} - 1}} \nonumber \\
+        & + \frac{ s^{E} }{ u + (1 - u) s^{E} j(\tilde{p}) + s_{g}^{G} } \left( \frac{1}{\delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[1 - h(\tilde{p})\right]} \right) \frac{v^{*}(\tilde{p})}{V} \frac{\mu}{\mu} \lambda^{U} \left[ u + (1 - u) s_{g}^{E} j(\tilde{p}) + s^{G} \right] \biggr) \gamma(\tilde{p})
+    \end{align}
+\end{small}
+%
+which can be further simplified as:
+%
+\begin{small}
+    \begin{align}
+        x'(\tilde{p}) = & (\tilde{p} - x) \biggl( \frac{\lambda^{E}}{ \delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[ 1 - h(\tilde{p}) \right] }
+        \frac{1}{V} \left[ (\tilde{p} - x) \frac{1}{c^{v,0} V} \left( \frac{ u + (1 - u) s^{E} j(\tilde{p}) + s^{G} }{\delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[1 - h(\tilde{p}) \right] } \right)  \mu \lambda^{U}\right]^{\frac{1}{\eta^{v} - 1}} \nonumber \\
+        & + \left( \frac{s^{E} \lambda^{U}}{\delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[ 1 - h(\tilde{p}) \right] } \right) \frac{v^{*}(\tilde{p})}{V}  \biggr) \gamma(\tilde{p}).
+    \end{align}
+\end{small}
+%
+This further yields
+%
+\begin{small}
+    \begin{align}
+        x'(\tilde{p}) = &  \frac{2 \lambda^{E} (\tilde{p} - x)}{ \delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[ 1 - h(\tilde{p}) \right] }
+        \frac{1}{V} \left[ (\tilde{p} - x) \frac{1}{c^{v,0} V} \left( \frac{ u + (1 - u) s^{E} j(\tilde{p}) + s^{G} }{\delta(\tilde{p}) + \lambda^{G} + \lambda^{E} \left[1 - h(\tilde{p}) \right] } \right)  \mu \lambda^{U}\right]^{\frac{1}{\eta^{v} - 1}} \gamma(\tilde{p})
+    \end{align}
+\end{small}
+%
+which is identical to our expression in \eqref{eq:x_prime}, except for a change in the way firm sizes (and therefore vacancies) are computed. Interestingly, the optimality condition for utility turns out to be unaffected by heterogeneity in $\delta(\tilde{p})$: the reason is that, while the distribution of workers across firms in the economy is affected by how the separation rate varies with composite productivity, at the margin the employment distribution only varies with $f(x^{*}(\tilde{p})$ and $\delta(x(\tilde{p}))$, the local competition of a firm offering utility $x$.
+%
+Thus, with a final change of variables and calling $\delta(r) = \delta(\tilde{p}(r))$, we can write:
+%
+\begin{small}
+    \begin{align}
+        \Delta x(r) = &  \frac{2 \lambda^{E} P(r)}{ \delta(r) + \lambda^{G} + \lambda^{E} \left[ 1 - F(r) \right] }
+        \frac{1}{V} \left[ P(r) \frac{1}{c^{v,0} V} \left( \frac{ u + (1 - u) s^{E} G(r) + s^{G} }{\delta(r) + \lambda^{G} + \lambda^{E} \left[1 - h(x) \right] } \right)  \mu \lambda^{U}\right]^{\frac{1}{\eta^{v} - 1}} \label{deltanote:eq:deltax}
+    \end{align}
+\end{small}
+%
+\newline\noindent
+%
+Therefore, we proceed as in Supplemental Appendix \ref{app:identification_discrete}, adapting our equations to discrete data. We first identify profits per worker $P(r)$ by applying equation \ref{deltanote:eq:profits_per_worker}, plugging in the data on the employment distribution $G(r)$, the implied hiring intensities $f(r)$, and the associated empirical offer distribution $F(r)$. We then identify utility offers $x(r)$ by applying equation \eqref{deltanote:eq:deltax} iteratively, plugging in previously obtained profits per worker $P(r)$, the empirical offer distribution $F(r)$, and the empirical employment distribution $G(r)$. Finally, we proceed exactly as in Supplemental Appendix \ref{app:identification_discrete} to identify amenities, productivity, and gender wedges.

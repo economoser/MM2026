@@ -1,0 +1,102 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\sectioneight}\label{sec:Counterfactuals}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section, we use the estimated equilibrium model to conduct a series of counterfactual experiments. The equilibrium nature of our model is key because we study counterfactual economies in which the removal of certain model ingredients or the imposition of certain policies changes the optimizing behavior of workers and firms. We rely on the rich, nonparametrically identified distribution of gender-specific employer characteristics to quantify both microeconomic (e.g., the gender pay gap) and macroeconomic (e.g., aggregate output) effects due to these counterfactuals.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Role of Gender-Specific Compensating Differentials.\label{subsec:decomposition}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We use our model to simulate the extent of gender inequality in a world without amenity differences across employers. To this end, we set all amenities to the mean amenity value for each gender, $\beta_{g} a_{g} \mapsto \mathbb{E}[\beta_{g} a_{g}]$. The goal is to investigate the role that gender-specific compensating differentials \citep{Rosen1986} play in determining gender gaps in pay and utility.
+
+%
+\begin{table}[htbp!]
+    \caption{Effects of eliminating firm heterogeneity in amenities}
+    \label{tab:counterfactuals_table_1}
+    %
+    \input{tables/table12.tex}
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports results from equilibrium counterfactuals. Log amenities are defined as the log amenity valuations ($\ln \tilde{a} = \ln(x/w)$). The baseline economy (column 0) is compared to a counterfactual without differences in amenities across employers (column 1). %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+As a result, the gender pay gap declines by $\input{text/txt_model_cf_amenities_gap_decline.tex}$ log points, or $\input{text/txt_model_cf_amenities_gap_decline_pp.tex}$ percent of the baseline, due to two channels. First, women relocate away from low-productivity, high-amenity employers, which lowers the between-employer pay gap by $\input{text/txt_model_cf_amenities_gap_decline_between.tex}$ log points. Second, higher-productivity employers tend to have larger gender wedges and pay women less, which increases the within-employer gap by $\input{text/txt_model_cf_amenities_gap_increase_within.tex}$ log points. While the gender pay gap closes substantially, the gender utility gap increases because women lose more in amenities than they gain in pay. However, employment rises by $\input{text/txt_model_cf_amenities_employment_increase.tex}$ percentage points, and output rises by $\input{text/txt_model_cf_amenities_output_increase.tex}$ percent due to the increased competitiveness of high-productivity firms. In net, worker welfare increases by $\input{text/txt_model_cf_amenities_workerwelfare_increase.tex}$ percent. %
+%
+Overall, this counterfactual highlights that amenities play a crucial role in shaping equilibrium labor market competition by disproportionately helping lower-productivity firms attract and retain workers---especially women.
+
+In Supplemental Appendix \ref{app:counterfactuals_all}, we perform three additional equilibrium counterfactuals that allow us to shed light on the role of taste-based discrimination \citep{becker1971}, labor market frictions \citep{Manning2003}, and their interplay. We have three main findings. First, amenities interact with gender wedges: low-paying low-productivity firms require both higher amenities and lower gender wedges in order to attract a substantial female workforce. Second, differences in labor market frictions are not an important determinant of gender pay gaps in Brazil. Third, moving to a gender-neutral world implies substantial welfare and output gains.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Unintended Effects of Equal-Treatment Policies\label{sec:counterfactual_policies}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Many countries have recently considered or implemented legislation requiring the equal treatment of men and women in their workforce and their applicant pool.%
+%
+\footnote{In the Brazilian context, on July 3, 2023, Brazilian president Luiz In{\'{a}}cio Lula da Silva passed \emph{Law Number 14.611}, amending \emph{Article 461} of the Labor Code, which requires equal pay for men and women performing substantially equal work. In the U.S. context, the \emph{Equal Pay Act of 1963} is an amendment to the \emph{Fair Labor Standards Act} that prohibits employers from paying different wages across the sexes for substantially equal work.} %
+%
+Such policies may be justified by a planner's concern with gender inequity, possibly rooted in firms' unequal treatment of men and women. At the same time, our model's equilibrium may not be efficient due to congestion and business-stealing externalities, so policies can also have (positive or negative) efficiency effects. Given that equal-treatment policies affect firms' incentives to pay, provide amenities, and recruit workers, our equilibrium framework is ideally suited to evaluating such policies. Thus, our model provides an ideal laboratory to study the equilibrium consequences of such policies.%
+%
+\footnote{In related work, \citet{LamadonMogstadSetzler2022} assume that firms are endowed with a fixed set of amenities but note that \emph{``it would be interesting to extend this analysis to allow for firms to adjust amenities in response to [policy] counterfactuals''} (p.\ 208).} %
+%
+To this end, we simulate the effect of imposing an {\emph{equal-pay policy}} and, separately, an {\emph{equal-hiring policy}}. For these policy simulations, it matters whether amenities vary due to preference weights $\beta_{g}$ or due to amenity cost shifters $c_{g}^{a,0}$. Here, we assume all variation in amenities is due to variation in amenity cost shifters and that $\beta_{g} = 1$ for all firms. Our results are summarized in Table \ref{tab:counterfactuals_policies}, which shows the baseline economy in column 0, the equal-pay policy in column 1, and the equal-hiring policy in column 2.%
+%
+\footnote{The fact that equal-treatment policies link the markets for men and women significantly complicates the computation of an equilibrium. Supplemental Appendices \ref{app:solution_algorithm} and \ref{app:policy_algorithms} describe the baseline and alternative numerical solution algorithms, respectively.} %
+%
+
+
+\paragraph{Equal-Pay Policy.} %
+
+Our first policy experiment simulates an equal-pay policy requiring all dual-gender firms to offer the same pay to workers of identical ability, regardless of gender. % 
+%
+At first glance, this policy is effective at reducing gender inequality. By construction, the within-employer gender pay gap disappears. In addition, the between-employer gender pay gap also reduces substantially since firms, which initially paid men more than women, are now forced to offer suboptimally higher wages for women and suboptimally lower wages for men. 
+
+However, firms' endogenous responses offset the closing of the gender gap. To partially counteract the equal-pay mandate, firms now offer higher amenities to men, increasing the within-employer amenities gap. Hiring workers of both genders is reduced as firms make lower profits for women and become less attractive employers to men. Consequently, high-gender wedge firms shrink, employment declines, and average pay increases. The latter is because surviving firms with negative gender wedges absorb some of the lost jobs. Aggregate output declines by $\input{text/txt_model_cf_equalpay_output_decrease.tex}$ percent, and worker welfare declines slightly in approximately equal proportions for men and women. The bottom line is that an equal-pay policy closes $\input{text/txt_model_cf_equalpay_gendergap_closing.tex}$ percent of the overall pay gap but is detrimental to worker welfare and output due to its negative employment effects and due to firms counteracting the policy through amenity creation.%
+%
+\footnote{We also simulate the impact of a policy that requires all dual-gender firms to offer the same amenities to workers of identical ability and report our results in Supplemental Appendix \ref{app:equal_amenities_policy}. We find that this equal-amenities policy has similarly detrimental effects on output and welfare, particularly for women.} %
+%
+
+
+\paragraph{Equal-Hiring Policy.} %
+
+Our second policy experiment simulates an equal-hiring policy that requires all dual-gender firms to post an equal number of vacancies across the sexes. %
+%
+We find that the equal-hiring policy also reduces gender inequality in some dimensions. Such a policy has large effects on worker reallocation, leading to a reduction in the gender pay gap by $\input{text/txt_model_cf_equalhiring_gendergap_decline.tex}$ log points due to a near-elimination of the between-employer pay gap. However, worker welfare actually declines slightly. The reason is that firms, constrained by the policy to make suboptimal hiring decisions, now pay less to both men and women. Specifically, high-productivity firms with positive gender wedges reluctantly hire more women, while low-productivity firms with large amenities hire more men. As a result, the firm ladders of both genders become less directed in the utility space. In particular, women receive relatively more pay but relatively fewer valued amenities. Consequently, the welfare of men and women, along with output, declines. Employment of men declines, while that of women increases substantially. %
+%
+The equal-hiring policy simulation shows that such a heavy-handed policy has large distortionary effects on the allocation of men and women in the labor market, related to the fact that men and women have different valuations of pay versus nonpay attributes across employers.%
+%
+\footnote{A related question is whether a policy targeting only one sector of the economy, for instance, the public sector, may have similar effects through labor market competition. To investigate this, in Supplemental Appendix \ref{app:equal_hiring_public-sector}, we simulate an equal-hiring policy restricted exclusively to the public sector. We find this policy to have smaller effects on pay gaps than the generalized equal-hiring mandate and no discernible effect on the gender gap in utility.} %
+%
+
+%
+\begin{table}[htbp!]
+    \caption{Effects of simulated equal-pay and equal-hiring policies\label{tab:counterfactuals_policies}}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table13.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        Table reports results from two counterfactual policy experiments. Log amenities are defined as the log amenity valuations ($\ln \tilde{a} = \ln(x/w)$). Baseline results (column 0) are compared against the economy with an equal-pay policy (column 1) and the economy with an equal-hiring policy (column 2).
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%

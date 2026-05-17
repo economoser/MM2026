@@ -1,0 +1,278 @@
+% !TEX root = MM2025.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\sectionsix}\label{sec:Results}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In Section \ref{sec:Empirical-Gender-Gaps}, we estimated gender-specific firm pay components. Now, we present estimates of gender-specific %
+firm ranks, %
+labor market parameters, %
+firm types, and %
+economy-wide parameters %
+based on the identification proof in Section \ref{sec:Identification}. %
+%
+A novel aspect of our approach is that we impose no parametric restrictions on the distribution of gender-specific firm types, which the following analysis exploits.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Estimates of Employer Ranks\label{subsec:estimated_ranks}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+While the average firm in our sample is small, the average worker is employed at a large firm. Supplemental Appendix Figure \ref{fig:kdens_ranks} shows that employment is highly skewed toward large, high-ranked employers for both genders: the employment-weighted mean rank for men is \input{text/txt_mean_rank_m.tex} and that for women is  \input{text/txt_mean_rank_f.tex}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Estimates of Labor Market Parameters\label{subsec:labparams_b}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Our estimates of labor market parameters are shown in Table \ref{tab:labor_market_obj}. %
+%
+The gender-specific population shares $\mu_{g} \equiv \int_{z} \mu_{gz} \diff z$ that we read off the data are $\mu_{M} = \input{text/txt_pop_share_m.tex}$ for men and $\mu_{F} = \input{text/txt_pop_share_f.tex}$ for women. %
+%
+Women receive fewer job offers from nonemployment ($\lambda_{F}^{U} = \input{text/txt_lambda_u_f.tex}$ compared to $\lambda_{M}^{U} = \input{text/txt_lambda_u_m.tex}$) and have a lower job destruction rate ($\delta_{F}^{U} = \input{text/txt_delta_f.tex}$ compared to $\delta_{M}^{U} = \input{text/txt_delta_m.tex}$). %
+%
+For both men and women, involuntary job offers ($\lambda_{M}^{G} = \input{text/txt_lambda_g_m.tex}$ and $\lambda_{F}^{G} = \input{text/txt_lambda_g_f.tex}$) are about as frequent as voluntary ones ($\lambda_{M}^{E} = \input{text/txt_lambda_e_m.tex}$ and $\lambda_{F}^{E} = \input{text/txt_lambda_e_f.tex}$). Overall, men receive a greater total of job offers than women. The prevalence of involuntary job offers indicates substantial undirectedness of job search across utility ranks, not just pay ranks \citep{JolivetPostel-VinayRobin2006}.%
+%
+\footnote{Figure \ref{fig:recruiting_dens} in Supplemental Appendix \ref{app:other_results_lmkt_objects} shows large dispersion in estimated firm-level recruiting intensities, and more so for women.} %
+%
+The implied nonemployment rates ($u_{M} = \input{text/txt_u_m.tex}$ and $u_{F} = \input{text/txt_u_f.tex}$) reflect the presence of a large informal sector for both men and women in Brazil.%
+%
+\footnote{While women are more likely to be informally employed \citep{EngbomGonzagaMoserOlivieri2022} and out of the labor force \citep{WorldBank2022}, these estimates suggest that both sexes are similarly attached to Brazil's formal sector, conditional on participating.} %
+%
+The flow value of nonemployment for men ($b_{M} = \input{text/txt_b_m.tex}$) is slightly higher than that for women ($b_{F} = \input{text/txt_b_f.tex}$), as is the implied reservation utility ($\phi_{M} = \input{text/txt_phi_m.tex}$ compared to $\phi_{F} = \input{text/txt_phi_f.tex}$).%
+%
+\footnote{\citet{LeBarbanchonRathelotRoulet2020} also find that unemployed men have a higher reservation wage than women in France.} %
+%
+It is important to keep in mind that these estimates reflect widespread unregistered employment in Brazil \citep{MeghirNaritaRobin2015}. Compared to a typical high-income country's labor market \citep{TaberVejlin2020}, these estimates suggest substantial labor market imperfections in Brazil.
+
+%
+\begin{table}[htbp!]
+    \caption{Job offer arrival rates, job destruction rates, and flow values of nonemployment}
+    \label{tab:labor_market_obj}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table4.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table shows the estimated values of all labor market parameters---specifically, the offer arrival rate from nonemployment $\lambda_{g}^{U}$, the job destruction rate $\delta_{g}$, the relative arrival rate of voluntary on-the-job offers $s_{g}^{E}$, the relative arrival rate of involuntary job offers $s_{g}^{G}$, and the flow value of nonemployment $b_{g}$---separately by gender $g \in \{ M, F \}$. All rates are monthly. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Estimates of Firm Types\label{subsec:estimation_distributions}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{Productivity.}
+
+Our estimates of firm productivity $p$ in Figure \ref{fig:prod_est} in Supplemental Appendix \ref{app:est_results_gender_specific_firm_parameters} display substantial dispersion and a long right tail. The employment-weighted mean log productivity is \input{text/txt_mean_log_prod_m.tex} for men and \input{text/txt_mean_log_prod_f.tex} for women, implying a gender productivity gap of \input{text/txt_mean_log_prod_gap.tex} log points.
+%
+To test whether our model estimates of firm productivity $p$ capture real-world firm productivity, we estimate
+%
+\begin{align}
+    m_{j} &= \eta \widehat{p}_{j} + \iota_{j}, \label{eq:second_stage_productivity}
+\end{align}
+%
+where $m_{j}$ is our empirical measure of firm productivity, which we take to be log revenues per worker based on the Orbis Historical dataset from \citet{Moodys2025} for a subset of firms in RAIS, $\widehat{p}_{j}$ is our model's estimated firm productivity, and $\iota_{j}$ is an error term.%
+%
+\footnote{To obtain productivity measures in the same currency units, we apply annual data on exchange rates from \citet{IMF2022}.} %
+%
+Note that we put the empirical measure of firm productivity, $m_{j}$, on the left-hand side---rather than the right-hand side---of the regression to minimize the influence of measurement error and transitory fluctuations in the data.
+
+Table \ref{tab:second_stage_productivity} shows the results from this exercise. We find an estimated coefficient $\hat{\eta}$ of \input{text/txt_financials_b_log_revenue_pw_data.tex}. This estimate suggests that we cannot reject, at conventional levels, the null hypothesis that $\eta = 1$.%
+%
+\footnote{We find similar conclusions for other empirical measures of firm productivity, including profits per worker, net income per worker, and cash flow per worker.} %
+
+%
+\begin{table}[htbp!]
+    \caption{Regressing empirical productivity measures on model estimates of firm productivity}
+    \label{tab:second_stage_productivity}
+    %
+    \begin{normalsize}
+    \input{tables/table5.tex}
+    \end{normalsize}
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports the estimated coefficient from regressing empirical revenue per worker on structurally estimated firm productivity $p$---see equation \eqref{eq:second_stage_productivity}. Details of the variable construction are presented in Supplemental Appendix \ref{app:estimation_productivity_data}. Standard errors are clustered at the employer level.\ifshowstars ***, **, and * denote significance at the 1\%, 5\%, and 10\% levels, respectively.\fi{}%
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+\paragraph{Gender Wedges.\label{paragraph:estimation_wedges}}
+
+In Section \ref{subsec:identification_continuous}, we discussed the identification of gender wedges $\tau$ separately from other (gender-specific) firm-level parameters. Here, we briefly exhibit some properties of the estimates of gender wedges $\tau$. The distribution of estimated gender wedges $\tau$ is shown in Supplemental Appendix Figure \ref{fig:wedge_est}. Women are less likely to work at firms with high gender wedges, with an employment-weighted mean of \input{text/txt_tau_f_mean.tex} for women compared to \input{text/txt_tau_m_mean.tex} for men.
+%
+Gender wedges in our model may stand in for taste-based discrimination or employer-level comparative advantages across genders. To understand what they capture in the real world, we estimate
+%
+\begin{align}
+    \ln(1 - \widehat{\tau}_{j}) &= Z_{j}\eta + \iota_{j}, \label{eq:second_stage_wedges}
+\end{align}
+%
+where $\widehat{\tau}_{j}$ is the estimated gender wedge for employer $j$, $Z_{j}$ is a vector of employer covariates, and $\iota_{j}$ is an error term. We include as covariates in $Z_{j}$ a total of {\NWedgeCovariates} variables constructed in the RAIS data.
+
+Table \ref{tab:second_stage_wedges} shows that our estimated gender wedges significantly load onto factors related to the female-friendliness of a workplace. For example, having a female manager is associated with lower gender wedges. Employers with longer working hours, major financial stakeholders, and larger workforces have higher gender wedges. Altogether, we explain $\input{text/txt_reg_wedges_r2.tex}\%$ of the variation in estimated gender wedges across firms. At the same time, it is worth noting that location- and industry-specific characteristics explain a substantial share of our model estimates of gender wedges. This suggests that gender wedges in our model capture important real-world employer differences.
+
+%
+\begin{table}[htbp!]
+    \caption{Regressing estimates of transformed gender wedges on employer characteristics}
+    \label{tab:second_stage_wedges}
+    %
+    \input{tables/table6.tex}
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports estimated coefficients from regressing log transformed gender wedges, $\ln(1 - \tau)$, on observable employer characteristics---see equation \eqref{eq:second_stage_wedges}. Estimates are conditional on municipality and sector FEs. All covariates are standardized and expressed in z-scores relative to the population of all firms for each gender. Details of all covariates are presented in Supplemental Appendix \ref{app:estimation_wedge_covariates}. Standard errors are clustered at the employer level.\ifshowstars ***, **, and * denote significance at the 1\%, 5\%, and 10\% levels, respectively.\fi{}
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+\paragraph{Amenity Cost Shifters.}
+
+In Section \ref{subsec:identification_continuous}, we discussed the identification of amenity cost shifters $c_{g}^{a, 0}$ separately from other (gender-specific) firm-level parameters. The firm-level estimates of $c_{g}^{a, 0}$ are dispersed with long right tails, see Supplemental Appendix Figure \ref{fig:amenity_cost_est}. %
+%
+We relate the implied amenity values to real-world amenity proxies as
+%
+\begin{align}
+    \log \widehat{a}_{gj} &= Z_{gj}\eta_{g} + \iota_{gj}, \label{eq:second_stage_amenities}
+\end{align}
+%
+where $\widehat{a}_{gj}$ is the estimated amenity value for gender $g$ at employer $j$, $Z_{gj}$ is a vector of gender-specific employer covariates, and $\iota_{gj}$ is an error. We include in $Z_{gj}$ {\NAmenityCovariates} variables based on the RAIS data.
+
+Table \ref{tab:second_stage_amenities} shows that, for both men and women, employers with more generous parental leave policies, more stable income and employment, and larger workforces are associated with higher amenity values. For women, but not significantly for men, greater working hours flexibility is valued as a positive amenity. Altogether, we explain $\input{text/txt_reg_amenities_r2_men.tex}$\% of the variation in estimated amenities for men and $\input{text/txt_reg_amenities_r2_women.tex}$\% of that for women. As before, it is worth noting that location- and industry-specific characteristics account for a substantial share of our model's estimates of amenities. Again, this suggests that the model amenities capture empirically relevant differences in employer characteristics. %
+%
+\label{revision_2:editor_text_amenity_projections}In order to reliably estimate the coefficients of specific employer characteristics, the inclusion of location- and industry-specific FEs is important. Otherwise, the estimated coefficients may be biased upwards (downwards) if unobservable amenities are positively (negatively) correlated with our explanatory variables.
+
+%
+\begin{table}[htbp!]
+    \caption{Regressing estimates of amenity valuations on employer characteristics, by gender}
+    \label{tab:second_stage_amenities}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table7.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports estimated coefficients from regressing log amenity valuations, $\ln(\beta_{g}a_{g})$, on observable gender-specific employer characteristics---see equation \eqref{eq:second_stage_amenities}. Estimates are conditional on municipality and sector FEs. All covariates are standardized and expressed in z-scores relative to the population of all firms for each gender. Details of all covariates are presented in Supplemental Appendix \ref{app:estimation_amenity_covariates}. Standard errors are clustered at the employer level.\ifshowstars ***, **, and * denote significance at the 1\%, 5\%, and 10\% levels, respectively.\fi{}%
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+\paragraph{Correlation Structure.}
+
+Supplemental Appendix Table \ref{tab:corr_p_pi_z} correlates gender-specific pay $w_{g}$, amenities $a_{g}$, productivity net of gender wedges $(1 - \tau_{g})p$, employment $l_{g}$, and employer ranks $r_{g}$. %
+%
+At this stage, the most interesting takeaway is that log pay (\input{text/txt_corr_log_w.tex}), log amenities (\input{text/txt_corr_log_pi.tex}), and ranks (\input{text/txt_corr_rank.tex}) are positively but imperfectly correlated within employers across genders. For both genders, amenities are negatively related to pay, which suggests the presence of compensating differentials.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Estimates of Economy-Wide Parameters\label{subsec:estimates_economy_wide_params}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table \ref{tab:economy_wide_params} shows our estimated elasticity of the vacancy cost function, $\eta^{v} = \input{text/txt_model_baseline_eta_v.tex}$, which is in the range of existing estimates for Brazil \citep{EngbomMoser2022a}. Our estimated elasticity of the amenity cost function, $\eta^{a} = \input{text/txt_model_baseline_eta_a.tex}$, suggests that employer amenities are provided relatively inelastically.%
+%
+\footnote{\label{revision_2:editor_comment_5}Supplemental Appendix \ref{app:alt_amenity_cost_shares} analyzes in detail the sensitivity of our estimation results to alternative amenity cost shares. There, we demonstrate that our estimates of employer amenities are exactly invariant to the chosen target amenity cost share, for which a reliable estimate is difficult to find, and thus the associated amenity cost elasticity. We show that, as a result, our main decomposition results are unaffected by this choice as well.} %
+%
+
+%
+\begin{table}[htbp!]
+    \caption{Estimates of economy-wide parameters}
+    \label{tab:economy_wide_params}
+    %
+    \resizebox{\textwidth}{!}{%
+    \input{tables/table8.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports the estimated values of the elasticity of the vacancy cost function $\eta^{v}$ and the elasticity of the amenity cost function $\eta^{a}$. Targeted moments are the elasticity of pay with respect to value added per worker from \citet{AlvarezBenguriaEngbomMoser2018} and the cost share of amenities in value added based on \citet{BieriKuminoffPope2023}. See Supplemental Appendix \ref{subsec:external} for details on the construction of the aggregate statistics. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Model Fit\label{subsec:model_fit}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table \ref{tab:model_fit} shows the model fit based on a range of moments relating to employer pay and worker transitions. %
+%
+Overall, the model fits the data well. The model understates the gender pay gap by $\input{text/txt_model_fit_gap_difference.tex}$ log points but broadly matches the empirical variances of gender-specific pay and the gender pay gap, job-to-job transition rates, the share of transitions with a pay cut, and the correlation between men's and women's pay within firms. Notice that we fit gender-specific firm pay and ranks by construction, but discrepancies arise because the model does not perfectly replicate the smoothed employment distribution.
+
+%
+\begin{table}[htbp!]
+    \caption{Model fit}
+    \label{tab:model_fit}
+    %
+    \resizebox{\textwidth}{!}{%
+        \input{tables/table9.tex}
+    }
+    %
+    \begin{tablenotes}
+        %
+        \footnotesize
+        %
+        This table reports the fit of the model in terms of data-based and model-based moments across genders $g \in \{ M, F \}$. All statistics are employment-weighted. %
+    \end{tablenotes}
+    \begin{tablenotes}[Source]
+        \sourcemodel%
+    \end{tablenotes}
+\end{table}
+%
+
+As a holistic measure of model fit, Figure \ref{fig:model_fit} below compares the entire distribution of log firm pay (Panel \subref{fig:model_fit_A}) and log firm size (Panel \subref{fig:model_fit_B}). Short of perfect, the model fits the data remarkably well.
+
+%
+\begin{figure}[htbp!]
+    %
+    \subfloat[Firm pay]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure2a.eps}}\label{fig:model_fit_A}}%
+    \subfloat[Firm size]{\centering{}{\includegraphics[width=0.50\columnwidth]{figures/figure2b.eps}}\label{fig:model_fit_B}}
+    %
+    \caption{Model fit in terms of the distributions of log firm pay and log firm size, by gender}
+    \label{fig:model_fit}
+    %
+    \begin{figurenotes}
+        %
+        \footnotesize
+        %
+        This figure plots the model fit in terms of the data versus model distributions of log firm pay (Panel \subref{fig:model_fit_A}) and log firm size (Panel \subref{fig:model_fit_B}). Blue lines show the results for men, while red lines show the results for women. Solid lines show the data, while dashed lines show the model. %
+    \end{figurenotes}
+    \begin{figurenotes}[Source]
+        \sourcemodel%
+    \end{figurenotes}
+\end{figure}
+%

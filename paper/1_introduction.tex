@@ -1,0 +1,104 @@
+% !TEX root = MM2025.tex
+
+The fact that women, compared to men, often work in lower-paying jobs appears worrisome from both a distributional perspective and in terms of society's allocation of talent \citep{HsiehHurstJonesKlenow2019}. However, a holistic assessment of gender gaps requires looking beyond monetary pay and output. In this spirit, the empirical literature has convincingly established that nonpay job attributes are generally important for job choices \citep{HallMueller2018}, and that women have a higher willingness to pay for job amenities such as work flexibility \citep{Goldin2014}. Thus, it seems natural to view the observed gender differences in job sorting through the lens of a richer framework that takes into account heterogeneity in both pay and nonpay attributes.
+
+This paper aims to identify the microeconomic sources of the gender pay gap in order to assess their macroeconomic consequences. Our analysis proceeds in four steps. %
+%
+First, we establish empirical facts on gender differences in sorting across firms by pay. %
+%
+Second, we interpret these facts by developing an equilibrium search model with endogenous firm pay, amenities, and employment. %
+%
+Third, we provide a constructive proof of identification of all model parameters based on linked employer-employee data. %
+%
+Finally, we use the estimated model to shed light on the structure of pay and amenities across firms, to quantify the role of compensating differentials, and to simulate counterfactual equal-pay and equal-hiring policies. %
+%
+Altogether, our results highlight an important role of nonpay job attributes in explaining gender differences in pay and employment across firms.
+
+In the first step, we leverage rich linked employer-employee data from Brazil, which has a significant gender pay gap of \input{text/txt_sum_stats_earn_gap.tex} log points, making this an interesting context to study gender inequality. An advantage of studying Brazil is that it offers remarkably detailed information on gender-relevant labor market variables such as workers' education, occupation, tenure, work hours, and employment histories with information on parental leaves. %
+%
+To estimate firm pay differences for identical workers by gender, we follow \citeauthor{CardCardosoKline2016}'s (\citeyear{CardCardosoKline2016}) extension of the seminal two-way fixed effects (FEs) framework by \hyperref[sec:bib]{Abowd, Kramarz, and Margolis }(\hyperref[sec:bib]{1999}, henceforth AKM). %
+%
+Controlling for worker heterogeneity, we find a gender firm pay gap of \input{text/txt_gap_log_w.tex} log points (i.e., \input{text/txt_sum_stats_gap_share_fe_earn.tex}\% of the overall gender pay gap), mostly due to women sorting to lower-paying firms relative to men.
+
+In the second step, one of our key contributions is to develop an equilibrium search model based on the seminal framework by \citet{BurdettMortensen1998}, with endogenous gender differences in firm pay, amenities, and hiring. Workers differ in their gender and ability and search for jobs both in and out of employment. Firms differ in their productivity, gender preferences, and amenity costs, and face a convex increasing vacancy cost schedule. %
+%
+Our model accommodates several competing explanations for the gender pay gap, including gender-specific \emph{compensating differentials} \citep{Rosen1986}, \emph{taste-based discrimination} \citep{becker1971}, and \emph{labor market frictions} \citep{Manning2003}. %
+%
+The model features pay and utility dispersion both within and between worker types. The existence of pay differences, however, is neither necessary nor sufficient for the existence of utility differences. Job-to-job transitions may entail pay declines. Firms can discriminate based on their pay offers, amenities, or hiring decisions. Men and women climb different firm ladders. Finally, even nondiscriminatory firms without regard for gender may treat women differently as a best response to the labor market environment. %
+%
+To sum up, the gender-specific distributions of firm pay, amenities, and hiring are all jointly determined in equilibrium, making it a formidable task to isolate each of the model's features.
+
+In the third step, we make a methodological contribution by separately identifying all model parameters, including labor market objects, gender-specific firm types, and economy-wide elasticities of the vacancy and amenity cost functions. %
+%
+We demonstrate that our equilibrium model admits a log-additive wage equation with separable worker and firm components, as in \citeauthor{CardCardosoKline2016}'s (\citeyear{CardCardosoKline2016}) extension of AKM, which is helpful for two reasons. First, it enables us to interpret the gender-specific employer FEs from our empirical analysis through the lens of the structural model. Second, it allows us to control for gender-specific selection based on ability \citep{MulliganRubinstein2008}. %
+%
+To identify labor market objects, we follow a revealed-preferences argument based on worker flows. %
+%
+Next, we identify gender-specific firm types. From a bird's-eye view, we leverage the intuition that firms' unobserved surplus is reflected in their hiring decisions. We show how to invert this model mapping to recover firm-level utility offers. By comparing those to firm pay, we back out the gender-specific amenity values at each firm. We then estimate employer preferences over gender by comparing equilibrium outcomes between men and women at the same firm. %
+%
+Finally, we demonstrate how to estimate the economy-wide elasticity parameters governing vacancy and amenity costs using aggregate moments. %
+%
+A noteworthy aspect of our approach is that we do not rely on any distributional assumptions in identifying a large number of model parameters in an environment with firm heterogeneity in both observed pay and unobserved amenities \citep[cf.][]{BontempsRobinvandenBerg1999, BontempsRobinvandenBerg2000}.
+
+In the fourth step, our substantive contribution is to use the estimated model to revisit the observed patterns of gender-specific sorting across firms. By identifying rich gender-firm heterogeneity, our model provides several novel insights regarding the structure of firm pay and amenities. %
+%
+We find that amenities play an important role for both genders, with a mean amenity share of {$\input{text/txt_pi_share_m_mean.tex}$\%} for men and {$\input{text/txt_pi_share_f_mean.tex}$\%} for women. However, higher-ranked employers for men mainly offer higher pay, while for women, they offer higher amenities. Compensating differentials explain the lion's share of overall firm pay dispersion, with utility dispersion only accounting for $\input{text/txt_var_x_share_m.tex}$\% of pay dispersion for men and $\input{text/txt_var_x_share_f.tex}$\% of that for women. This is all the more striking given that Brazil's labor market is characterized by significant labor market frictions. Taking into account gender differences in amenities, the gender gap in total compensation becomes $\input{text/txt_gap_log_x.tex}$ log points (i.e., \input{text/txt_gap_log_x_share.tex} percent of the gender pay gap). Altogether, these results suggest that compensating differentials are central to understanding gender-specific sorting across firms.
+
+Given the importance of firm-level amenities, we return to our motivation regarding the micro sources and macro consequences of the gender pay gap. We leverage the equilibrium nature of our model to decompose gender gaps in pay, amenities, and utility. As a result of shutting down firm heterogeneity in amenities, the gender pay gap closes by $\input{text/txt_model_cf_amenities_gap_decline_pp.tex}$ percent, largely due to a relocation of women toward formerly male-dominated firms. %
+%
+Our equilibrium framework naturally lends itself to an analysis of counterfactual equal-pay and equal-hiring policies. The bottom line is that both policies close part of the gender pay gap but lower worker welfare due to their adverse incentive effects on firms' pay, amenities, and hiring decisions. Thus, our results underline the importance of studying such policies in general equilibrium.
+
+A cautionary note regarding the interpretation of our results is in order. We have quantified the contribution of gender-specific preferences over workplace amenities toward gender differences in sorting and pay across firms. We think of workers' preferences over amenities, such as those relating to work-life balance, as capturing the induced demand for certain workplace or employer characteristics due to household arrangements and societal norms that differ across men and women \citep{Goldin2024, CubasJuhnSilos2021, CubasJuhnSilos2023}. In reality, women may seek out high-amenity jobs not because of preferences but because of constraints imposed by nonmarket factors. Without such accommodations, some women may not be able to work at all, given their responsibilities. Our estimates of amenity valuations and associated compensating differentials should be interpreted in this broader sense.
+
+
+\paragraph{Related Literature.}
+
+A burgeoning literature highlights the role of employer heterogeneity in explaining empirical pay dispersion \citep{CardHeiningKline2013, AlvarezBenguriaEngbomMoser2018, SongPriceGuvenenBloomvonWachter2018, GerardLagosSeverniniCard2021}. Our work builds on \citeauthor{CardCardosoKline2016}'s (\citeyear{CardCardosoKline2016}) extension of the seminal framework by AKM, which incorporates gender-specific employer pay components.%
+%
+\footnote{Complementary studies of empirical gender gaps in firm pay include \citet{Sorkin2017} and \citet{Palladinoetal2025}.} %
+%
+Relative to their work, we make three contributions. %
+%
+First, we offer a microfoundation for the wage equation in \citet{CardCardosoKline2016} and empirical patterns of worker sorting across firms by gender based on a tractable \emph{equilibrium} model. %
+%
+Second, whereas \citet{CardCardosoKline2016} rationalize gender gaps in employer pay through differences in exogenous bargaining parameters across the sexes, we identify more than one reason behind them, most importantly compensating differentials. %
+%
+Third, we simulate a series of counterfactual experiments, including equal-treatment policies, for which the equilibrium nature of our model is crucial as firms adjust their pay, amenities, and hiring.
+
+Our equilibrium search model builds on the influential framework by \citet{BurdettMortensen1998}. In their framework, firms are heterogeneous only in productivity. Consequently, workers agree on a firm ranking, and wage gains are accompanied by efficiency gains. Departing from this tradition, we develop a model with richer firm heterogeneity, which we identify based on linked employer-employee data. Specifically, we allow firms to differ not just in productivity but also in amenity costs and preferences over their employees' gender. As a result, firm pay, amenities, and hiring are jointly determined in equilibrium. Despite this added complexity, we provide a constructive proof of identification of all model parameters, including labor market objects, gender-specific firm types, and economy-wide elasticities of the vacancy and amenity cost functions. Compared to the aforementioned work, our model offers a radically different interpretation of empirical pay dispersion.%
+%
+\footnote{For example, \citet{BaggerChristensenMortensen2014} find \emph{``large marginal output and wage gains associated with labor reallocation''} (p.\ 5) and conclude that \emph{``the finding that misallocation persists under these circumstances suggests that labor market frictions are important barriers to growth''} (p.\ 1). Furthermore, \citet{LentzMortensen2010} conclude that \emph{``the reallocation of employment from less to more productive firms will yield efficiency gains''} (p.\ 577) and that \emph{``workers will find it in their interest to seek out higher-paying employers''} (p.\ 577). Neither of these conclusions necessarily follows in our model with heterogeneity in employer amenities.} %
+%
+
+There is ample empirical evidence that job amenities matter for labor market outcomes \citep{MaestasMullenPowellvonWachterWenger2023, AudolyBhullerReiremo2024, Kline2025a, Kline2025b, Mas2025}, especially for women \citep{JuhnMcCue2017, MasPallais2017, MasPallais2019, WiswallZafar2018}. However, quantifying the role of firm-level amenities is complicated by both data limitations and theoretical challenges. %
+%
+Regarding data, many firm-level amenities are unobserved to the analyst, so their valuations must be inferred under additional assumptions.%
+%
+\footnote{Several works have estimated the values of \emph{specific} job amenities like employer health insurance \citep{DeyFlinn2005}, job security \citep{Jarosch2023}, location \citep{HeisePorzio2023}, family friendliness \citep{Xiao2024}, and remote work \citep{BaggaMannSahinViolante2025}. Theoretical work by \citet{HwangMortensenReed1998}, \citet{LangMajumdar2004}, and \citet{AlbrechtCarrillo-TudelaVroman2018} develop models with \emph{nonspecific} job amenities.} %
+%
+Regarding theory, valuations of firm-level amenities are not easily obtained in existing models, especially in the presence of frictions.
+
+Three related papers that also use linked employer-employee data stand out in this context. %
+%
+First, \citet{TaberVejlin2020} develop a model with comparative advantage, search frictions, and compensating differentials. Despite its rich features, some of which we abstract from, they nonparametrically identify nearly all model parameters. A notable exception is workers' bargaining power, which is not identified since their revealed-preferences approach pins down \emph{ordinal} but not \emph{cardinal} utility.
+
+Second, \citet{Sorkin2018} embeds discrete choice within a search model, which can identify what he terms the \emph{``Rosen motive''} of compensating differentials, capturing amenities dispersion conditional on a firm's value. In contrast, his model cannot identify what he terms the \emph{``Mortensen motive,''} capturing amenities dispersion correlated with firm values. This is because, in his model, the variance of utility is not pinned down due to an arbitrary but necessary normalization of the scale parameter of the type-I extreme value distribution guiding idiosyncratic utility draws. By allowing firms to choose hiring subject to a commonly used vacancy cost function, the parameters of which we identify, our general-equilibrium model recovers the entire distribution of firm values and amenities, which would not have been possible in the partial-equilibrium models of \citet{TaberVejlin2020} or \citet{Sorkin2018}.
+
+Third, \citet{LamadonMogstadSetzler2022} develop an equilibrium labor market model featuring compensating differentials and rent sharing. Their model is frictionless, which implies that observed wages reflect productive attributes and idiosyncratic preferences following a nested logit structure. We complement their work by developing a distribution-free model that features search frictions, yet remains point-identified.%
+%
+\footnote{\citet{LamadonMogstadSetzler2022} note that \emph{``while incorporating [search frictions] would be interesting, it would also present severe challenges to identification, especially if one allows for two-sided heterogeneity''} (p.\ 210). We formally identify our model, though it is worth noting that our notion of worker heterogeneity and our production structure are substantially simpler than theirs.} %
+%
+Interestingly, we find a similarly important role for amenities and compensating differentials, even under large search frictions. In addition, our model has several unique implications for gender inequality and equal-treatment policies that have not been previously considered.
+
+
+\paragraph{Outline.}
+
+The paper is structured as follows. %
+Section \ref{sec:Data} describes the data. %
+Section \ref{sec:Empirical-Gender-Gaps} presents motivating empirical facts. %
+Section \ref{sec:Model} develops the equilibrium model. %
+Section \ref{sec:Identification} provides a constructive identification proof. %
+Section \ref{sec:Results} shows estimation results. %
+Section \ref{sec:structure} analyzes gender-specific compensation structures across employers. %
+Section \ref{sec:Counterfactuals} simulates counterfactuals. %
+Finally, Section \ref{sec:Conclusion} concludes.
